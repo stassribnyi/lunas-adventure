@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://xc86al6q11fq"]
+
+[ext_resource type="Script" path="res://MainProject/Scenes/gun/gun.gd" id="1_uts2i"]
+[ext_resource type="Texture2D" uid="uid://dagy3gny0c0cg" path="res://MainProject/Sprites/Button.png" id="2_mnmnl"]
+
+[node name="Gun" type="Node2D" node_paths=PackedStringArray("marker", "shooting_speed_timer")]
+script = ExtResource("1_uts2i")
+marker = NodePath("Marker2D")
+shooting_speed_timer = NodePath("ShootingSpeedTimer")
+shooting_speed = 4.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(25, 0)
+rotation = 1.5708
+texture = ExtResource("2_mnmnl")
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(20, 0)
+
+[node name="ShootingSpeedTimer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="ShootingSpeedTimer" to="." method="_on_shooting_speed_timer_timeout"]

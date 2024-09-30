@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4fxux3ir0orw"]
+
+[ext_resource type="Script" path="res://MainProject/Scenes/bullet/bullet.gd" id="1_av3jk"]
+[ext_resource type="Texture2D" uid="uid://cjplxg7of3qba" path="res://MainProject/Sprites/MothGirlAssets/Projectile.png" id="2_ukmk1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xjeu0"]
+radius = 2.0
+height = 10.0
+
+[node name="Bullet" type="Area2D"]
+script = ExtResource("1_av3jk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -4.26326e-14)
+scale = Vector2(0.0312814, 0.0312814)
+texture = ExtResource("2_ukmk1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xjeu0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

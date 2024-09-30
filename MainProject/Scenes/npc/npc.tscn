@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://c6ndwya2qw37r"]
+
+[ext_resource type="Script" path="res://MainProject/Scenes/npc/npc.gd" id="1_lh64h"]
+[ext_resource type="Texture2D" uid="uid://bmel7tr02sa6i" path="res://MainProject/Sprites/fairy/fairy.png" id="2_rkpn8"]
+[ext_resource type="PackedScene" uid="uid://rkoc8jajq3r1" path="res://MainProject/Scenes/components/interactions/interaction_area/interaction_area.tscn" id="4_3s8l5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd6nt"]
+atlas = ExtResource("2_rkpn8")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xyext"]
+atlas = ExtResource("2_rkpn8")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nmr3o"]
+atlas = ExtResource("2_rkpn8")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6o07s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd6nt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xyext")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nmr3o")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7qqr"]
+size = Vector2(166, 102)
+
+[node name="NPC" type="Node2D"]
+script = ExtResource("1_lh64h")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(9.53674e-07, -47)
+scale = Vector2(1.4375, 1.4375)
+sprite_frames = SubResource("SpriteFrames_6o07s")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="InteractionArea" parent="." instance=ExtResource("4_3s8l5")]
+action_name = "Talk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+position = Vector2(0, -52)
+shape = SubResource("RectangleShape2D_s7qqr")

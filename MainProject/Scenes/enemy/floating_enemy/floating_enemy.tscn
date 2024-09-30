@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://clrso27kaqlnk"]
+
+[ext_resource type="Script" path="res://MainProject/Scenes/enemy/floating_enemy/floating_enemy.gd" id="1_jmrsl"]
+
+[node name="FloatingEnemy" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_jmrsl")

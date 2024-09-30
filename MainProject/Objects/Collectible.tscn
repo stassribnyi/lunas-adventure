@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://c8j6i3fx8p758"]
+
+[ext_resource type="Texture2D" uid="uid://cqjaapyeuqrim" path="res://MainProject/Sprites/leave-collectible.png" id="1_qsdqn"]
+
+[sub_resource type="GDScript" id="GDScript_5wqrn"]
+script/source = "# Generic orb collectible.
+extends Area2D
+
+func _ready() -> void:
+	# Register as storable with a marker. The marker will appear on the map when the orb is first discovered (i.e. get instantiated).
+	MetSys.register_storable_object_with_marker(self)
+
+func collect(body: Node2D) -> void:
+	# Check if player collided.
+	if not body.is_in_group(&\"player\"):
+		return
+	# Increase collectible counter.
+	Game.get_singleton().collectibles += 1
+	# Store the orb. This will automatically assign the collected marker.
+	MetSys.store_object(self)
+	# Storing object does not free it automatically.
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v5e3t"]
+size = Vector2(32, 32)
+
+[sub_resource type="Animation" id="Animation_86i8t"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_a7dcj"]
+resource_name = "floating"
+length = 1.6
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.65, 0.75, 1.5),
+"transitions": PackedFloat32Array(0.90125, 0.378929, 1.18921, 0.353553),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -15), Vector2(0, -15), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_imqc6"]
+_data = {
+"RESET": SubResource("Animation_86i8t"),
+"floating": SubResource("Animation_a7dcj")
+}
+
+[node name="Collectible" type="Area2D"]
+position = Vector2(0, -7.82396)
+script = SubResource("GDScript_5wqrn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_v5e3t")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.46875, 0.46875)
+texture = ExtResource("1_qsdqn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Sprite2D")
+libraries = {
+"": SubResource("AnimationLibrary_imqc6")
+}
+autoplay = "floating"
+
+[connection signal="body_entered" from="." to="." method="collect"]

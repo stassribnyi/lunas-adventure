@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://bts01uuiubtdr"]
+
+[ext_resource type="Script" path="res://MainProject/Scenes/pause_menu/pause_menu.gd" id="1_c4pbu"]
+[ext_resource type="Shader" path="res://MainProject/blur.gdshader" id="2_8evuc"]
+[ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="4_rrsmt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_devta"]
+shader = ExtResource("2_8evuc")
+shader_parameter/amount = 3.0
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c4pbu")
+
+[node name="Dimmer" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.564706)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_devta")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StateLabelContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 64.0
+offset_right = 96.0
+offset_bottom = 96.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="StateLabelContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_rrsmt")
+theme_override_font_sizes/font_size = 32
+text = "Paused"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -26.0
+offset_right = 53.0
+offset_bottom = 26.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 8
+
+[node name="Resume" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.439972, 0.61795, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.899811, 0.851514, 0.449075, 1)
+theme_override_fonts/font = ExtResource("4_rrsmt")
+text = "Resume"
+
+[node name="Settings" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.439972, 0.61795, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.899811, 0.851514, 0.449075, 1)
+theme_override_fonts/font = ExtResource("4_rrsmt")
+text = "Settings
+"
+
+[node name="Exit" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.439216, 0.619608, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.85098, 0.45098, 1)
+theme_override_fonts/font = ExtResource("4_rrsmt")
+text = "Exit"
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]

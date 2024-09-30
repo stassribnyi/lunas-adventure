@@ -1,0 +1,88 @@
+[gd_scene load_steps=13 format=3 uid="uid://dy6uoohaa7meg"]
+
+[ext_resource type="Script" path="res://MainProject/Scenes/enemy/enemy.gd" id="1_lcq5a"]
+[ext_resource type="Texture2D" uid="uid://wv1uedkpr7vt" path="res://MainProject/Sprites/brackeys_platformer_assets/sprites/slime_green.png" id="1_xtpw8"]
+[ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="2_3eu80"]
+[ext_resource type="Texture2D" uid="uid://ku1ihmmdppxo" path="res://MainProject/Sprites/mushroom/angry_mushroom.png" id="4_jmc7x"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kptk2"]
+atlas = ExtResource("1_xtpw8")
+region = Rect2(48, 48, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kemus"]
+atlas = ExtResource("4_jmc7x")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_op44x"]
+atlas = ExtResource("4_jmc7x")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hgl7"]
+atlas = ExtResource("4_jmc7x")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yofir"]
+atlas = ExtResource("4_jmc7x")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6o07s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kptk2")
+}],
+"loop": true,
+"name": &"Hit",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kemus")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_op44x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hgl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yofir")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htlhu"]
+size = Vector2(32, 34)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u7e6d"]
+size = Vector2(36, 36)
+
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("floor_raycast") groups=["enemies"]]
+script = ExtResource("1_lcq5a")
+floor_raycast = NodePath("RayCast2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -18)
+scale = Vector2(0.916667, 0.916667)
+sprite_frames = SubResource("SpriteFrames_6o07s")
+animation = &"Idle"
+autoplay = "Idle"
+frame_progress = 0.847705
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(0, -17)
+shape = SubResource("RectangleShape2D_htlhu")
+
+[node name="Killzone" parent="." instance=ExtResource("2_3eu80")]
+
+[node name="KillzoneBox" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(0, -18)
+shape = SubResource("RectangleShape2D_u7e6d")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(19, -16)
+target_position = Vector2(0, 33)
+
+[connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]

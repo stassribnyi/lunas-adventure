@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddlxy1m18vpdn"]
+
+[ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="1_kivh6"]
+[ext_resource type="Script" path="res://MainProject/Scenes/menu/settings/action_button/action_button.gd" id="1_s8h1b"]
+
+[node name="ActionButton" type="Button"]
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.439216, 0.619608, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.85098, 0.45098, 1)
+theme_override_fonts/font = ExtResource("1_kivh6")
+script = ExtResource("1_s8h1b")
+action = null
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

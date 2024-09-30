@@ -1,0 +1,441 @@
+[gd_scene load_steps=30 format=3 uid="uid://xpbhai8nlgtx"]
+
+[ext_resource type="Script" path="res://MainProject/Scripts/Player.gd" id="1_ecbsx"]
+[ext_resource type="Texture2D" uid="uid://bsooetdipqi3u" path="res://MainProject/Sprites/MothGirlAssets/MothWalk.png" id="2_ceqb7"]
+[ext_resource type="PackedScene" uid="uid://degt3ojt5150a" path="res://MainProject/Scenes/components/gravity_component.tscn" id="6_gr3em"]
+[ext_resource type="PackedScene" uid="uid://dsspdm7lfpyr7" path="res://MainProject/Scenes/components/input_component.tscn" id="7_n7bqp"]
+[ext_resource type="Texture2D" uid="uid://cejd1g57kpkx0" path="res://MainProject/Sprites/luna/luna_1.png" id="8_o5uam"]
+[ext_resource type="PackedScene" uid="uid://c1nikui6skmag" path="res://MainProject/Scenes/components/movement_component.tscn" id="8_v7724"]
+[ext_resource type="PackedScene" uid="uid://dp5cktlbc64rs" path="res://MainProject/Scenes/components/animation_component.tscn" id="9_4ldsl"]
+[ext_resource type="PackedScene" uid="uid://xc86al6q11fq" path="res://MainProject/Scenes/gun/gun.tscn" id="9_g3uks"]
+[ext_resource type="PackedScene" uid="uid://gcv8s6hekgpd" path="res://MainProject/Scenes/components/advanced_jump_component.tscn" id="10_vweaq"]
+
+[sub_resource type="Shader" id="Shader_qnn18"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.3.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix;
+uniform int particles_anim_h_frames;
+uniform int particles_anim_v_frames;
+uniform bool particles_anim_loop;
+
+void vertex() {
+	float h_frames = float(particles_anim_h_frames);
+	float v_frames = float(particles_anim_v_frames);
+	VERTEX.xy /= vec2(h_frames, v_frames);
+	float particle_total_frames = float(particles_anim_h_frames * particles_anim_v_frames);
+	float particle_frame = floor(INSTANCE_CUSTOM.z * float(particle_total_frames));
+	if (!particles_anim_loop) {
+		particle_frame = clamp(particle_frame, 0.0, particle_total_frames - 1.0);
+	} else {
+		particle_frame = mod(particle_frame, particle_total_frames);
+	}
+	vec2 scale_uv = UV / vec2(h_frames, v_frames);
+	UV = scale_uv + vec2(
+		mod(particle_frame, h_frames) / h_frames,
+		floor((particle_frame + 0.5) / h_frames) / v_frames);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qhmky"]
+shader = SubResource("Shader_qnn18")
+shader_parameter/particles_anim_h_frames = 8
+shader_parameter/particles_anim_v_frames = 1
+shader_parameter/particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_1i32d"]
+_data = [Vector2(0, 0.263376), 0.0, 0.0, 0, 0, Vector2(1, 0.0169793), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_876f1"]
+curve = SubResource("Curve_1i32d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wj6mw"]
+gravity = Vector3(0, 0, 0)
+alpha_curve = SubResource("CurveTexture_876f1")
+hue_variation_min = -0.94
+hue_variation_max = 0.32
+anim_speed_min = 1.0
+anim_speed_max = 1.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k7kcc"]
+height = 52.0
+
+[sub_resource type="Animation" id="Animation_5n4uv"]
+resource_name = "Death"
+length = 0.75
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [56, 57, 58, 59, 60, 61, 62, 63]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.74),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_death_animation_end"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pknha"]
+resource_name = "Fall"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_xcw2m"]
+resource_name = "FastShoot"
+length = 0.22
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.21),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_shot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_g61m3"]
+resource_name = "GroundPoundInit"
+length = 0.25
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_ground_pound_move"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_tl5fa"]
+resource_name = "GroundPoundLand"
+length = 0.4
+step = 0.01
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_end_ground_pound"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qtau0"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_sf6sm"]
+resource_name = "Jump"
+length = 0.2
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [14, 11]
+}
+
+[sub_resource type="Animation" id="Animation_ewnde"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_t5hm8"]
+resource_name = "Revive"
+length = 0.75
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [63, 62, 61, 60, 59, 58, 57, 56]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.74),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_revive_animation_end"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_wmlbt"]
+resource_name = "Shoot"
+length = 0.4
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.36),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_shot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_d1vjd"]
+resource_name = "SlowShoot"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.72),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_shot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_e0cjr"]
+resource_name = "SlowestShoot"
+length = 1.1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.31, 0.45, 0.6, 0.75, 0.9, 1.05),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.07),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_shot"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_updl1"]
+resource_name = "Walk"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n51i7"]
+_data = {
+"Death": SubResource("Animation_5n4uv"),
+"Fall": SubResource("Animation_pknha"),
+"FastShoot": SubResource("Animation_xcw2m"),
+"GroundPoundInit": SubResource("Animation_g61m3"),
+"GroundPoundLand": SubResource("Animation_tl5fa"),
+"Idle": SubResource("Animation_qtau0"),
+"Jump": SubResource("Animation_sf6sm"),
+"RESET": SubResource("Animation_ewnde"),
+"Revive": SubResource("Animation_t5hm8"),
+"Shoot": SubResource("Animation_wmlbt"),
+"SlowShoot": SubResource("Animation_d1vjd"),
+"SlowestShoot": SubResource("Animation_e0cjr"),
+"Walk": SubResource("Animation_updl1")
+}
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "gun_component") groups=["player"]]
+z_index = 1
+collision_layer = 3
+script = ExtResource("1_ecbsx")
+gravity_component = NodePath("GravityComponent")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+animation_component = NodePath("AnimationComponent")
+jump_component = NodePath("AdvancedJumpComponent")
+gun_component = NodePath("ManaZone")
+metadata/player = true
+
+[node name="DashParticles" type="GPUParticles2D" parent="."]
+material = SubResource("ShaderMaterial_qhmky")
+position = Vector2(1, -27)
+process_material = SubResource("ParticleProcessMaterial_wj6mw")
+texture = ExtResource("2_ceqb7")
+lifetime = 0.5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -26)
+shape = SubResource("CapsuleShape2D_k7kcc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n51i7")
+}
+
+[node name="GravityComponent" parent="." instance=ExtResource("6_gr3em")]
+
+[node name="InputComponent" parent="." instance=ExtResource("7_n7bqp")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("8_v7724")]
+speed = 250.0
+ground_accel_speed = 25.0
+ground_decel_speed = 50.0
+air_accel_speed = 16.0
+dash_speed = 500.0
+
+[node name="AnimationComponent" parent="." node_paths=PackedStringArray("sprite", "animation_player") instance=ExtResource("9_4ldsl")]
+sprite = NodePath("../PlayerSprite")
+animation_player = NodePath("../AnimationPlayer")
+
+[node name="AdvancedJumpComponent" parent="." instance=ExtResource("10_vweaq")]
+
+[node name="ManaZone" parent="." instance=ExtResource("9_g3uks")]
+position = Vector2(0, -23)
+
+[node name="PlayerSprite" type="Sprite2D" parent="."]
+position = Vector2(1, -27)
+texture = ExtResource("8_o5uam")
+hframes = 8
+vframes = 8

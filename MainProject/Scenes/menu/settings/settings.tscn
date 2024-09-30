@@ -1,0 +1,317 @@
+[gd_scene load_steps=9 format=3 uid="uid://dim0efghik684"]
+
+[ext_resource type="Shader" path="res://MainProject/blur.gdshader" id="1_av4qp"]
+[ext_resource type="Script" path="res://MainProject/Scenes/menu/settings/settings.gd" id="1_cr88y"]
+[ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_t2i5x"]
+[ext_resource type="Script" path="res://MainProject/Scenes/menu/settings/general.gd" id="4_64oky"]
+[ext_resource type="Script" path="res://MainProject/Scenes/menu/settings/audio.gd" id="4_dp8wn"]
+[ext_resource type="PackedScene" uid="uid://ddlxy1m18vpdn" path="res://MainProject/Scenes/menu/settings/action_button/action_button.tscn" id="5_4ei8v"]
+[ext_resource type="Theme" uid="uid://bwssnktx87lu7" path="res://MainProject/Resources/themes/better_ui_theme.tres" id="5_koygi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3hy1y"]
+shader = ExtResource("1_av4qp")
+shader_parameter/amount = 5.0
+
+[node name="Settings" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cr88y")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_3hy1y")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="TabsContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t2i5x")
+tab_alignment = 1
+current_tab = 0
+
+[node name="General" type="TabBar" parent="MarginContainer/TabsContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t2i5x")
+script = ExtResource("4_64oky")
+metadata/_tab_index = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabsContainer/General"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -96.0
+offset_top = -38.0
+offset_right = 96.0
+offset_bottom = 38.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabsContainer/General/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Labels" type="VBoxContainer" parent="MarginContainer/TabsContainer/General/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Fullscreen" type="Label" parent="MarginContainer/TabsContainer/General/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Fullscreen"
+
+[node name="Borderless" type="Label" parent="MarginContainer/TabsContainer/General/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Borderless"
+
+[node name="Vsync" type="Label" parent="MarginContainer/TabsContainer/General/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Vsync"
+
+[node name="Controls" type="VBoxContainer" parent="MarginContainer/TabsContainer/General/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="FullscreenCheckbox" type="CheckBox" parent="MarginContainer/TabsContainer/General/HBoxContainer/Controls"]
+layout_mode = 2
+theme = ExtResource("5_koygi")
+theme_override_colors/font_hover_color = Color(0.439216, 0.619608, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.85098, 0.45098, 1)
+theme_override_fonts/font = ExtResource("3_t2i5x")
+button_pressed = true
+
+[node name="BorderlessCheckbox" type="CheckBox" parent="MarginContainer/TabsContainer/General/HBoxContainer/Controls"]
+layout_mode = 2
+theme = ExtResource("5_koygi")
+theme_override_colors/font_hover_color = Color(0.439216, 0.619608, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.85098, 0.45098, 1)
+theme_override_fonts/font = ExtResource("3_t2i5x")
+
+[node name="VsyncOptions" type="OptionButton" parent="MarginContainer/TabsContainer/General/HBoxContainer/Controls"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.439216, 0.619608, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.85098, 0.45098, 1)
+theme_override_fonts/font = ExtResource("3_t2i5x")
+selected = 1
+item_count = 4
+popup/item_0/text = "Disabled"
+popup/item_1/text = "Enabled"
+popup/item_1/id = 1
+popup/item_2/text = "Adaptive"
+popup/item_2/id = 2
+popup/item_3/text = "Mailbox"
+popup/item_3/id = 3
+
+[node name="Audio" type="TabBar" parent="MarginContainer/TabsContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t2i5x")
+script = ExtResource("4_dp8wn")
+metadata/_tab_index = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabsContainer/Audio"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -44.0
+offset_right = 50.0
+offset_bottom = 44.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabsContainer/Audio/HBoxContainer"]
+layout_mode = 2
+
+[node name="Labels" type="VBoxContainer" parent="MarginContainer/TabsContainer/Audio/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Master" type="Label" parent="MarginContainer/TabsContainer/Audio/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Master"
+
+[node name="Music" type="Label" parent="MarginContainer/TabsContainer/Audio/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Music"
+
+[node name="SFX" type="Label" parent="MarginContainer/TabsContainer/Audio/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "SFX"
+
+[node name="Controls" type="VBoxContainer" parent="MarginContainer/TabsContainer/Audio/HBoxContainer"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Master" type="HSlider" parent="MarginContainer/TabsContainer/Audio/HBoxContainer/Controls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Music" type="HSlider" parent="MarginContainer/TabsContainer/Audio/HBoxContainer/Controls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="SFX" type="HSlider" parent="MarginContainer/TabsContainer/Audio/HBoxContainer/Controls"]
+layout_mode = 2
+max_value = 1.0
+step = 0.05
+
+[node name="Controls" type="TabBar" parent="MarginContainer/TabsContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_t2i5x")
+metadata/_tab_index = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/TabsContainer/Controls"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -167.0
+offset_top = -43.5
+offset_right = 167.0
+offset_bottom = 36.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 24
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabsContainer/Controls/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Labels" type="VBoxContainer" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Attack" type="Label" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Attack"
+
+[node name="Left" type="Label" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Left"
+
+[node name="Right" type="Label" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Right"
+
+[node name="Jump" type="Label" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Jump"
+
+[node name="Interact" type="Label" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/MarginContainer/Labels"]
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Interact"
+
+[node name="Controls" type="VBoxContainer" parent="MarginContainer/TabsContainer/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Attack" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/Controls" instance=ExtResource("5_4ei8v")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Attack"
+action = "attack"
+
+[node name="Left" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/Controls" instance=ExtResource("5_4ei8v")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Left"
+action = "move_left"
+
+[node name="Right" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/Controls" instance=ExtResource("5_4ei8v")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Right"
+action = "move_right"
+
+[node name="Jump" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/Controls" instance=ExtResource("5_4ei8v")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Jump"
+action = "jump"
+
+[node name="Interact" parent="MarginContainer/TabsContainer/Controls/HBoxContainer/Controls" instance=ExtResource("5_4ei8v")]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Interact"
+action = "interact"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_constants/margin_left = 28
+theme_override_constants/margin_bottom = 24
+
+[node name="Button" type="Button" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_colors/font_hover_color = Color(0.439216, 0.619608, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.898039, 0.85098, 0.45098, 1)
+theme_override_fonts/font = ExtResource("3_t2i5x")
+text = "Back"
+
+[connection signal="toggled" from="MarginContainer/TabsContainer/General/HBoxContainer/Controls/FullscreenCheckbox" to="MarginContainer/TabsContainer/General" method="_on_fullscreen_checkbox_toggled"]
+[connection signal="toggled" from="MarginContainer/TabsContainer/General/HBoxContainer/Controls/BorderlessCheckbox" to="MarginContainer/TabsContainer/General" method="_on_borderless_checkbox_toggled"]
+[connection signal="item_selected" from="MarginContainer/TabsContainer/General/HBoxContainer/Controls/VsyncOptions" to="MarginContainer/TabsContainer/General" method="_on_vsync_options_item_selected"]
+[connection signal="value_changed" from="MarginContainer/TabsContainer/Audio/HBoxContainer/Controls/Master" to="MarginContainer/TabsContainer/Audio" method="_on_master_value_changed"]
+[connection signal="value_changed" from="MarginContainer/TabsContainer/Audio/HBoxContainer/Controls/Music" to="MarginContainer/TabsContainer/Audio" method="_on_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/TabsContainer/Audio/HBoxContainer/Controls/SFX" to="MarginContainer/TabsContainer/Audio" method="_on_sfx_value_changed"]
+[connection signal="pressed" from="MarginContainer/MarginContainer/Button" to="." method="_on_button_pressed"]
