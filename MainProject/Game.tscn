@@ -122,7 +122,7 @@ func update():
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_xdpfu")
-starting_map = "StartingPoint.tscn"
+starting_map = "forest/ForestStartingPoint.tscn"
 
 [node name="Vignette" type="Sprite2D" parent="."]
 z_index = 20

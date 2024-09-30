@@ -58,9 +58,6 @@ hue_variation_max = 0.32
 anim_speed_min = 1.0
 anim_speed_max = 1.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_k7kcc"]
-height = 52.0
-
 [sub_resource type="Animation" id="Animation_5n4uv"]
 resource_name = "Death"
 length = 0.75
@@ -386,6 +383,10 @@ _data = {
 "Walk": SubResource("Animation_updl1")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kpyvc"]
+radius = 8.0
+height = 44.0
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "gun_component") groups=["player"]]
 z_index = 1
 collision_layer = 3
@@ -404,10 +405,6 @@ position = Vector2(1, -27)
 process_material = SubResource("ParticleProcessMaterial_wj6mw")
 texture = ExtResource("2_ceqb7")
 lifetime = 0.5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -26)
-shape = SubResource("CapsuleShape2D_k7kcc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -439,3 +436,7 @@ position = Vector2(1, -27)
 texture = ExtResource("8_o5uam")
 hframes = 8
 vframes = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, -25)
+shape = SubResource("CapsuleShape2D_kpyvc")
