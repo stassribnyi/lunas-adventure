@@ -1,7 +1,12 @@
-[gd_scene load_steps=30 format=3 uid="uid://xpbhai8nlgtx"]
+[gd_scene load_steps=35 format=3 uid="uid://xpbhai8nlgtx"]
 
 [ext_resource type="Script" path="res://MainProject/Scripts/Player.gd" id="1_ecbsx"]
+[ext_resource type="AudioStream" uid="uid://b5quxq32gfox8" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/jump.wav" id="2_5rhu4"]
 [ext_resource type="Texture2D" uid="uid://bsooetdipqi3u" path="res://MainProject/Sprites/MothGirlAssets/MothWalk.png" id="2_ceqb7"]
+[ext_resource type="AudioStream" uid="uid://bykx50wt5885" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/hurt.wav" id="2_wruyw"]
+[ext_resource type="AudioStream" uid="uid://cc5mh7k812e5g" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/tap.wav" id="3_0l3bt"]
+[ext_resource type="AudioStream" uid="uid://c6px4k5lq6rf0" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/explosion.wav" id="3_j0o8i"]
+[ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="4_kmo0m"]
 [ext_resource type="PackedScene" uid="uid://degt3ojt5150a" path="res://MainProject/Scenes/components/gravity_component.tscn" id="6_gr3em"]
 [ext_resource type="PackedScene" uid="uid://dsspdm7lfpyr7" path="res://MainProject/Scenes/components/input_component.tscn" id="7_n7bqp"]
 [ext_resource type="Texture2D" uid="uid://cejd1g57kpkx0" path="res://MainProject/Sprites/luna/luna_1.png" id="8_o5uam"]
@@ -196,7 +201,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_sf6sm"]
 resource_name = "Jump"
 length = 0.2
-step = 0.01
+step = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -208,6 +213,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [14, 11]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.005),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_sfx_play_jump"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ewnde"]
@@ -365,6 +384,23 @@ tracks/0/keys = {
 "update": 1,
 "values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.12, 0.52),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_on_play_footsteps"
+}, {
+"args": [],
+"method": &"_on_play_footsteps"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n51i7"]
 _data = {
@@ -387,7 +423,7 @@ _data = {
 radius = 8.0
 height = 44.0
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "gun_component") groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "gun_component", "sfx_component") groups=["player"]]
 z_index = 1
 collision_layer = 3
 script = ExtResource("1_ecbsx")
@@ -397,7 +433,14 @@ movement_component = NodePath("MovementComponent")
 animation_component = NodePath("AnimationComponent")
 jump_component = NodePath("AdvancedJumpComponent")
 gun_component = NodePath("ManaZone")
+sfx_component = NodePath("SfxComponent")
 metadata/player = true
+
+[node name="SfxComponent" parent="." instance=ExtResource("4_kmo0m")]
+sfx_footsteps = ExtResource("3_0l3bt")
+sfx_jump = ExtResource("2_5rhu4")
+sfx_hurt = ExtResource("2_wruyw")
+sfx_death = ExtResource("3_j0o8i")
 
 [node name="DashParticles" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_qhmky")

@@ -39,4 +39,3 @@ func handle_horizontal_movement(body: CharacterBody2D, direction: float) -> void
 	var new_velocity_change =  dash_speed / speed * velocity_change_speed if is_dashing() else velocity_change_speed
 
 	body.velocity.x = move_toward(body.velocity.x, direction * new_speed, new_velocity_change)
-	#body.velocity.y = 0 if is_dashing() else body.velocity.y

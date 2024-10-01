@@ -66,7 +66,7 @@ radius = 15.0333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvejk"]
 radius = 13.0
-height = 52.0
+height = 60.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o2lpv"]
 atlas = ExtResource("13_7ms3n")
@@ -112,8 +112,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_owlks"]
-radius = 18.0
-height = 64.0
+radius = 21.0
+height = 88.0
 
 [node name="Map" type="Node2D"]
 
@@ -176,6 +176,9 @@ texture = ExtResource("5_3nre0")
 [node name="Collectible" parent="." instance=ExtResource("6_s3a5i")]
 position = Vector2(2063, 175)
 
+[node name="NPC" parent="." instance=ExtResource("8_38xno")]
+position = Vector2(2325, 451)
+
 [node name="Mushroom" parent="." instance=ExtResource("7_71swm")]
 position = Vector2(2166, 420)
 
@@ -184,9 +187,6 @@ position = Vector2(1576, 312)
 
 [node name="Mushroom_3" parent="." instance=ExtResource("7_71swm")]
 position = Vector2(934, 401)
-
-[node name="NPC" parent="." instance=ExtResource("8_38xno")]
-position = Vector2(2355, 427)
 
 [node name="MovementTutorial" type="Label" parent="."]
 anchors_preset = 8
@@ -266,14 +266,14 @@ shape = SubResource("CircleShape2D_odjjb")
 shape = SubResource("CircleShape2D_xymyi")
 
 [node name="Spider" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_enn0f")]
-position = Vector2(1264, 217)
+position = Vector2(1268, 220)
 sprite = NodePath("AnimatedSprite2D")
 horizontal_motion = false
 
 [node name="ColorRect" type="ColorRect" parent="Spider"]
 z_index = -1
 offset_left = -1.0
-offset_top = -261.0
+offset_top = -361.0
 offset_bottom = -21.0
 color = Color(0.713518, 0.713518, 0.713518, 1)
 metadata/_edit_use_anchors_ = true
@@ -284,7 +284,7 @@ shape = SubResource("CapsuleShape2D_lvejk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Spider"]
 position = Vector2(0, 0.5)
-scale = Vector2(0.636364, 0.460227)
+scale = Vector2(1.10775, 0.801136)
 sprite_frames = SubResource("SpriteFrames_2qstd")
 autoplay = "default"
 frame_progress = 0.098162
@@ -292,7 +292,7 @@ frame_progress = 0.098162
 [node name="Killzone" parent="Spider" instance=ExtResource("12_sgmws")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Spider/Killzone"]
-position = Vector2(0, 1)
+position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_owlks")
 
 [connection signal="body_entered" from="TileMap/Water/Killzone2" to="TileMap/Water/Killzone2" method="_on_body_entered"]

@@ -10,6 +10,7 @@ const DEFAULT_LIVES_AMOUNT: int = 3
 @export var animation_component: AnimationComponent
 @export var jump_component: AdvancedJumpComponent
 @export var gun_component: GunComponent
+@export var sfx_component: SFXComponent
 
 @export_subgroup("Settings")
 @export var lives: int = DEFAULT_LIVES_AMOUNT
@@ -47,8 +48,8 @@ func _physics_process(delta: float) -> void:
 		gravity_component.handle_gravity(self, delta)
 		movement_component.handle_horizontal_movement(self, input_component.input_horizontal)
 		animation_component.handle_move_animation(input_component.input_horizontal)
+
 		jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
-	
 		animation_component.handle_jump_animation(jump_component.is_going_up, gravity_component.is_falling)
 	else:
 		self.velocity.y = 0
@@ -89,10 +90,12 @@ func instant_kill() -> void:
 
 func kill(damage: int):
 	if lives > damage:
+		sfx_component.play_hurt()
 		apply_knokback(Vector2.ZERO, damage)
 		change_hp(lives - damage)
 		return
-	
+
+	sfx_component.play_death()
 	change_hp(0)
 	is_dying = true
 
@@ -107,8 +110,16 @@ func change_hp(new_hp: int) -> void:
 func _reset():
 	# Player dies, reset the position to the entrance.
 	change_hp(DEFAULT_LIVES_AMOUNT)
-	position = reset_position
+	position = get_respawn_position()
 	Game.get_singleton().load_room(MetSys.get_current_room_name())
+
+func get_respawn_position() -> Vector2:
+	if abs(reset_position - position) < Vector2(1000, 1000):
+		var game = Game.get_singleton()
+		game.set_player_position_at_start()
+		return position
+	else:
+		return reset_position
 
 func _on_death_animation_end() -> void:
 	_reset()
@@ -139,3 +150,9 @@ func evolve(v: int) -> void:
 		player_sprite.texture = ResourceLoader.load("res://MainProject/Sprites/luna/luna_{0}.png".format([v]))
 	else:
 		print("Evolve variant: ", v, ", doesn't exist")
+
+func _on_sfx_play_jump() -> void:
+	sfx_component.play_jump()
+
+func _on_play_footsteps() -> void:
+	sfx_component.play_footsteps()

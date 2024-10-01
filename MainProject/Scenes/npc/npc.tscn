@@ -1,32 +1,53 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6ndwya2qw37r"]
+[gd_scene load_steps=12 format=3 uid="uid://c6ndwya2qw37r"]
 
 [ext_resource type="Script" path="res://MainProject/Scenes/npc/npc.gd" id="1_lh64h"]
-[ext_resource type="Texture2D" uid="uid://bmel7tr02sa6i" path="res://MainProject/Sprites/fairy/fairy.png" id="2_rkpn8"]
+[ext_resource type="Texture2D" uid="uid://cj7cupdgu8sm3" path="res://MainProject/Sprites/Blue_witch/B_witch_idle.png" id="2_3ymsd"]
 [ext_resource type="PackedScene" uid="uid://rkoc8jajq3r1" path="res://MainProject/Scenes/components/interactions/interaction_area/interaction_area.tscn" id="4_3s8l5"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hd6nt"]
-atlas = ExtResource("2_rkpn8")
-region = Rect2(0, 0, 32, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_siynr"]
+atlas = ExtResource("2_3ymsd")
+region = Rect2(0, 0, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xyext"]
-atlas = ExtResource("2_rkpn8")
-region = Rect2(32, 0, 32, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5103"]
+atlas = ExtResource("2_3ymsd")
+region = Rect2(0, 48, 32, 48)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nmr3o"]
-atlas = ExtResource("2_rkpn8")
-region = Rect2(64, 0, 32, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_saxb2"]
+atlas = ExtResource("2_3ymsd")
+region = Rect2(0, 96, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_045s0"]
+atlas = ExtResource("2_3ymsd")
+region = Rect2(0, 144, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rnv64"]
+atlas = ExtResource("2_3ymsd")
+region = Rect2(0, 192, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxqm4"]
+atlas = ExtResource("2_3ymsd")
+region = Rect2(0, 240, 32, 48)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6o07s"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_hd6nt")
+"texture": SubResource("AtlasTexture_siynr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xyext")
+"texture": SubResource("AtlasTexture_f5103")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nmr3o")
+"texture": SubResource("AtlasTexture_saxb2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_045s0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rnv64")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxqm4")
 }],
 "loop": true,
 "name": &"Idle",
@@ -40,11 +61,12 @@ size = Vector2(166, 102)
 script = ExtResource("1_lh64h")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(9.53674e-07, -47)
-scale = Vector2(1.4375, 1.4375)
+position = Vector2(9.53674e-07, -40)
+scale = Vector2(2.25, 2.25)
 sprite_frames = SubResource("SpriteFrames_6o07s")
 animation = &"Idle"
 autoplay = "Idle"
+frame_progress = 0.378636
 
 [node name="InteractionArea" parent="." instance=ExtResource("4_3s8l5")]
 action_name = "Talk"

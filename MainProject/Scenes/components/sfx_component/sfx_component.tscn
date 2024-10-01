@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://5n4bphxgal5p"]
+
+[ext_resource type="Script" path="res://MainProject/Scenes/components/sfx_component/sfx_component.gd" id="1_404em"]
+
+[node name="SfxComponent" type="Node2D" node_paths=PackedStringArray("sfx_player")]
+script = ExtResource("1_404em")
+sfx_player = NodePath("SFXPlayer")
+
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="."]
+bus = &"SFX"

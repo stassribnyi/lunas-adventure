@@ -4,11 +4,13 @@ extends Node2D
 @onready var sprite = $AnimatedSprite2D
 
 const dialog_lines: Array[String] = [
-	"Hey, you seem pretty strong!",
-	"Wanna spar?",
-	"Wait...",
-	"I shouldn't waste my energy before an important battle...",
-	"Well, I'll see you at the buffet!",
+	"Hey, little one!",
+	"Are you lost?",
+	"Oh... I see",
+	"I can help if you are not afraid of a little challenge",
+	"You see, a litle bee have stollen my ring...",
+	"If you can bring it back, I'll share some magic with you...",
+	"So, you can move through this dangerous place.",
 ]
 
 

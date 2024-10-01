@@ -57,14 +57,17 @@ func _ready() -> void:
 	load_room(starting_map)
 	
 	# Find the save point and teleport the player to it, to start at the save point.
-	var start := map.get_node_or_null(^"SavePoint")
-	if start and not custom_run:
-		player.position = start.position
+	set_player_position_at_start()
 	
 	# Reset position tracking (feature specific to this project).
 	reset_map_starting_coords.call_deferred()
 	# Add module for room transitions.
 	add_module("RoomTransitions.gd")
+
+func set_player_position_at_start() -> void:
+	var start := map.get_node_or_null(^"SavePoint")
+	if start and not custom_run:
+		player.position = start.position
 
 func _process(delta: float) -> void:
 	var viewport = get_viewport()
