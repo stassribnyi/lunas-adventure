@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://bu1opnw4legxi"]
+
+[ext_resource type="PackedScene" uid="uid://clrso27kaqlnk" path="res://MainProject/Scenes/enemy/floating_enemy/floating_enemy.tscn" id="1_b4g8c"]
+[ext_resource type="Texture2D" uid="uid://d2hfsihwmoomc" path="res://MainProject/Sprites/Arigopeaurantia2.png" id="2_u1juj"]
+[ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="3_a4yux"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvejk"]
+radius = 13.0
+height = 60.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o2lpv"]
+atlas = ExtResource("2_u1juj")
+region = Rect2(0, 0, 266, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buos3"]
+atlas = ExtResource("2_u1juj")
+region = Rect2(266, 0, 266, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fseld"]
+atlas = ExtResource("2_u1juj")
+region = Rect2(532, 0, 266, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11xph"]
+atlas = ExtResource("2_u1juj")
+region = Rect2(0, 176, 266, 176)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_myswd"]
+atlas = ExtResource("2_u1juj")
+region = Rect2(266, 176, 266, 176)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2qstd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o2lpv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buos3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fseld")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11xph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_myswd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_owlks"]
+radius = 21.0
+height = 88.0
+
+[node name="Spider" type="Node2D"]
+
+[node name="FloatingEnemy" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_b4g8c")]
+sprite = NodePath("AnimatedSprite2D")
+horizontal_motion = false
+
+[node name="ColorRect" type="ColorRect" parent="FloatingEnemy"]
+z_index = -1
+offset_left = -1.0
+offset_top = -361.0
+offset_bottom = -21.0
+color = Color(0.713518, 0.713518, 0.713518, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloatingEnemy"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_lvejk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FloatingEnemy"]
+position = Vector2(0, 0.5)
+scale = Vector2(1.10775, 0.801136)
+sprite_frames = SubResource("SpriteFrames_2qstd")
+autoplay = "default"
+frame_progress = 0.098162
+
+[node name="Killzone" parent="FloatingEnemy" instance=ExtResource("3_a4yux")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloatingEnemy/Killzone"]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_owlks")
+
+[connection signal="body_entered" from="FloatingEnemy/Killzone" to="FloatingEnemy/Killzone" method="_on_body_entered"]

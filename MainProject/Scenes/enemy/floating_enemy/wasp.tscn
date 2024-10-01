@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://dky35mgdw4lwl"]
+
+[ext_resource type="PackedScene" uid="uid://clrso27kaqlnk" path="res://MainProject/Scenes/enemy/floating_enemy/floating_enemy.tscn" id="1_i60yr"]
+[ext_resource type="Texture2D" uid="uid://d2083gw66cvb6" path="res://MainProject/Sprites/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png" id="2_2r7jy"]
+[ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="3_qw7o8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odxy0"]
+atlas = ExtResource("2_2r7jy")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lvvh"]
+atlas = ExtResource("2_2r7jy")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r1j4"]
+atlas = ExtResource("2_2r7jy")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kj4ta"]
+atlas = ExtResource("2_2r7jy")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h2pwo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odxy0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lvvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r1j4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kj4ta")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odjjb"]
+radius = 12.1655
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xymyi"]
+radius = 15.0333
+
+[node name="Bee" type="Node2D"]
+
+[node name="FloatingEnemy" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_i60yr")]
+sprite = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FloatingEnemy"]
+sprite_frames = SubResource("SpriteFrames_h2pwo")
+autoplay = "default"
+frame_progress = 0.437563
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloatingEnemy"]
+shape = SubResource("CircleShape2D_odjjb")
+
+[node name="Killzone" parent="FloatingEnemy" instance=ExtResource("3_qw7o8")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloatingEnemy/Killzone"]
+shape = SubResource("CircleShape2D_xymyi")
+
+[connection signal="body_entered" from="FloatingEnemy/Killzone" to="FloatingEnemy/Killzone" method="_on_body_entered"]

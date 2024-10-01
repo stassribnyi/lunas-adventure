@@ -4,8 +4,8 @@
 [ext_resource type="AudioStream" uid="uid://b5quxq32gfox8" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/jump.wav" id="2_5rhu4"]
 [ext_resource type="Texture2D" uid="uid://bsooetdipqi3u" path="res://MainProject/Sprites/MothGirlAssets/MothWalk.png" id="2_ceqb7"]
 [ext_resource type="AudioStream" uid="uid://bykx50wt5885" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/hurt.wav" id="2_wruyw"]
-[ext_resource type="AudioStream" uid="uid://cc5mh7k812e5g" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/tap.wav" id="3_0l3bt"]
 [ext_resource type="AudioStream" uid="uid://c6px4k5lq6rf0" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/explosion.wav" id="3_j0o8i"]
+[ext_resource type="AudioStream" uid="uid://dbmk5inhi3q0p" path="res://MainProject/Resources/sounds/step.wav" id="3_n27wt"]
 [ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="4_kmo0m"]
 [ext_resource type="PackedScene" uid="uid://degt3ojt5150a" path="res://MainProject/Scenes/components/gravity_component.tscn" id="6_gr3em"]
 [ext_resource type="PackedScene" uid="uid://dsspdm7lfpyr7" path="res://MainProject/Scenes/components/input_component.tscn" id="7_n7bqp"]
@@ -423,7 +423,7 @@ sfx_component = NodePath("SfxComponent")
 metadata/player = true
 
 [node name="SfxComponent" parent="." instance=ExtResource("4_kmo0m")]
-sfx_footsteps = ExtResource("3_0l3bt")
+sfx_footsteps = ExtResource("3_n27wt")
 sfx_jump = ExtResource("2_5rhu4")
 sfx_hurt = ExtResource("2_wruyw")
 sfx_death = ExtResource("3_j0o8i")

@@ -35,7 +35,6 @@ var variant: int = 0
 var abilities: Array[StringName]
 
 func _ready() -> void:
-	on_enter()
 	jump_component.jumped.connect(_on_sfx_play_jump, CONNECT_DEFERRED)
 
 func _physics_process(delta: float) -> void:
@@ -101,8 +100,9 @@ func kill(damage: int):
 	is_dying = true
 
 	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "position", position + Vector2(0, -20), 0.7)
 	tween.tween_callback(play_death_animation)
-	tween.tween_property(self, "position", position + Vector2(0, -20), 0.75)
 
 func change_hp(new_hp: int) -> void:
 	lives = new_hp
@@ -111,16 +111,9 @@ func change_hp(new_hp: int) -> void:
 func _reset():
 	# Player dies, reset the position to the entrance.
 	change_hp(DEFAULT_LIVES_AMOUNT)
-	position = get_respawn_position()
+	print("Player:_reset() -> actual reset position: {0}, current position: {1}".format([reset_position, position]))
+	position = reset_position
 	Game.get_singleton().load_room(MetSys.get_current_room_name())
-
-func get_respawn_position() -> Vector2:
-	if abs(reset_position - position) < Vector2(1000, 1000):
-		var game = Game.get_singleton()
-		game.set_player_position_at_start()
-		return position
-	else:
-		return reset_position
 
 func _on_death_animation_end() -> void:
 	_reset()
@@ -128,9 +121,10 @@ func _on_death_animation_end() -> void:
 func play_death_animation():
 	animation_player.play("Death")
 
-func on_enter():
+func on_enter(re_position: Vector2 = position):
 	# Position for kill system. Assigned when entering new room (see Game.gd).
-	reset_position = position
+	print("Player:on_enter() -> reset position: {0}, current position: {1}, param reset position: {2}".format([reset_position, position, re_position]))
+	reset_position = re_position
 	animation_player.play("Revive")
 
 func _on_revive_animation_end() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=4 uid="uid://dkuhdc3kbpnrc"]
+[gd_scene load_steps=17 format=4 uid="uid://dkuhdc3kbpnrc"]
 
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_rnnc4"]
 [ext_resource type="PackedScene" uid="uid://dfw806ofgrp65" path="res://MainProject/ParallaxBackground.tscn" id="2_5dfq1"]
@@ -9,11 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://dy6uoohaa7meg" path="res://MainProject/Scenes/enemy/enemy.tscn" id="7_71swm"]
 [ext_resource type="PackedScene" uid="uid://c6ndwya2qw37r" path="res://MainProject/Scenes/npc/npc.tscn" id="8_38xno"]
 [ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="9_72u1t"]
-[ext_resource type="PackedScene" uid="uid://clrso27kaqlnk" path="res://MainProject/Scenes/enemy/floating_enemy/floating_enemy.tscn" id="10_enn0f"]
-[ext_resource type="Texture2D" uid="uid://d2083gw66cvb6" path="res://MainProject/Sprites/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png" id="11_ild3y"]
 [ext_resource type="Script" path="res://MainProject/Maps/forest/movement_tutorial.gd" id="11_va7sd"]
+[ext_resource type="PackedScene" uid="uid://dky35mgdw4lwl" path="res://MainProject/Scenes/enemy/floating_enemy/wasp.tscn" id="12_q6565"]
 [ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="12_sgmws"]
-[ext_resource type="Texture2D" uid="uid://d2hfsihwmoomc" path="res://MainProject/Sprites/Arigopeaurantia2.png" id="13_7ms3n"]
+[ext_resource type="PackedScene" uid="uid://bu1opnw4legxi" path="res://MainProject/Scenes/enemy/floating_enemy/spider.tscn" id="14_23ruj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y6bfj"]
 distance = -31.0
@@ -22,99 +21,6 @@ distance = -31.0
 radius = 32.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_7qmuq"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_odxy0"]
-atlas = ExtResource("11_ild3y")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8lvvh"]
-atlas = ExtResource("11_ild3y")
-region = Rect2(64, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8r1j4"]
-atlas = ExtResource("11_ild3y")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kj4ta"]
-atlas = ExtResource("11_ild3y")
-region = Rect2(192, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_h2pwo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_odxy0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8lvvh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8r1j4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kj4ta")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_odjjb"]
-radius = 12.1655
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_xymyi"]
-radius = 15.0333
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvejk"]
-radius = 13.0
-height = 60.0
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o2lpv"]
-atlas = ExtResource("13_7ms3n")
-region = Rect2(0, 0, 266, 176)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_buos3"]
-atlas = ExtResource("13_7ms3n")
-region = Rect2(266, 0, 266, 176)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fseld"]
-atlas = ExtResource("13_7ms3n")
-region = Rect2(532, 0, 266, 176)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_11xph"]
-atlas = ExtResource("13_7ms3n")
-region = Rect2(0, 176, 266, 176)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_myswd"]
-atlas = ExtResource("13_7ms3n")
-region = Rect2(266, 176, 266, 176)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2qstd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o2lpv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_buos3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fseld")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_11xph")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_myswd")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_owlks"]
-radius = 21.0
-height = 88.0
 
 [node name="Map" type="Node2D"]
 
@@ -181,13 +87,10 @@ position = Vector2(2063, 175)
 position = Vector2(2325, 451)
 
 [node name="Mushroom" parent="." instance=ExtResource("7_71swm")]
-position = Vector2(2166, 420)
+position = Vector2(1292, 333)
 
 [node name="Mushroom_2" parent="." instance=ExtResource("7_71swm")]
-position = Vector2(1576, 312)
-
-[node name="Mushroom_3" parent="." instance=ExtResource("7_71swm")]
-position = Vector2(934, 401)
+position = Vector2(1576, 317)
 
 [node name="MovementTutorial" type="Label" parent="."]
 anchors_preset = 8
@@ -195,10 +98,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 192.0
-offset_top = 44.0
-offset_right = 646.0
-offset_bottom = 99.0
+offset_left = 177.0
+offset_top = 78.0
+offset_right = 631.0
+offset_bottom = 133.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_72u1t")
@@ -249,54 +152,13 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Bee" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_enn0f")]
-position = Vector2(1814, 369)
-sprite = NodePath("AnimatedSprite2D")
+[node name="Wasp_1" parent="." instance=ExtResource("12_q6565")]
+position = Vector2(1670, 140)
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bee"]
-sprite_frames = SubResource("SpriteFrames_h2pwo")
-autoplay = "default"
-frame_progress = 0.437563
-flip_h = true
+[node name="Wasp_2" parent="." instance=ExtResource("12_q6565")]
+position = Vector2(1796, 316)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee"]
-shape = SubResource("CircleShape2D_odjjb")
-
-[node name="Killzone" parent="Bee" instance=ExtResource("12_sgmws")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bee/Killzone"]
-shape = SubResource("CircleShape2D_xymyi")
-
-[node name="Spider" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("10_enn0f")]
-position = Vector2(1268, 220)
-sprite = NodePath("AnimatedSprite2D")
-horizontal_motion = false
-
-[node name="ColorRect" type="ColorRect" parent="Spider"]
-z_index = -1
-offset_left = -1.0
-offset_top = -361.0
-offset_bottom = -21.0
-color = Color(0.713518, 0.713518, 0.713518, 1)
-metadata/_edit_use_anchors_ = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider"]
-position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_lvejk")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Spider"]
-position = Vector2(0, 0.5)
-scale = Vector2(1.10775, 0.801136)
-sprite_frames = SubResource("SpriteFrames_2qstd")
-autoplay = "default"
-frame_progress = 0.098162
-
-[node name="Killzone" parent="Spider" instance=ExtResource("12_sgmws")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Spider/Killzone"]
-position = Vector2(0, -7)
-shape = SubResource("CapsuleShape2D_owlks")
+[node name="Spider" parent="." instance=ExtResource("14_23ruj")]
+position = Vector2(645, 238)
 
 [connection signal="body_entered" from="TileMap/Water/Killzone2" to="TileMap/Water/Killzone2" method="_on_body_entered"]
-[connection signal="body_entered" from="Bee/Killzone" to="Bee/Killzone" method="_on_body_entered"]
-[connection signal="body_entered" from="Spider/Killzone" to="Spider/Killzone" method="_on_body_entered"]

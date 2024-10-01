@@ -57,17 +57,19 @@ func _ready() -> void:
 	load_room(starting_map)
 	
 	# Find the save point and teleport the player to it, to start at the save point.
-	set_player_position_at_start()
-	
+	var reset_position: Vector2 = get_player_position_at_start()
+	print('Game:_ready() -> position on room load: {0}, player position: {1}'.format([reset_position, player.position]))
+	player.position = reset_position if reset_position != null else player.position
+
 	# Reset position tracking (feature specific to this project).
 	reset_map_starting_coords.call_deferred()
 	# Add module for room transitions.
 	add_module("RoomTransitions.gd")
 
-func set_player_position_at_start() -> void:
+func get_player_position_at_start():
 	var start := map.get_node_or_null(^"SavePoint")
 	if start and not custom_run:
-		player.position = start.position
+		return start.position
 
 func _process(delta: float) -> void:
 	var viewport = get_viewport()
@@ -93,4 +95,6 @@ func reset_map_starting_coords():
 
 func init_room():
 	MetSys.get_current_room_instance().adjust_camera_limits($Player/Camera2D)
-	player.on_enter()
+	var reset_position = get_player_position_at_start()
+	print('Game:init_room() -> position on room load: {0}, player position: {1}'.format([reset_position, player.position]))
+	player.on_enter(reset_position)

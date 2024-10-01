@@ -18,7 +18,6 @@ func _ready() -> void:
 	
 	if OS.get_name() == "Web":
 		$VBoxContainer/ExitButton.hide()
-		$VBoxContainer2/ToggleFullscreen.show()
 
 	await fade_in()
 

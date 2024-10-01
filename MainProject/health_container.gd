@@ -16,7 +16,7 @@ func _on_player_hp_changed(hp: int) -> void:
 			flash_heart(hearts[index])
 			await get_tree().create_timer(0.15).timeout
 		hearts[index].enabled = true
-	
+
 	for heart in hearts:
 		if not heart.enabled:
 			flash_heart(heart)
