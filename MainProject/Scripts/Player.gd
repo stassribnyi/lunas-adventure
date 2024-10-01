@@ -32,7 +32,10 @@ var is_dying: bool = false
 var is_ready: bool = false
 var variant: int = 0
 
+var has_something: bool = true
+
 var abilities: Array[StringName]
+var inventory: Array[StringName]
 
 func _ready() -> void:
 	jump_component.jumped.connect(_on_sfx_play_jump, CONNECT_DEFERRED)
@@ -87,6 +90,9 @@ func _shot() -> void:
 
 func instant_kill() -> void:
 	kill(lives)
+	
+func heal(hp: int) -> void:
+	change_hp(hp if hp < DEFAULT_LIVES_AMOUNT else DEFAULT_LIVES_AMOUNT)
 
 func kill(damage: int):
 	if lives > damage:

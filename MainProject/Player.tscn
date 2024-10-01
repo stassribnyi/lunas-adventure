@@ -411,6 +411,7 @@ height = 44.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("gravity_component", "input_component", "movement_component", "animation_component", "jump_component", "gun_component", "sfx_component") groups=["player"]]
 z_index = 1
+position = Vector2(0, -2)
 collision_layer = 3
 script = ExtResource("1_ecbsx")
 gravity_component = NodePath("GravityComponent")
@@ -430,7 +431,7 @@ sfx_death = ExtResource("3_j0o8i")
 
 [node name="DashParticles" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_qhmky")
-position = Vector2(1, -27)
+position = Vector2(1, -31)
 process_material = SubResource("ParticleProcessMaterial_wj6mw")
 texture = ExtResource("2_ceqb7")
 lifetime = 0.5
@@ -461,7 +462,7 @@ animation_player = NodePath("../AnimationPlayer")
 position = Vector2(0, -23)
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
-position = Vector2(1, -27)
+position = Vector2(1, -30)
 texture = ExtResource("8_o5uam")
 hframes = 8
 vframes = 8

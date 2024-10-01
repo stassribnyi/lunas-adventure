@@ -42,6 +42,8 @@ func _ready() -> void:
 		generated_rooms.assign(save_manager.get_value("generated_rooms"))
 		events.assign(save_manager.get_value("events"))
 		player.abilities.assign(save_manager.get_value("abilities"))
+		var inventory = save_manager.get_value("inventory")
+		player.inventory.assign(inventory if inventory != null else [])
 		
 		if not custom_run:
 			var loaded_starting_map: String = save_manager.get_value("current_room")
@@ -88,6 +90,7 @@ func save_game():
 	save_manager.set_value("events", events)
 	save_manager.set_value("current_room", MetSys.get_current_room_name())
 	save_manager.set_value("abilities", player.abilities)
+	save_manager.set_value("inventory", player.inventory)
 	save_manager.save_as_text(SAVE_PATH)
 
 func reset_map_starting_coords():

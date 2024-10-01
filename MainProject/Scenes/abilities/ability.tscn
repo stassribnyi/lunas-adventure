@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc5mqf1t2juhw"]
+
+[sub_resource type="GDScript" id="GDScript_5r1j4"]
+resource_name = "Ability"
+script/source = "# Ability collectible.
+extends Area2D
+
+@export_subgroup(\"Settings\")
+@export var ability_name: String
+
+func _ready() -> void:
+	# Register it as storable with marker.
+	MetSys.register_storable_object_with_marker(self)
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group(&\"player\"):
+		# Add ability, store object and remove the node.
+		body.abilities.append(ability_name)
+		MetSys.store_object(self)
+		queue_free()
+"
+
+[node name="Ability" type="Area2D"]
+position = Vector2(1296, 288)
+script = SubResource("GDScript_5r1j4")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

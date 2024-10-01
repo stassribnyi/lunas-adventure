@@ -2,25 +2,9 @@
 
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_kb04r"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_6arb4"]
+[ext_resource type="PackedScene" uid="uid://bc5mqf1t2juhw" path="res://MainProject/Scenes/abilities/ability.tscn" id="3_87kyu"]
 
-[sub_resource type="GDScript" id="GDScript_5r1j4"]
-resource_name = "Ability"
-script/source = "# Ability collectible.
-extends Area2D
-
-func _ready() -> void:
-	# Register it as storable with marker.
-	MetSys.register_storable_object_with_marker(self)
-
-func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group(&\"player\"):
-		# Add ability, store object and remove the node.
-		body.abilities.append(&\"double_jump\")
-		MetSys.store_object(self)
-		queue_free()
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jkubu"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j0ut4"]
 size = Vector2(112, 32)
 
 [sub_resource type="GDScript" id="GDScript_r6mby"]
@@ -58,12 +42,11 @@ layer_2/tile_data = PackedInt32Array(589902, 655362, 6, 655438, 655362, 7, 72097
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_6arb4")]
 
-[node name="Ability" type="Area2D" parent="."]
-position = Vector2(1296, 288)
-script = SubResource("GDScript_5r1j4")
+[node name="Ability" parent="." instance=ExtResource("3_87kyu")]
+ability_name = "double_jump"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ability"]
-shape = SubResource("RectangleShape2D_jkubu")
+shape = SubResource("RectangleShape2D_j0ut4")
 
 [node name="Label" type="Label" parent="Ability"]
 anchors_preset = 8
@@ -102,5 +85,4 @@ text = "END"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="body_entered" from="Ability" to="Ability" method="_on_body_entered"]
 [connection signal="body_entered" from="END" to="END" method="_on_body_entered"]
