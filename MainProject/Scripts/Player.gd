@@ -36,6 +36,7 @@ var abilities: Array[StringName]
 
 func _ready() -> void:
 	on_enter()
+	jump_component.jumped.connect(_on_sfx_play_jump, CONNECT_DEFERRED)
 
 func _physics_process(delta: float) -> void:
 	if event and not is_ready:

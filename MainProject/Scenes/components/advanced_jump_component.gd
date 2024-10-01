@@ -15,6 +15,8 @@ var last_frame_on_floor: bool = false
 
 var jump_count: int = 0
 
+signal jumped()
+
 func has_just_landed(body: CharacterBody2D) -> bool:
 	return body.is_on_floor() and not last_frame_on_floor and is_jumping
 
@@ -77,3 +79,4 @@ func jump(body: CharacterBody2D) -> void:
 	is_jumping = true
 	coyote_timer.stop()
 	jump_count += 1
+	jumped.emit()

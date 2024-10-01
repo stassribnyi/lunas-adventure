@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://dkuhdc3kbpnrc"]
+[gd_scene load_steps=33 format=4 uid="uid://dkuhdc3kbpnrc"]
 
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_rnnc4"]
 [ext_resource type="PackedScene" uid="uid://dfw806ofgrp65" path="res://MainProject/ParallaxBackground.tscn" id="2_5dfq1"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="9_72u1t"]
 [ext_resource type="PackedScene" uid="uid://clrso27kaqlnk" path="res://MainProject/Scenes/enemy/floating_enemy/floating_enemy.tscn" id="10_enn0f"]
 [ext_resource type="Texture2D" uid="uid://d2083gw66cvb6" path="res://MainProject/Sprites/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png" id="11_ild3y"]
+[ext_resource type="Script" path="res://MainProject/Maps/forest/movement_tutorial.gd" id="11_va7sd"]
 [ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="12_sgmws"]
 [ext_resource type="Texture2D" uid="uid://d2hfsihwmoomc" path="res://MainProject/Sprites/Arigopeaurantia2.png" id="13_7ms3n"]
 
@@ -205,6 +206,7 @@ text = "Use A or D to move Left and Right
 Use Space to Jump"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("11_va7sd")
 
 [node name="InteractionsTutorial" type="Label" parent="."]
 visible = false
