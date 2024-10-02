@@ -83,9 +83,9 @@ $ln;Defaltia;Shadia;Renegia;Forest;Intro
 [7,-8,3]
 0,1,0,1|||
 [9,-4,3]
-0,-1,0,1|||
+0,-1,0,1|||forest/act_1/act_1.tscn
 [9,-3,3]
-1,1,0,-1|||
+1,1,0,-1|||forest/act_1/act_1.tscn
 [6,-9,3]
 -1,0,0,0|||
 [7,-9,3]

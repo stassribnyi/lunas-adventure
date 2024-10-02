@@ -64,24 +64,6 @@ tracks/1/keys = {
 "values": [0, 1, 100]
 }
 
-[sub_resource type="Animation" id="Animation_dqho6"]
-resource_name = "move_to_the_portal"
-length = 5.0
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [Vector2(761, 313)],
-"method": &"move_player_to"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_vs1hl"]
 resource_name = "move_to_the_bridge"
 length = 5.0
@@ -96,6 +78,24 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [Vector2(473, 400)],
+"method": &"move_player_to"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dqho6"]
+resource_name = "move_to_the_portal"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [Vector2(761, 313)],
 "method": &"move_player_to"
 }]
 }
