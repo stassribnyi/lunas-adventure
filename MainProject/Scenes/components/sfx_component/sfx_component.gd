@@ -6,6 +6,7 @@ class_name SFXComponent
 @export var sfx_jump: AudioStream
 @export var sfx_hurt: AudioStream
 @export var sfx_death: AudioStream
+@export var sfx_teleport: AudioStream
 
 @export_subgroup("Nodes")
 @export var sfx_player: AudioStreamPlayer2D
@@ -21,6 +22,9 @@ func play_hurt() -> void:
 
 func play_death() -> void:
 	play(sfx_death)
+
+func play_teleport() -> void:
+	play(sfx_teleport)
 
 func play(sfx: AudioStream) -> void:
 	load_sfx(sfx)

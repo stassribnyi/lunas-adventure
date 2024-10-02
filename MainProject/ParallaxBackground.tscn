@@ -38,6 +38,6 @@ motion_scale = Vector2(0.9, 0.9)
 motion_mirroring = Vector2(1036, 0)
 
 [node name="CloseTrees" type="Sprite2D" parent="CloseTreesLayer"]
-position = Vector2(518, 240)
+position = Vector2(518, 238)
 scale = Vector2(1.75, 1.75)
 texture = ExtResource("4_0hd53")

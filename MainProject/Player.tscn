@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://xpbhai8nlgtx"]
+[gd_scene load_steps=36 format=3 uid="uid://xpbhai8nlgtx"]
 
 [ext_resource type="Script" path="res://MainProject/Scripts/Player.gd" id="1_ecbsx"]
 [ext_resource type="AudioStream" uid="uid://b5quxq32gfox8" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/jump.wav" id="2_5rhu4"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="4_kmo0m"]
 [ext_resource type="PackedScene" uid="uid://degt3ojt5150a" path="res://MainProject/Scenes/components/gravity_component.tscn" id="6_gr3em"]
 [ext_resource type="PackedScene" uid="uid://dsspdm7lfpyr7" path="res://MainProject/Scenes/components/input_component.tscn" id="7_n7bqp"]
+[ext_resource type="AudioStream" uid="uid://c8r24vturl511" path="res://MainProject/Resources/sounds/portal-phase-jump.wav" id="7_pr4er"]
 [ext_resource type="Texture2D" uid="uid://cejd1g57kpkx0" path="res://MainProject/Sprites/luna/luna_1.png" id="8_o5uam"]
 [ext_resource type="PackedScene" uid="uid://c1nikui6skmag" path="res://MainProject/Scenes/components/movement_component.tscn" id="8_v7724"]
 [ext_resource type="PackedScene" uid="uid://dp5cktlbc64rs" path="res://MainProject/Scenes/components/animation_component.tscn" id="9_4ldsl"]
@@ -428,10 +429,12 @@ sfx_footsteps = ExtResource("3_n27wt")
 sfx_jump = ExtResource("2_5rhu4")
 sfx_hurt = ExtResource("2_wruyw")
 sfx_death = ExtResource("3_j0o8i")
+sfx_teleport = ExtResource("7_pr4er")
 
 [node name="DashParticles" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_qhmky")
 position = Vector2(1, -31)
+emitting = false
 process_material = SubResource("ParticleProcessMaterial_wj6mw")
 texture = ExtResource("2_ceqb7")
 lifetime = 0.5

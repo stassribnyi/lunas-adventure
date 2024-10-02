@@ -1,5 +1,6 @@
 # This script is based on the default CharacterBody2D template. Not much interesting happening here.
 extends CharacterBody2D
+class_name MainCharacter
 
 const DEFAULT_LIVES_AMOUNT: int = 3
 
@@ -41,7 +42,7 @@ func _ready() -> void:
 	jump_component.jumped.connect(_on_sfx_play_jump, CONNECT_DEFERRED)
 
 func _physics_process(delta: float) -> void:
-	if event and not is_ready:
+	if event or not is_ready:
 		return
 	
 	if "double_jump" in abilities:

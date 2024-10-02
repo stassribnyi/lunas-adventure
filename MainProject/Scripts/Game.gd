@@ -59,7 +59,7 @@ func _ready() -> void:
 	load_room(starting_map)
 	
 	# Find the save point and teleport the player to it, to start at the save point.
-	var reset_position: Vector2 = get_player_position_at_start()
+	var reset_position = get_player_position_at_start()
 	print('Game:_ready() -> position on room load: {0}, player position: {1}'.format([reset_position, player.position]))
 	player.position = reset_position if reset_position != null else player.position
 
@@ -100,4 +100,7 @@ func init_room():
 	MetSys.get_current_room_instance().adjust_camera_limits($Player/Camera2D)
 	var reset_position = get_player_position_at_start()
 	print('Game:init_room() -> position on room load: {0}, player position: {1}'.format([reset_position, player.position]))
-	player.on_enter(reset_position)
+	if reset_position != null:
+		player.on_enter(reset_position)
+	else:
+		player.on_enter()
