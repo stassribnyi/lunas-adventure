@@ -67,7 +67,7 @@ shape = SubResource("RectangleShape2D_pg7r2")
 position = Vector2(517, 415)
 
 [node name="Leave_1" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_ovfqx")]
-position = Vector2(600, 122)
+position = Vector2(572, 154)
 type = 1
 collectible_name = "ring_1"
 sprite = NodePath("Sprite2D")
@@ -97,9 +97,12 @@ scale = Vector2(0.4375, 0.4375)
 texture = ExtResource("7_nlujr")
 
 [node name="Spider" parent="." instance=ExtResource("8_5oqnm")]
-position = Vector2(868, 277)
+position = Vector2(867, 246)
 
 [node name="Spider2" parent="." instance=ExtResource("8_5oqnm")]
-position = Vector2(138, 174)
+position = Vector2(201, 272)
+
+[node name="Spider3" parent="." instance=ExtResource("8_5oqnm")]
+position = Vector2(510, 215)
 
 [connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]
