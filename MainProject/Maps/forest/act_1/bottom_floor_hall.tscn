@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://bmo22dgawdgvo"]
+[gd_scene load_steps=13 format=4 uid="uid://bmo22dgawdgvo"]
 
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_bte4e"]
 [ext_resource type="PackedScene" uid="uid://uhfm45c1kvot" path="res://MainProject/Scenes/save_point/save_point.tscn" id="2_0d2cj"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bmwooa85vkyh6" path="res://MainProject/Objects/BaseCollectible.tscn" id="6_ovfqx"]
 [ext_resource type="Texture2D" uid="uid://cqjaapyeuqrim" path="res://MainProject/Sprites/leave-collectible.png" id="7_nlujr"]
 [ext_resource type="PackedScene" uid="uid://bu1opnw4legxi" path="res://MainProject/Scenes/enemy/floating_enemy/spider.tscn" id="8_5oqnm"]
+[ext_resource type="PackedScene" uid="uid://c6ndwya2qw37r" path="res://MainProject/Scenes/npc/npc.tscn" id="10_u0lx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pg7r2"]
 size = Vector2(788, 50)
@@ -66,8 +67,11 @@ shape = SubResource("RectangleShape2D_pg7r2")
 [node name="Mushroom" parent="." instance=ExtResource("5_mnggx")]
 position = Vector2(517, 415)
 
+[node name="Mushroom_2" parent="." instance=ExtResource("5_mnggx")]
+position = Vector2(1016, 413)
+
 [node name="Leave_1" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_ovfqx")]
-position = Vector2(572, 154)
+position = Vector2(562, 166)
 type = 1
 collectible_name = "ring_1"
 sprite = NodePath("Sprite2D")
@@ -82,7 +86,7 @@ scale = Vector2(0.4375, 0.4375)
 texture = ExtResource("7_nlujr")
 
 [node name="Leave_2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_ovfqx")]
-position = Vector2(59, 144)
+position = Vector2(59, 167)
 type = 1
 collectible_name = "ring_1"
 sprite = NodePath("Sprite2D")
@@ -97,12 +101,21 @@ scale = Vector2(0.4375, 0.4375)
 texture = ExtResource("7_nlujr")
 
 [node name="Spider" parent="." instance=ExtResource("8_5oqnm")]
-position = Vector2(867, 246)
+position = Vector2(865, 275)
+patrol_distance = 300.0
+time_to_change = 1.0
 
 [node name="Spider2" parent="." instance=ExtResource("8_5oqnm")]
-position = Vector2(201, 272)
+position = Vector2(201, 223)
+patrol_distance = 250.0
 
 [node name="Spider3" parent="." instance=ExtResource("8_5oqnm")]
-position = Vector2(510, 215)
+position = Vector2(511, 245)
+patrol_distance = 400.0
+time_to_change = 1.5
+
+[node name="Witch_2" parent="." instance=ExtResource("10_u0lx5")]
+position = Vector2(1477, 416)
+scale = Vector2(-1, 1)
 
 [connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]

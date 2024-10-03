@@ -1,5 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://dky35mgdw4lwl"]
+[gd_scene load_steps=12 format=3 uid="uid://dky35mgdw4lwl"]
 
+[ext_resource type="Script" path="res://MainProject/Scenes/enemy/floating_enemy/wasp.gd" id="1_bjrl3"]
 [ext_resource type="PackedScene" uid="uid://clrso27kaqlnk" path="res://MainProject/Scenes/enemy/floating_enemy/floating_enemy.tscn" id="1_i60yr"]
 [ext_resource type="Texture2D" uid="uid://d2083gw66cvb6" path="res://MainProject/Sprites/Legacy-Fantasy - High Forest 2.3/Mob/Small Bee/Fly/Fly-Sheet.png" id="2_2r7jy"]
 [ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="3_qw7o8"]
@@ -47,6 +48,7 @@ radius = 12.1655
 radius = 15.0333
 
 [node name="Bee" type="Node2D"]
+script = ExtResource("1_bjrl3")
 
 [node name="FloatingEnemy" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_i60yr")]
 sprite = NodePath("AnimatedSprite2D")

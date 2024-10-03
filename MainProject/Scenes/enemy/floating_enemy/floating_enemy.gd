@@ -14,7 +14,8 @@ var start_position
 @export var patrol_distance: float = 200
 
 # Timer to control direction change
-var time_to_change = 1.0 # Time in seconds to change direction
+@export var time_to_change: float = 2.0 # Time in seconds to change direction
+
 var timer = 0.0
 
 func _ready():

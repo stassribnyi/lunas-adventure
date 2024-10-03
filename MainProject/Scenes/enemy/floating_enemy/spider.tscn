@@ -1,5 +1,6 @@
-[gd_scene load_steps=12 format=3 uid="uid://bu1opnw4legxi"]
+[gd_scene load_steps=13 format=3 uid="uid://bu1opnw4legxi"]
 
+[ext_resource type="Script" path="res://MainProject/Scenes/enemy/floating_enemy/spider.gd" id="1_1ik8o"]
 [ext_resource type="PackedScene" uid="uid://clrso27kaqlnk" path="res://MainProject/Scenes/enemy/floating_enemy/floating_enemy.tscn" id="1_b4g8c"]
 [ext_resource type="Texture2D" uid="uid://d2hfsihwmoomc" path="res://MainProject/Sprites/Arigopeaurantia2.png" id="2_u1juj"]
 [ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="3_a4yux"]
@@ -56,10 +57,12 @@ radius = 21.0
 height = 88.0
 
 [node name="Spider" type="Node2D"]
+script = ExtResource("1_1ik8o")
 
 [node name="FloatingEnemy" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("1_b4g8c")]
 sprite = NodePath("AnimatedSprite2D")
 horizontal_motion = false
+patrol_distance = 400.0
 
 [node name="ColorRect" type="ColorRect" parent="FloatingEnemy"]
 z_index = -1
