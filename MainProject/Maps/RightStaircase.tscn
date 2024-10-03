@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=4 uid="uid://doae46einc26s"]
 
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_1mtk5"]
-[ext_resource type="PackedScene" uid="uid://dfw806ofgrp65" path="res://MainProject/ParallaxBackground.tscn" id="2_068r4"]
+[ext_resource type="PackedScene" uid="uid://dfw806ofgrp65" path="res://MainProject/ParallaxMushroomCaveBackground.tscn.tscn" id="2_068r4"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_y78dk"]
 [ext_resource type="PackedScene" uid="uid://d0hyimq1tkfa2" path="res://MainProject/Objects/MapItem.tscn" id="3_j1w80"]
 

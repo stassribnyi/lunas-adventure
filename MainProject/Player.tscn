@@ -135,7 +135,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.21),
+"times": PackedFloat32Array(0.18),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -462,7 +462,8 @@ animation_player = NodePath("../AnimationPlayer")
 [node name="AdvancedJumpComponent" parent="." instance=ExtResource("10_vweaq")]
 
 [node name="ManaZone" parent="." instance=ExtResource("9_g3uks")]
-position = Vector2(0, -23)
+visible = false
+position = Vector2(0, -26)
 
 [node name="PlayerSprite" type="Sprite2D" parent="."]
 position = Vector2(1, -30)

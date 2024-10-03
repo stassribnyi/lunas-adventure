@@ -28,7 +28,6 @@ var reset_position: Vector2
 # Indicates that the player has an event happening and can't be controlled.
 var event: bool
 
-var is_shooting: bool = false
 var is_dying: bool = false
 var is_ready: bool = false
 var variant: int = 0
@@ -48,9 +47,10 @@ func _physics_process(delta: float) -> void:
 	if "double_jump" in abilities:
 		jump_component.max_jump_count = 2
 
-	if not is_shooting and not is_dying:
+	if not is_dying:
 		gravity_component.handle_gravity(self, delta)
 		movement_component.handle_horizontal_movement(self, input_component.input_horizontal)
+
 		animation_component.handle_move_animation(input_component.input_horizontal)
 
 		jump_component.handle_jump(self, input_component.get_jump_input(), input_component.get_jump_input_released())
@@ -59,8 +59,7 @@ func _physics_process(delta: float) -> void:
 		self.velocity.y = 0
 		self.velocity.x = 0
 
-	if Input.is_action_just_pressed("attack") and not (gravity_component.is_falling or jump_component.is_going_up):
-		is_shooting = true
+	if Input.is_action_just_pressed("attack") and not is_dying:
 		animation_component.handle_attack_animation()
 
 	# TODO: replace with power up system
@@ -68,6 +67,8 @@ func _physics_process(delta: float) -> void:
 		if variant + 1 in range(1, 4):
 			variant += 1
 			evolve(variant)
+			if variant == 2:
+				abilities.append(&"double_jump")
 		else:
 			variant = 1
 
@@ -87,7 +88,7 @@ func _physics_process(delta: float) -> void:
 
 func _shot() -> void:
 	gun_component.shoot()
-	is_shooting = false
+	animation_component.is_shooting = false
 
 func instant_kill() -> void:
 	kill(lives)

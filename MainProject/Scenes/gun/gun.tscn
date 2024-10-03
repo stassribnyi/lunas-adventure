@@ -10,7 +10,6 @@ shooting_speed_timer = NodePath("ShootingSpeedTimer")
 shooting_speed = 4.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(25, 0)
 rotation = 1.5708
 texture = ExtResource("2_mnmnl")

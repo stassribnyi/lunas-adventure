@@ -19,5 +19,8 @@ collectible_list = Array[Dictionary]([{
 }, {
 "element": "MapItem",
 "icon": "res://MainProject/Sprites/treasure map.png"
+}, {
+"element": "Leave",
+"icon": "res://MainProject/Sprites/leave-collectible.png"
 }])
 assign_uid_to_rooms = false

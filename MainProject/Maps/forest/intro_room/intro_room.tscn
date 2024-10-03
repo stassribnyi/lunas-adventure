@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=4 uid="uid://bfc773h2vqrav"]
 
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_dx7k1"]
-[ext_resource type="PackedScene" uid="uid://dfw806ofgrp65" path="res://MainProject/ParallaxBackground.tscn" id="1_wg7kl"]
+[ext_resource type="PackedScene" uid="uid://b3pt520dfotjv" path="res://MainProject/ParallaxBackground.tscn" id="1_wg7kl"]
 [ext_resource type="Script" path="res://MainProject/Maps/forest/intro_room/intro_room.gd" id="1_xfmn5"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_0krtf"]
 [ext_resource type="PackedScene" uid="uid://cwrf84g5mlucd" path="res://MainProject/Objects/Portal.tscn" id="3_1kowj"]
@@ -155,9 +155,9 @@ _data = {
 script = ExtResource("1_xfmn5")
 animation_player = NodePath("AnimationPlayer")
 
-[node name="ParallaxBackground" parent="." instance=ExtResource("1_wg7kl")]
-
 [node name="TileMap" type="Node2D" parent="."]
+
+[node name="ParallaxMushroomCaveBackground" parent="TileMap" instance=ExtResource("1_wg7kl")]
 
 [node name="ForegroundFar" type="TileMapLayer" parent="TileMap"]
 use_parent_material = true

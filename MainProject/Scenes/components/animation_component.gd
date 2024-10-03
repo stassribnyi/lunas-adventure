@@ -5,6 +5,8 @@ extends Node
 @export var sprite: Sprite2D
 @export var animation_player: AnimationPlayer
 
+var is_shooting = false
+
 func handle_horizontal_flip(move_direction: float) -> void:
 	if move_direction == 0:
 		return
@@ -13,17 +15,24 @@ func handle_horizontal_flip(move_direction: float) -> void:
 
 func handle_move_animation(move_direction: float) -> void:
 	handle_horizontal_flip(move_direction)
-	
+
+	if is_shooting:
+		return
+
 	if move_direction != 0:
 		animation_player.play("Walk")
 	else:
 		animation_player.play("Idle")
 
 func handle_jump_animation(is_jumping: bool, is_falling: bool) -> void:
+	if is_shooting:
+		return
+
 	if is_jumping:
 		animation_player.play("Jump")
 	elif is_falling:
 		animation_player.play("Fall")
 
 func handle_attack_animation() -> void:
+	is_shooting = true
 	animation_player.play("FastShoot")

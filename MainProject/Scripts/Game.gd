@@ -15,7 +15,7 @@ const SAVE_PATH = "user://example_save_data.sav"
 var collectibles: int:
 	set(count):
 		collectibles = count
-		%CollectibleCount.text = "%d/6" % count
+		%CollectibleCount.text = "%d/10" % count
 
 # The coordinates of generated rooms. MetSys does not keep this list, so it needs to be done manually.
 var generated_rooms: Array[Vector3i]
