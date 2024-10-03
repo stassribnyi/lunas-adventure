@@ -1,15 +1,15 @@
 [gd_scene load_steps=36 format=3 uid="uid://xpbhai8nlgtx"]
 
 [ext_resource type="Script" path="res://MainProject/Scripts/Player.gd" id="1_ecbsx"]
-[ext_resource type="AudioStream" uid="uid://b5quxq32gfox8" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/jump.wav" id="2_5rhu4"]
-[ext_resource type="Texture2D" uid="uid://bsooetdipqi3u" path="res://MainProject/Sprites/MothGirlAssets/MothWalk.png" id="2_ceqb7"]
 [ext_resource type="AudioStream" uid="uid://bykx50wt5885" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/hurt.wav" id="2_wruyw"]
 [ext_resource type="AudioStream" uid="uid://c6px4k5lq6rf0" path="res://MainProject/Sprites/brackeys_platformer_assets/sounds/explosion.wav" id="3_j0o8i"]
 [ext_resource type="AudioStream" uid="uid://dbmk5inhi3q0p" path="res://MainProject/Resources/sounds/step.wav" id="3_n27wt"]
+[ext_resource type="AudioStream" uid="uid://6kl664i7e2cx" path="res://MainProject/Resources/sounds/jump.wav" id="4_edrha"]
 [ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="4_kmo0m"]
 [ext_resource type="PackedScene" uid="uid://degt3ojt5150a" path="res://MainProject/Scenes/components/gravity_component.tscn" id="6_gr3em"]
 [ext_resource type="PackedScene" uid="uid://dsspdm7lfpyr7" path="res://MainProject/Scenes/components/input_component.tscn" id="7_n7bqp"]
 [ext_resource type="AudioStream" uid="uid://c8r24vturl511" path="res://MainProject/Resources/sounds/portal-phase-jump.wav" id="7_pr4er"]
+[ext_resource type="Texture2D" uid="uid://r85whfa16u64" path="res://MainProject/Sprites/luna/luna_walk_1.png" id="8_1w7au"]
 [ext_resource type="Texture2D" uid="uid://cejd1g57kpkx0" path="res://MainProject/Sprites/luna/luna_1.png" id="8_o5uam"]
 [ext_resource type="PackedScene" uid="uid://c1nikui6skmag" path="res://MainProject/Scenes/components/movement_component.tscn" id="8_v7724"]
 [ext_resource type="PackedScene" uid="uid://dp5cktlbc64rs" path="res://MainProject/Scenes/components/animation_component.tscn" id="9_4ldsl"]
@@ -426,7 +426,7 @@ metadata/player = true
 
 [node name="SfxComponent" parent="." instance=ExtResource("4_kmo0m")]
 sfx_footsteps = ExtResource("3_n27wt")
-sfx_jump = ExtResource("2_5rhu4")
+sfx_jump = ExtResource("4_edrha")
 sfx_hurt = ExtResource("2_wruyw")
 sfx_death = ExtResource("3_j0o8i")
 sfx_teleport = ExtResource("7_pr4er")
@@ -436,7 +436,7 @@ material = SubResource("ShaderMaterial_qhmky")
 position = Vector2(1, -31)
 emitting = false
 process_material = SubResource("ParticleProcessMaterial_wj6mw")
-texture = ExtResource("2_ceqb7")
+texture = ExtResource("8_1w7au")
 lifetime = 0.5
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c3xqaietfgs7l"]
+[gd_scene load_steps=16 format=3 uid="uid://c3xqaietfgs7l"]
 
 [ext_resource type="Script" path="res://MainProject/Scripts/Game.gd" id="1_xdpfu"]
 [ext_resource type="PackedScene" uid="uid://xpbhai8nlgtx" path="res://MainProject/Player.tscn" id="2_bam1a"]
@@ -10,6 +10,7 @@
 [ext_resource type="Shader" path="res://MainProject/vignette.gdshader" id="7_wlpu2"]
 [ext_resource type="Script" path="res://MainProject/health_container.gd" id="8_r6u6h"]
 [ext_resource type="PackedScene" uid="uid://db41oe8hgraad" path="res://MainProject/Scenes/heart.tscn" id="9_7vwer"]
+[ext_resource type="AudioStream" uid="uid://blwwcvn70y3kp" path="res://MainProject/Resources/sounds/atmosphere-of-a-wild-tropical-planet-136362.mp3" id="11_gkxkn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pr01m"]
 shader = ExtResource("7_wlpu2")
@@ -134,6 +135,12 @@ region_rect = Rect2(2, 2, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_bam1a")]
 position = Vector2(368, 248)
+
+[node name="Ambient" type="AudioStreamPlayer2D" parent="Player"]
+position = Vector2(-368, -248)
+stream = ExtResource("11_gkxkn")
+autoplay = true
+bus = &"Music"
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("player")]
 position = Vector2(59, -8)

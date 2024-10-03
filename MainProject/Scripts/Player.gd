@@ -150,6 +150,7 @@ func apply_knokback(direction: Vector2, strength: float):
 func evolve(v: int) -> void:
 	if v in range(1, 4):
 		player_sprite.texture = ResourceLoader.load("res://MainProject/Sprites/luna/luna_{0}.png".format([v]))
+		dash.texture = ResourceLoader.load("res://MainProject/Sprites/luna/luna_walk_{0}.png".format([v]))
 	else:
 		print("Evolve variant: ", v, ", doesn't exist")
 

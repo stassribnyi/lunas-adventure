@@ -4,23 +4,28 @@ extends Node2D
 @onready var sprite = $AnimatedSprite2D
 
 const dialog_lines: Array[String] = [
-	"Hey, little one!",
-	"Are you lost?",
-	"Oh... I see",
-	"I can help if you are not afraid of a little challenge",
-	"You see, a litle bee have stollen my ring...",
-	"If you can bring it back, I'll share some magic with you...",
-	"So, you can move through this dangerous place.",
+	"Hello, young one.",
+	"Lost? Well, perhaps this is fate.",
+	"A small, golden ring has been misplaced.",
+	"If you can find it, I'll reveal a secret that will aid you in your journey through this perilous place."
 ]
 
+#const ring_found_dialog: Array[String] = [
+	#"Excellent! You found it. Now, let's see... Ah, yes. Here. Take this.",
+	#"Take this small, glowing amulet.",
+	#"This will grant you the ability to double jump. It's a handy tool for navigating this dangerous land. Use it wisely."
+#]
+
 const ring_found_dialog: Array[String] = [
-	"Excellent! You found it. Now, let's see... Ah, yes. Here. Take this.",
-	"Take this small, glowing amulet.",
-	"This will grant you the ability to double jump. It's a handy tool for navigating this dangerous land. Use it wisely."
+	"You have found the Queen's treasure, a gift she bestowed upon me ages past. Now, it is yours to claim.",
+	"The blessing of the butterflies is yours.",
+	"With this power, you can dash with incredible speed and agility.",
+	"Use \"Shift\" to activate this ability.",
+	"Remember, though, to wield this power with respect and always cherish the beauty of the butterflies.",
 ]
 
 const ring_found_second_dialog: Array[String] = [
-	"Thank you for returning my ring, little one!",
+	"Remember, you can activate dash ability by pressing \"Shift\".",
 ]
 
 func _ready() -> void:
@@ -29,7 +34,7 @@ func _ready() -> void:
 
 func _on_interact():
 	var player = Game.get_singleton().player
-	var has_doublejump = true if &"double_jump" in player.abilities else false
+	var has_doublejump = true if &"dash" in player.abilities else false
 
 	var dialog = dialog_lines
 	if &"ring_1" in player.inventory and not has_doublejump:
@@ -42,7 +47,7 @@ func _on_interact():
 	await DialogManager.dialog_finished
 
 	if &"ring_1" in player.inventory and not has_doublejump:
-		player.abilities.append(&"double_jump")
+		player.abilities.append(&"dash")
 
 	if player.has_something:
 		player.heal(3)

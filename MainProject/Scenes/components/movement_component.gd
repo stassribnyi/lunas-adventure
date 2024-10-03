@@ -22,11 +22,11 @@ func start_dash(duration: float) -> void:
 func is_dashing() -> bool:
 	return !dash_timer.is_stopped()
 
-func can_dash() -> bool:
-	return dash_cooldown_timer.is_stopped()
+func can_dash(body: MainCharacter) -> bool:
+	return &"dash" in body.abilities and dash_cooldown_timer.is_stopped()
 
 func handle_horizontal_movement(body: CharacterBody2D, direction: float) -> void:
-	if direction != 0 and Input.is_action_just_pressed("dash") and can_dash():
+	if direction != 0 and Input.is_action_just_pressed("dash") and can_dash(body):
 		start_dash(dash_length)
 	
 	var velocity_change_speed: float = 0.0
