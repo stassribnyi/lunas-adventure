@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=4 uid="uid://dkcgo0kaq4put"]
+
+[ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_2wmw4"]
+[ext_resource type="Script" path="res://MainProject/Objects/platform.gd" id="1_2x47f"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nej7b"]
+size = Vector2(154, 29)
+
+[node name="Platform" type="AnimatableBody2D"]
+script = ExtResource("1_2x47f")
+
+[node name="Foliage" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("AAD9//7/BQAWABEAABADAP7/BQAWABEAAAA=")
+tile_set = ExtResource("1_2wmw4")
+
+[node name="Foliage_2" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("AAD9//7/BQAPAA8AAAADAP7/BQAPABAAAAA=")
+tile_set = ExtResource("1_2wmw4")
+
+[node name="Cobble" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAD7//7/BQAEAAUAABD7////BQAEAAYAABD7/wAABQAAAAkAAAADAP7/BQADAAUAAAADAP//BQADAAYAAAADAAAABQADAAkAAAAEAP7/BQAEAAUAAAAEAP//BQAEAAYAAAAEAAAABQAEAAkAAAD9////BQABAAsAAAD9/wAABQABAAkAAAAAAP7/BQABAAoAAAAAAP//BQABAAsAAAAAAAAABQACAAkAAAD8//7/BQAAAAoAAAD8////BQAAAAsAAAD8/wAABQACAAkAAAD+//7/BQACAAUAAAD+////BQACAAYAAAD+/wAABQACAAkAAAD///7/BQAAAAoAAAD/////BQAAAAsAAAD//wAABQABAAkAAAD9//7/BQABAAoAAAABAP7/BQACAAUAAAABAP//BQACAAYAAAABAAAABQACAAkAAAACAP7/BQACAAUAAAACAP//BQACAAYAAAACAAAABQACAAkAAAA=")
+tile_set = ExtResource("1_2wmw4")
+collision_enabled = false
+
+[node name="Grass" type="TileMapLayer" parent="."]
+visible = false
+tile_map_data = PackedByteArray("AAD7//7/BQAAAAAAAAD7////BQAAAAEAAAD7/wAABQAAAAQAAAADAP7/BQADAAAAAAADAP//BQADAAEAAAADAAAABQADAAQAAAAEAP7/BQAEAAAAAAAEAP//BQAEAAEAAAAEAAAABQAEAAQAAAD9////BQACAAEAAAD9/wAABQACAAQAABAAAP7/BQABAAAAAAAAAP//BQABAAEAAAAAAAAABQACAAkAAAD8//7/BQABAAAAAAD8////BQABAAEAAAD8/wAABQADAAQAABD+//7/BQABAAAAAAD+////BQABAAEAAAD+/wAABQADAAQAAAD///7/BQACAAAAAAD/////BQACAAEAAAD//wAABQABAAkAAAD9//7/BQACAAAAAAABAP7/BQABAAAAAAABAP//BQABAAEAAAABAAAABQABAAQAAAACAP7/BQACAAAAAAACAP//BQACAAEAAAACAAAABQACAAQAAAA=")
+tile_set = ExtResource("1_2wmw4")
+collision_enabled = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_nej7b")
+one_way_collision = true
