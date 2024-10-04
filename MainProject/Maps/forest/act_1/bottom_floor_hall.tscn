@@ -118,7 +118,7 @@ time_to_change = 1.5
 position = Vector2(1477, 416)
 scale = Vector2(-1, 1)
 type = 1
-quest_item_name = "nedkless_1"
+quest_item_name = "neckless_1"
 ability_upgrade_name = "double_jump"
 
 [connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]

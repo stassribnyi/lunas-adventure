@@ -137,13 +137,12 @@ scale = Vector2(0.4375, 0.4375)
 texture = ExtResource("8_qkanj")
 
 [node name="Spider2" parent="." instance=ExtResource("9_fokc6")]
-position = Vector2(124, 205)
-patrol_distance = 300.0
+position = Vector2(121, 234)
+time_to_change = 1.5
 
 [node name="Spider3" parent="." instance=ExtResource("9_fokc6")]
-position = Vector2(472, 187)
-patrol_distance = 300.0
-time_to_change = 3.0
+position = Vector2(472, 208)
+patrol_distance = 100.0
 
 [node name="BaseCollectible" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_g7w4t")]
 position = Vector2(468, 379)
