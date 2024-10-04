@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b00a22spo54wo"
-path="res://.godot/imported/F101.png-fdd809719b934d6d938bd0a54bb70a34.ctex"
+uid="uid://dggsdulyswo4o"
+path="res://.godot/imported/butterfly_totem_new.png-5554ed44bfcd0b6bb473bd8c164dff81.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainProject/Sprites/fairy/F101.png"
-dest_files=["res://.godot/imported/F101.png-fdd809719b934d6d938bd0a54bb70a34.ctex"]
+source_file="res://MainProject/Sprites/save_point/butterfly_totem_new.png"
+dest_files=["res://.godot/imported/butterfly_totem_new.png-5554ed44bfcd0b6bb473bd8c164dff81.ctex"]
 
 [params]
 

@@ -79,7 +79,6 @@ tile_set = ExtResource("1_rnnc4")
 
 [node name="Witch_1" parent="." instance=ExtResource("8_38xno")]
 position = Vector2(2224, 337)
-type = 0
 quest_item_name = "ring_1"
 ability_upgrade_name = "dash"
 

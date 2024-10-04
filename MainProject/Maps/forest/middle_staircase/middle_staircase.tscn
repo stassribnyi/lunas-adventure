@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=4 uid="uid://dn5o8ilcaf3l8"]
+[gd_scene load_steps=9 format=4 uid="uid://dn5o8ilcaf3l8"]
 
 [ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="1_2mjii"]
 [ext_resource type="PackedScene" uid="uid://b3pt520dfotjv" path="res://MainProject/ParallaxBackground.tscn" id="2_yjjj0"]
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="3_v3sxv"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="4_5nsx3"]
 [ext_resource type="PackedScene" uid="uid://cwrf84g5mlucd" path="res://MainProject/Objects/Portal.tscn" id="5_wajve"]
+[ext_resource type="PackedScene" uid="uid://c6ndwya2qw37r" path="res://MainProject/Scenes/npc/npc.tscn" id="6_3mudb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyf8d"]
 size = Vector2(316, 11)
@@ -59,7 +60,12 @@ shape = SubResource("WorldBoundaryShape2D_444yd")
 
 [node name="Portal" parent="." instance=ExtResource("5_wajve")]
 modulate = Color(0.97441, 0, 0.0870042, 1)
-position = Vector2(263, 146)
+position = Vector2(745, 132)
 target_map = "forest/ForestStartingPoint.tscn"
+
+[node name="NPC" parent="." instance=ExtResource("6_3mudb")]
+position = Vector2(111, 223)
+scale = Vector2(0.75, 0.75)
+type = 3
 
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]

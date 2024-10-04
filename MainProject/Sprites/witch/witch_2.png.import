@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp7k81ccvsglv"
-path="res://.godot/imported/F101-1.png-f68a670332134f9660a8375503450638.ctex"
+uid="uid://q7s61f2ibxm7"
+path="res://.godot/imported/witch_2.png-7869e11b22630b2e6197d55393323aed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainProject/Sprites/fairy/F101-1.png"
-dest_files=["res://.godot/imported/F101-1.png-f68a670332134f9660a8375503450638.ctex"]
+source_file="res://MainProject/Sprites/witch/witch_2.png"
+dest_files=["res://.godot/imported/witch_2.png-7869e11b22630b2e6197d55393323aed.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c6lmty6xdi0lt"
-path="res://.godot/imported/B_witch_charge.png-2270c1ebfec155cb88a126428b1053e1.ctex"
+uid="uid://bsp58n4uf6pwv"
+path="res://.godot/imported/witch_1.png-63ddc67ce282b0a59994c40cc6d7d4c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://MainProject/Sprites/Blue_witch/B_witch_charge.png"
-dest_files=["res://.godot/imported/B_witch_charge.png-2270c1ebfec155cb88a126428b1053e1.ctex"]
+source_file="res://MainProject/Sprites/witch/witch_1.png"
+dest_files=["res://.godot/imported/witch_1.png-63ddc67ce282b0a59994c40cc6d7d4c2.ctex"]
 
 [params]
 

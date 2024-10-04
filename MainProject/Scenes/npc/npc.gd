@@ -8,11 +8,15 @@ extends Node2D
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var sprite = $AnimatedSprite2D
 
-
-
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact")
 	interaction_area.cancel_interaction = Callable(self, "_on_cancel_interaction")
+	
+	match type:
+		0: sprite.play("Witch_1")
+		1: sprite.play("Witch_2")
+		2: sprite.play("Witch_3")
+		3: sprite.play("Queen")
 
 func _on_interact():
 	var player = Game.get_singleton().player
