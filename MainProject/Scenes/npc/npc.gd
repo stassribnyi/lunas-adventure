@@ -55,9 +55,11 @@ func get_witch_1_dialog(player: MainCharacter) -> Array[String]:
 			"The blessing of the butterflies is yours.",
 			"With this power, you can dash with incredible speed and agility.",
 			"Use \"Shift\" to activate this ability.",
+			"You can practice with nearby tree...",
 			"Remember, though, to wield this power with respect and always cherish the beauty of the butterflies.",
 		],
 		[
+			"You know, this tree only accepts bearers of the butterly magic?",
 			"Remember, you can activate dash ability by pressing \"Shift\"."
 		])
 
@@ -81,7 +83,7 @@ func get_witch_2_dialog(player: MainCharacter) -> Array[String]:
 			"Remember, though, to wield this power with respect and always cherish the beauty of the butterflies.",
 		],
 		[
-			"Remember, you can activate dash ability by pressing \"Space\" once more when jumping."
+			"Remember, you can duble jump by pressing \"Space\" midair."
 		])
 
 func choose_dialog(player: MainCharacter,initial: Array[String], quest_finished: Array[String], repeat: Array[String]) -> Array[String]:
@@ -96,7 +98,7 @@ func choose_dialog(player: MainCharacter,initial: Array[String], quest_finished:
 func upgrade_player_ability(player: MainCharacter) -> void:
 	var has_already_acquired_ability = ability_upgrade_name in player.abilities
 	if quest_item_name in player.inventory and not has_already_acquired_ability:
-		player.abilities.append(ability_upgrade_name)
+		player.add_ability(ability_upgrade_name)
 
 func _on_cancel_interaction():
 	DialogManager.stop_dialog()

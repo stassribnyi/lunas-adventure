@@ -134,7 +134,6 @@ texture = SubResource("CanvasTexture_lb6gv")
 region_rect = Rect2(2, 2, 0, 0)
 
 [node name="Player" parent="." instance=ExtResource("2_bam1a")]
-position = Vector2(368, 248)
 
 [node name="Ambient" type="AudioStreamPlayer2D" parent="Player"]
 position = Vector2(-368, -248)

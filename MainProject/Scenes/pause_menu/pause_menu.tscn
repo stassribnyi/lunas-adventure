@@ -75,6 +75,14 @@ theme_override_colors/font_pressed_color = Color(0.899811, 0.851514, 0.449075, 1
 theme_override_fonts/font = ExtResource("4_rrsmt")
 text = "Resume"
 
+[node name="Restart Level" type="Button" parent="Buttons"]
+layout_mode = 2
+theme_type_variation = &"FlatButton"
+theme_override_colors/font_hover_color = Color(0.439972, 0.61795, 1, 1)
+theme_override_colors/font_pressed_color = Color(0.899811, 0.851514, 0.449075, 1)
+theme_override_fonts/font = ExtResource("4_rrsmt")
+text = "Restart Level"
+
 [node name="Settings" type="Button" parent="Buttons"]
 layout_mode = 2
 theme_type_variation = &"FlatButton"
@@ -94,5 +102,6 @@ text = "Exit"
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Buttons/Resume" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Buttons/Restart Level" to="." method="_on_restart_level_pressed"]
 [connection signal="pressed" from="Buttons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Buttons/Exit" to="." method="_on_exit_pressed"]

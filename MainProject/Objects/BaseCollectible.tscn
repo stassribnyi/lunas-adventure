@@ -1,4 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmwooa85vkyh6"]
+[gd_scene load_steps=4 format=3 uid="uid://bmwooa85vkyh6"]
+
+[ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="1_h5geh"]
+[ext_resource type="AudioStream" uid="uid://bu42h0nt04xn2" path="res://MainProject/Resources/sounds/bonus-143026.mp3" id="2_rsjjl"]
 
 [sub_resource type="GDScript" id="GDScript_5wqrn"]
 script/source = "# Generic orb collectible.
@@ -10,6 +13,7 @@ extends Area2D
 
 @export_subgroup(\"Nodes\")
 @export var sprite: Sprite2D
+@export var sfx_component: SFXComponent
 
 func _ready() -> void:
 	# Register as storable with a marker. The marker will appear on the map when the orb is first discovered (i.e. get instantiated).
@@ -31,20 +35,31 @@ func collect(body: Node2D) -> void:
 	# Check if player collided.
 	if not body.is_in_group(&\"player\"):
 		return
-	if type == 0:
+
+	var player: MainCharacter = body
+	match type:
 		# Increase collectible counter.
-		Game.get_singleton().collectibles += 1
-	elif type == 1:
-		body.inventory.append(collectible_name)
+		0: Game.get_singleton().collectibles += 1
+		1: player.inventory.append(collectible_name)
+		_: pass
+
+	self.hide()
+	sfx_component.play_collectible()
+	await get_tree().create_timer(1).timeout
+
 	# Store the orb. This will automatically assign the collected marker.
 	MetSys.store_object(self)
 	# Storing object does not free it automatically.
 	queue_free()
 "
 
-[node name="BaseCollectible" type="Area2D"]
+[node name="BaseCollectible" type="Area2D" node_paths=PackedStringArray("sfx_component")]
 position = Vector2(0, -7.82396)
 script = SubResource("GDScript_5wqrn")
 type = 0
+sfx_component = NodePath("SfxComponent")
+
+[node name="SfxComponent" parent="." instance=ExtResource("1_h5geh")]
+sfx_collectible = ExtResource("2_rsjjl")
 
 [connection signal="body_entered" from="." to="." method="collect"]

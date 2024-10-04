@@ -44,3 +44,8 @@ func _on_exit_settings_pressed() -> void:
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()
+
+func _on_restart_level_pressed() -> void:
+	toggle_pause_menu()
+	var player: MainCharacter = Game.get_singleton().player
+	player.instant_kill()

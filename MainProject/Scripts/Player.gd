@@ -62,16 +62,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("attack") and not is_dying:
 		animation_component.handle_attack_animation()
 
-	# TODO: replace with power up system
-	if Input.is_action_just_released("ui_text_delete"):
-		if variant + 1 in range(1, 4):
-			variant += 1
-			evolve(variant)
-			if variant == 2:
-				abilities.append(&"double_jump")
-		else:
-			variant = 1
-
 	var direction = Vector2.ZERO
 	direction.x = input_component.input_horizontal
 	dash.scale.x = input_component.input_horizontal
@@ -115,6 +105,21 @@ func kill(damage: int):
 func change_hp(new_hp: int) -> void:
 	lives = new_hp
 	hp_changed.emit(lives)
+
+func add_ability(ability_upgrade_name: String) -> void:
+	abilities.append(ability_upgrade_name)
+
+	event = true
+	sfx_component.play_evolve()
+	animation_player.play("Evolve")
+
+func _on_evolve_animation_started() -> void:
+	# TODO: for not this is the simplest way to evolve MC
+	# current upgrade system based on abilities first and not evolutions
+	evolve(abilities.size() + 1) # we have 1 defautl, 2 second evolution, 3 final one
+
+func _on_evolve_animation_end() -> void:
+	event = false
 
 func _reset():
 	# Player dies, reset the position to the entrance.

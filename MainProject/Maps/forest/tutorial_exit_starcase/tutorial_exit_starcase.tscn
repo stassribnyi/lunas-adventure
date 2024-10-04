@@ -1,23 +1,16 @@
-[gd_scene load_steps=7 format=4 uid="uid://dr1kp0dptgica"]
+[gd_scene load_steps=8 format=4 uid="uid://dr1kp0dptgica"]
 
 [ext_resource type="PackedScene" uid="uid://b3pt520dfotjv" path="res://MainProject/ParallaxBackground.tscn" id="1_hq8o7"]
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_l2j3y"]
 [ext_resource type="PackedScene" uid="uid://uhfm45c1kvot" path="res://MainProject/Scenes/save_point/save_point.tscn" id="2_6r6u6"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_ro2gp"]
 [ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="4_16xgt"]
+[ext_resource type="PackedScene" uid="uid://bbgnmb337d1ld" path="res://MainProject/Objects/forest_start_exit.tscn" id="6_4vwt3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyf8d"]
-size = Vector2(316, 18)
+size = Vector2(318, 29)
 
 [node name="Map" type="Node2D"]
-
-[node name="Killzone" parent="." instance=ExtResource("4_16xgt")]
-position = Vector2(206, 480)
-lives = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
-position = Vector2(-48, -10)
-shape = SubResource("RectangleShape2D_oyf8d")
 
 [node name="SavePoint" parent="." instance=ExtResource("2_6r6u6")]
 
@@ -57,5 +50,17 @@ tile_set = ExtResource("1_l2j3y")
 [node name="ParallaxMushroomCaveBackground" parent="TileMap" instance=ExtResource("1_hq8o7")]
 
 [node name="RoomInstance" parent="." instance=ExtResource("2_ro2gp")]
+
+[node name="StaticBody2D" parent="." instance=ExtResource("6_4vwt3")]
+position = Vector2(0, 176)
+
+[node name="Killzone" parent="." instance=ExtResource("4_16xgt")]
+position = Vector2(206, 480)
+lives = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(-47, -15.5)
+shape = SubResource("RectangleShape2D_oyf8d")
+one_way_collision_margin = 128.0
 
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]

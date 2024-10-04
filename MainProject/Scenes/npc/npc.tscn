@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://MainProject/Scenes/npc/npc.gd" id="1_lh64h"]
 [ext_resource type="Texture2D" uid="uid://bsp58n4uf6pwv" path="res://MainProject/Sprites/witch/witch_1.png" id="2_2h58b"]
 [ext_resource type="Texture2D" uid="uid://cxjio2yrfboaj" path="res://MainProject/Sprites/queen/queen.png" id="2_abiba"]
-[ext_resource type="Texture2D" uid="uid://q7s61f2ibxm7" path="res://MainProject/Sprites/witch/witch_2.png" id="3_pvk2v"]
+[ext_resource type="Texture2D" uid="uid://dymcabtsbi0fi" path="res://MainProject/Sprites/witch/witch_2.png" id="3_pvk2v"]
 [ext_resource type="PackedScene" uid="uid://rkoc8jajq3r1" path="res://MainProject/Scenes/components/interactions/interaction_area/interaction_area.tscn" id="4_3s8l5"]
-[ext_resource type="Texture2D" uid="uid://dd4tp7kkas34q" path="res://MainProject/Sprites/witch/witch_3.png" id="4_hnnii"]
+[ext_resource type="Texture2D" uid="uid://bfsqxipc0lovc" path="res://MainProject/Sprites/witch/witch_3.png" id="4_hnnii"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1vseh"]
 atlas = ExtResource("2_abiba")

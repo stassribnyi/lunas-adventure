@@ -74,8 +74,6 @@ position = Vector2(517, 415)
 
 [node name="Leave_1" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_s0ssn")]
 position = Vector2(600, 122)
-type = 1
-collectible_name = "ring_1"
 sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leave_1"]

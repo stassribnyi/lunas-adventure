@@ -92,8 +92,6 @@ shape = SubResource("RectangleShape2D_ai3ob")
 
 [node name="Leave_1" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("6_lh5kq")]
 position = Vector2(59, 482)
-type = 1
-collectible_name = "ring_1"
 sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leave_1"]

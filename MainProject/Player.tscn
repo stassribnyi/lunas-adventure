@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://xpbhai8nlgtx"]
+[gd_scene load_steps=39 format=3 uid="uid://xpbhai8nlgtx"]
 
 [ext_resource type="Script" path="res://MainProject/Scripts/Player.gd" id="1_ecbsx"]
 [ext_resource type="AudioStream" uid="uid://dbmk5inhi3q0p" path="res://MainProject/Resources/sounds/step.wav" id="3_n27wt"]
@@ -10,10 +10,12 @@
 [ext_resource type="AudioStream" uid="uid://648xxnbgsehm" path="res://MainProject/Resources/sounds/teleport.wav" id="7_bitxm"]
 [ext_resource type="PackedScene" uid="uid://dsspdm7lfpyr7" path="res://MainProject/Scenes/components/input_component.tscn" id="7_n7bqp"]
 [ext_resource type="Texture2D" uid="uid://r85whfa16u64" path="res://MainProject/Sprites/luna/luna_walk_1.png" id="8_1w7au"]
+[ext_resource type="AudioStream" uid="uid://bys7ijnwfn62a" path="res://MainProject/Resources/sounds/game-bonus-144751.mp3" id="8_cag1q"]
 [ext_resource type="Texture2D" uid="uid://cejd1g57kpkx0" path="res://MainProject/Sprites/luna/luna_1.png" id="8_o5uam"]
 [ext_resource type="PackedScene" uid="uid://c1nikui6skmag" path="res://MainProject/Scenes/components/movement_component.tscn" id="8_v7724"]
 [ext_resource type="PackedScene" uid="uid://dp5cktlbc64rs" path="res://MainProject/Scenes/components/animation_component.tscn" id="9_4ldsl"]
 [ext_resource type="PackedScene" uid="uid://xc86al6q11fq" path="res://MainProject/Scenes/gun/gun.tscn" id="9_g3uks"]
+[ext_resource type="AudioStream" uid="uid://bu42h0nt04xn2" path="res://MainProject/Resources/sounds/bonus-143026.mp3" id="9_hmfxv"]
 [ext_resource type="PackedScene" uid="uid://gcv8s6hekgpd" path="res://MainProject/Scenes/components/advanced_jump_component.tscn" id="10_vweaq"]
 
 [sub_resource type="Shader" id="Shader_qnn18"]
@@ -230,6 +232,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2)]
+}
 
 [sub_resource type="Animation" id="Animation_t5hm8"]
 resource_name = "Revive"
@@ -389,9 +403,67 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_giyno"]
+resource_name = "Evolve"
+length = 1.5
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [56, 57, 58, 59, 60, 61, 62, 63, 62, 61, 60, 59, 58, 57, 56]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.73),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_evolve_animation_started"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = false
+tracks/2/path = NodePath(".:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.73, 1.45),
+"transitions": PackedFloat32Array(1.56917, 1.68179, 1),
+"update": 0,
+"values": [Vector2(0, -2), Vector2(0, -42), Vector2(0, -2)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_on_evolve_animation_end"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n51i7"]
 _data = {
 "Death": SubResource("Animation_5n4uv"),
+"Evolve": SubResource("Animation_giyno"),
 "Fall": SubResource("Animation_pknha"),
 "FastShoot": SubResource("Animation_xcw2m"),
 "GroundPoundInit": SubResource("Animation_g61m3"),
@@ -430,6 +502,8 @@ sfx_jump = ExtResource("4_edrha")
 sfx_hurt = ExtResource("5_qvk7d")
 sfx_death = ExtResource("6_okvvc")
 sfx_teleport = ExtResource("7_bitxm")
+sfx_evolve = ExtResource("8_cag1q")
+sfx_collectible = ExtResource("9_hmfxv")
 
 [node name="DashParticles" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_qhmky")

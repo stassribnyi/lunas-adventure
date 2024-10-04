@@ -108,8 +108,6 @@ position = Vector2(163, 399)
 
 [node name="Leave_1" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_g7w4t")]
 position = Vector2(562, 166)
-type = 1
-collectible_name = "ring_1"
 sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leave_1"]
@@ -123,8 +121,6 @@ texture = ExtResource("8_qkanj")
 
 [node name="Leave_2" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_g7w4t")]
 position = Vector2(59, 167)
-type = 1
-collectible_name = "ring_1"
 sprite = NodePath("Sprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Leave_2"]
@@ -144,16 +140,16 @@ time_to_change = 1.5
 position = Vector2(472, 208)
 patrol_distance = 100.0
 
-[node name="BaseCollectible" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_g7w4t")]
+[node name="Neckless_1" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("7_g7w4t")]
 position = Vector2(468, 379)
 type = 1
 collectible_name = "neckless_1"
 sprite = NodePath("Sprite2D")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseCollectible"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Neckless_1"]
 shape = SubResource("CircleShape2D_d1h6w")
 
-[node name="Sprite2D" type="Sprite2D" parent="BaseCollectible"]
+[node name="Sprite2D" type="Sprite2D" parent="Neckless_1"]
 scale = Vector2(0.5625, 0.5625)
 texture = ExtResource("9_fubmf")
 
