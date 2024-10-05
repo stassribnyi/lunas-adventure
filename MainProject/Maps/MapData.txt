@@ -12,11 +12,11 @@ $ln;Defaltia;Shadia;Renegia;Forest;Intro
 [9,-7,3]
 1,1,1,0|||forest/act_2/upper_floor_entrance.tscn
 [7,-7,3]
--1,0,0,1|||
+-1,0,0,1|||forest/act_2/upper_floor_left.tscn
 [8,-7,3]
-1,0,-1,1|||
+1,0,-1,1|||forest/act_2/upper_floor_left.tscn
 [7,-8,3]
-0,1,0,1|||
+0,1,0,1|||forest/act_2/upper_floor_end.tscn
 [9,-4,3]
 0,-1,0,1|,37f658,,37f658,||forest/act_1/act_1.tscn
 [9,-3,3]
