@@ -42,6 +42,8 @@ func _ready() -> void:
 		generated_rooms.assign(save_manager.get_value("generated_rooms"))
 		events.assign(save_manager.get_value("events"))
 		player.abilities.assign(save_manager.get_value("abilities"))
+		# currently we have ability first upgrade, therefore we have to map abilities count to evolutions
+		player.evolve(player.abilities.size() + 1) # we have 1 defautl, 2 second evolution, 3 final one
 		var inventory = save_manager.get_value("inventory")
 		player.inventory.assign(inventory if inventory != null else [])
 		

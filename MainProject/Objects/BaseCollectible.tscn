@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bmwooa85vkyh6"]
 
-[ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="1_h5geh"]
-[ext_resource type="AudioStream" uid="uid://bu42h0nt04xn2" path="res://MainProject/Resources/sounds/bonus-143026.mp3" id="2_rsjjl"]
+[ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="1_nsups"]
+[ext_resource type="AudioStream" uid="uid://bu42h0nt04xn2" path="res://MainProject/Resources/sounds/bonus-143026.mp3" id="2_u7hkt"]
 
 [sub_resource type="GDScript" id="GDScript_5wqrn"]
 script/source = "# Generic orb collectible.
@@ -59,7 +59,7 @@ script = SubResource("GDScript_5wqrn")
 type = 0
 sfx_component = NodePath("SfxComponent")
 
-[node name="SfxComponent" parent="." instance=ExtResource("1_h5geh")]
-sfx_collectible = ExtResource("2_rsjjl")
+[node name="SfxComponent" parent="." instance=ExtResource("1_nsups")]
+sfx_collectible = ExtResource("2_u7hkt")
 
 [connection signal="body_entered" from="." to="." method="collect"]

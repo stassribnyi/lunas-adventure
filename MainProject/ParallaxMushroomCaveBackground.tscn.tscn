@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dfcu41okq2bnv" path="res://MainProject/Sprites/parallax_mushroom_cave/Mushroom_Cave_L3.png" id="3_ec320"]
 [ext_resource type="Texture2D" uid="uid://cg0okitwyht5y" path="res://MainProject/Sprites/parallax_mushroom_cave/Mushroom_Cave_L4.png" id="4_l36ij"]
 
-[node name="ParallaxBackground" type="ParallaxBackground"]
+[node name="ParallaxMushroomCaveBackground" type="ParallaxBackground"]
 
 [node name="BackgroundLayer" type="ParallaxLayer" parent="."]
 motion_mirroring = Vector2(1280, 0)
