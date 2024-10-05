@@ -59,7 +59,7 @@ func _physics_process(delta: float) -> void:
 		self.velocity.y = 0
 		self.velocity.x = 0
 
-	if Input.is_action_just_pressed("attack") and not is_dying:
+	if Input.is_action_just_pressed("attack") and "mana_shoot" in abilities and not is_dying:
 		animation_component.handle_attack_animation()
 
 	var direction = Vector2.ZERO

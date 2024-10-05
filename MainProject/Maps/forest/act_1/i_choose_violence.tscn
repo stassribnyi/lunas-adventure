@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=4 uid="uid://bnobws3q6ulhu"]
+[gd_scene load_steps=11 format=4 uid="uid://bnobws3q6ulhu"]
 
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="1_sje5v"]
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="2_rg8is"]
 [ext_resource type="PackedScene" uid="uid://bc5mqf1t2juhw" path="res://MainProject/Scenes/abilities/ability.tscn" id="3_7n0l1"]
 [ext_resource type="Texture2D" uid="uid://dt0qx4111t868" path="res://MainProject/Sprites/upgrades/projectile-power-up.png" id="4_rt0de"]
+[ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="5_otcjm"]
 [ext_resource type="PackedScene" uid="uid://cwrf84g5mlucd" path="res://MainProject/Objects/Portal.tscn" id="5_tcfxu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ay3w7"]
@@ -93,11 +94,13 @@ libraries = {
 autoplay = "floating"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 192.0
-offset_top = 161.0
-offset_right = 727.0
-offset_bottom = 184.0
-text = "If you wish to 1follow path of violence, be prepared for consequences"
+offset_left = 49.0
+offset_top = 154.0
+offset_right = 803.0
+offset_bottom = 208.0
+theme_override_fonts/font = ExtResource("5_otcjm")
+text = "If you wish to follow path of violence, be prepared for consequences"
+autowrap_mode = 2
 
 [node name="Portal" parent="." instance=ExtResource("5_tcfxu")]
 modulate = Color(0.351565, 0.026263, 0.105401, 1)

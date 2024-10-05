@@ -8,9 +8,9 @@ $ln;Defaltia;Shadia;Renegia;Forest;Intro
 [9,-5,3]
 0,1,1,1|||forest/tutorial_exit_starcase/tutorial_exit_starcase.tscn
 [9,-6,3]
-0,1,0,1|||forest/middle_staircase/middle_staircase.tscn
+0,1,0,-1|||forest/act_2/upper_floor_entrance.tscn
 [9,-7,3]
-1,1,1,0|||forest/act_2/upper_floor_entrance.tscn
+1,-1,1,0|||forest/act_2/upper_floor_entrance.tscn
 [7,-7,3]
 -1,0,0,1|||forest/act_2/upper_floor_left.tscn
 [8,-7,3]
