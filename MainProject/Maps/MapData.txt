@@ -10,7 +10,7 @@ $ln;Defaltia;Shadia;Renegia;Forest;Intro
 [9,-6,3]
 0,1,0,1|||forest/middle_staircase/middle_staircase.tscn
 [9,-7,3]
-1,1,1,0|||
+1,1,1,0|||forest/act_2/upper_floor_entrance.tscn
 [7,-7,3]
 -1,0,0,1|||
 [8,-7,3]
@@ -28,7 +28,7 @@ $ln;Defaltia;Shadia;Renegia;Forest;Intro
 [8,-9,3]
 0,0,-1,0|||
 [10,-7,3]
-0,0,1,0|||
+0,0,1,0|||forest/act_2/upper_floor_right.tscn
 [10,-3,3]
 -1,0,1,0|||forest/act_1/path_of_pain.tscn
 [11,-3,3]
