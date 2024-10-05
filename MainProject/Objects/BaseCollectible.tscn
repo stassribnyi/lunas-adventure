@@ -15,6 +15,8 @@ extends Area2D
 @export var sprite: Sprite2D
 @export var sfx_component: SFXComponent
 
+var is_collected = false
+
 func _ready() -> void:
 	# Register as storable with a marker. The marker will appear on the map when the orb is first discovered (i.e. get instantiated).
 	MetSys.register_storable_object_with_marker(self)
@@ -33,7 +35,7 @@ func float_down() -> void:
 
 func collect(body: Node2D) -> void:
 	# Check if player collided.
-	if not body.is_in_group(&\"player\"):
+	if not is_collected and not body.is_in_group(&\"player\"):
 		return
 
 	var player: MainCharacter = body
@@ -43,7 +45,10 @@ func collect(body: Node2D) -> void:
 		1: player.inventory.append(collectible_name)
 		_: pass
 
+	is_collected = true
+	self.hide()
 	sfx_component.play_collectible()
+	await get_tree().create_timer(1).timeout
 
 	# Store the orb. This will automatically assign the collected marker.
 	MetSys.store_object(self)

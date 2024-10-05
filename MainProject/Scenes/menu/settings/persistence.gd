@@ -12,8 +12,9 @@ func _ready():
 	config.set_value("Video", "borderless", false)
 	config.set_value("Video", "vsync", DisplayServer.VSYNC_ENABLED)
 
-	for i in range(3):
-		config.set_value("Audio", str(i), 0.5)
+	config.set_value("Audio", str(0), 1)
+	config.set_value("Audio", str(1), 0.3)
+	config.set_value("Audio", str(2), 1)
 
 	load_data()
 
@@ -26,6 +27,7 @@ func load_data():
 		return
 
 	load_control_settings()
+	load_audio_settings()
 	load_video_settings()
 
 func load_control_settings():
@@ -37,6 +39,16 @@ func load_control_settings():
 
 			InputMap.action_erase_events(action)
 			InputMap.action_add_event(action, value)
+
+func load_audio_settings():
+	var audio_values = [
+		config.get_value("Audio", str(0)),
+		config.get_value("Audio", str(1)),
+		config.get_value("Audio", str(2))
+	]
+	print(audio_values)
+	for i in range(audio_values.size()):
+		AudioServer.set_bus_volume_db(i, linear_to_db(audio_values[i]))
 
 func load_video_settings():
 	var screen_type = config.get_value("Video", "fullscreen")

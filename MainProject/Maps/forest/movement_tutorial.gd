@@ -22,4 +22,8 @@ func update_mappings() -> void:
 	move_right = InputMap.action_get_events("move_right")[0].as_text()
 	jump = InputMap.action_get_events("jump")[0].as_text()
 	
-	text = "Use {0} or {1} to move Left or Right\nUse {2} to Jump".format([move_left.replace(" (Physical)", ""), move_right.replace(" (Physical)", ""), jump.replace(" (Physical)", "")])
+	text = "Use {0} or {1} to move Left or Right\nUse {2} to Jump".format([
+		move_left.replace(" (Physical)", "").replace("Left", "◀"),
+		move_right.replace(" (Physical)", "").replace("Right", "▶"),
+		jump.replace(" (Physical)", "")
+	])
