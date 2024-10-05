@@ -285,9 +285,10 @@ position = Vector2(0, 0.4375)
 scale = Vector2(0.4375, 0.4375)
 texture = ExtResource("7_ajcij")
 
-[node name="NPC" parent="." instance=ExtResource("8_j7bbu")]
+[node name="Witch_3" parent="." instance=ExtResource("8_j7bbu")]
 position = Vector2(596, 431)
 type = 2
+ability_upgrade_name = "mana_shoot"
 
 [node name="Platform_1" parent="." instance=ExtResource("9_5e5vy")]
 position = Vector2(1377, 260)

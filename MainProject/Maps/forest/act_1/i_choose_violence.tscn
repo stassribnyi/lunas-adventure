@@ -104,7 +104,7 @@ position = Vector2(640, 385)
 target_map = "forest/act_1/path_of_pain.tscn"
 
 [node name="InteractionArea" parent="." instance=ExtResource("7_q7rk3")]
-position = Vector2(433, 317)
+position = Vector2(432, 285)
 action_name = "hear what spirits says"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]

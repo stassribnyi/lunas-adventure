@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dr1kp0dptgica"]
+[gd_scene load_steps=10 format=4 uid="uid://dr1kp0dptgica"]
 
 [ext_resource type="PackedScene" uid="uid://b3pt520dfotjv" path="res://MainProject/ParallaxBackground.tscn" id="1_hq8o7"]
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_l2j3y"]
@@ -6,9 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_ro2gp"]
 [ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="4_16xgt"]
 [ext_resource type="PackedScene" uid="uid://bbgnmb337d1ld" path="res://MainProject/Objects/forest_start_exit.tscn" id="6_4vwt3"]
+[ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="7_cxcmn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oyf8d"]
 size = Vector2(318, 29)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xw7f8"]
 
 [node name="Map" type="Node2D"]
 
@@ -62,5 +65,24 @@ lives = 3
 position = Vector2(-47, -15.5)
 shape = SubResource("RectangleShape2D_oyf8d")
 one_way_collision_margin = 128.0
+
+[node name="SaveTutorial" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 474.0
+offset_top = 182.0
+offset_right = 816.0
+offset_bottom = 266.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("7_cxcmn")
+text = "Totems chronicle your journey."
+label_settings = SubResource("LabelSettings_xw7f8")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export_subgroup("Settings")
-@export_enum("Witch_1", "Witch_2", "Witch_3", "Queen") var type
+@export_enum("Witch_1", "Witch_2", "Witch_3", "Witch_4", "Queen") var type
 @export var quest_item_name: String
 @export var ability_upgrade_name: String
 
@@ -16,7 +16,8 @@ func _ready() -> void:
 		0: sprite.play("Witch_1")
 		1: sprite.play("Witch_2")
 		2: sprite.play("Witch_3")
-		3: sprite.play("Queen")
+		3: sprite.play("Witch_1")
+		4: sprite.play("Queen")
 
 func _on_interact():
 	var player = Game.get_singleton().player
@@ -27,6 +28,14 @@ func _on_interact():
 			dialog_lines = get_witch_1_dialog(player)
 		1:
 			dialog_lines = get_witch_2_dialog(player)
+		2:
+			dialog_lines = get_witch_3_dialog(player)
+		3:
+			dialog_lines = [
+					"A dead end, my dear. But what a peculiar dead end, isn't it?",
+					"This portal intrigues me, but it seems to lead nowhere.",
+					"Have you pondered where this portal might lead, if anywhere at all?"
+				]
 		_:
 			pass
 		
@@ -85,6 +94,18 @@ func get_witch_2_dialog(player: MainCharacter) -> Array[String]:
 		[
 			"Remember, you can duble jump by pressing \"Space\" midair."
 		])
+
+func get_witch_3_dialog(player: MainCharacter) -> Array[String]:
+	return choose_dialog(
+		player, 
+		[
+			"This place was a haven until my pride shattered its peace.",
+			"My sisters have turned their backs on me.",
+			"If you choose to continue, you'll understand the darkness that awaits."
+		],
+		["Your journey has begun. What lies ahead is uncertain, but the path you've chosen will shape your destiny."],
+		["Your journey has begun. What lies ahead is uncertain, but the path you've chosen will shape your destiny."])
+
 
 func choose_dialog(player: MainCharacter,initial: Array[String], quest_finished: Array[String], repeat: Array[String]) -> Array[String]:
 	var has_already_acquired_ability = ability_upgrade_name in player.abilities
