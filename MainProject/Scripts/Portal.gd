@@ -2,10 +2,11 @@
 extends Area2D
 # The target map after entering the portal.
 @export var target_map: String
+@export var enabled: bool = true
 
 func _on_body_entered(body: Node2D) -> void:
 	# If player entered and isn't doing an event (event in this case is entering the portal).
-	if body.is_in_group(&"player") and not body.event:
+	if enabled and body.is_in_group(&"player") and not body.event:
 		var player: MainCharacter = body
 		player.event = true
 		player.velocity = Vector2()

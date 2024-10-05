@@ -43,9 +43,7 @@ func collect(body: Node2D) -> void:
 		1: player.inventory.append(collectible_name)
 		_: pass
 
-	self.hide()
 	sfx_component.play_collectible()
-	await get_tree().create_timer(1).timeout
 
 	# Store the orb. This will automatically assign the collected marker.
 	MetSys.store_object(self)

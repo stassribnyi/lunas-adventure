@@ -22,11 +22,11 @@ $ln;Defaltia;Shadia;Renegia;Forest;Intro
 [9,-3,3]
 1,1,0,-1|,88fb65,88fb65,37f658,||forest/act_1/act_1.tscn
 [6,-9,3]
--1,0,0,0|||
+-1,0,0,0|||forest/final/final_act.tscn
 [7,-9,3]
--1,1,-1,0|||
+-1,1,-1,0|||forest/final/final_act.tscn
 [8,-9,3]
-0,0,-1,0|||
+0,0,-1,0|||forest/final/final_act.tscn
 [10,-7,3]
 0,0,1,0|||forest/act_2/upper_floor_right.tscn
 [10,-3,3]

@@ -46,7 +46,7 @@ position = Vector2(430, 259)
 target_map = "forest/ForestStartingPoint.tscn"
 
 [node name="Witch_4" parent="." instance=ExtResource("6_6w4gl")]
-position = Vector2(151, 254)
+position = Vector2(151, 259)
 scale = Vector2(0.75, 0.75)
 type = 3
 

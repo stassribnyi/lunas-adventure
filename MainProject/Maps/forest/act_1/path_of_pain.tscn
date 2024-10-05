@@ -322,7 +322,7 @@ position = Vector2(1186, 124)
 time_to_change = 1.5
 
 [node name="Wasp" parent="." instance=ExtResource("11_agsbu")]
-position = Vector2(741, 361)
+position = Vector2(742, 351)
 patrol_distance = 150.0
 
 [node name="Wasp_2" parent="." instance=ExtResource("11_agsbu")]

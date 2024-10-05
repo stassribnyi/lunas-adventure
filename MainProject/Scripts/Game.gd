@@ -15,7 +15,11 @@ const SAVE_PATH = "user://example_save_data.sav"
 var collectibles: int:
 	set(count):
 		collectibles = count
-		%CollectibleCount.text = "%d/10" % count
+		%CollectibleCount.text = "%d/15" % count
+
+var kills: int:
+	set(value):
+		kills = value
 
 # The coordinates of generated rooms. MetSys does not keep this list, so it needs to be done manually.
 var generated_rooms: Array[Vector3i]
@@ -39,14 +43,15 @@ func _ready() -> void:
 		save_manager.load_from_text(SAVE_PATH)
 		# Assign loaded values.
 		collectibles = save_manager.get_value("collectible_count")
+		kills = save_manager.get_value("kills_count")
 		generated_rooms.assign(save_manager.get_value("generated_rooms"))
 		events.assign(save_manager.get_value("events"))
 		player.abilities.assign(save_manager.get_value("abilities"))
-		# currently we have ability first upgrade, therefore we have to map abilities count to evolutions
+		player.inventory.assign(save_manager.get_value("inventory"))
+
+			# currently we have ability first upgrade, therefore we have to map abilities count to evolutions
 		player.evolve(player.abilities.size() + 1) # we have 1 defautl, 2 second evolution, 3 final one
-		var inventory = save_manager.get_value("inventory")
-		player.inventory.assign(inventory if inventory != null else [])
-		
+
 		if not custom_run:
 			var loaded_starting_map: String = save_manager.get_value("current_room")
 			if not loaded_starting_map.is_empty(): # Some compatibility problem.
@@ -88,6 +93,7 @@ static func get_singleton() -> Game:
 func save_game():
 	var save_manager := SaveManager.new()
 	save_manager.set_value("collectible_count", collectibles)
+	save_manager.set_value("kills_count", kills)
 	save_manager.set_value("generated_rooms", generated_rooms)
 	save_manager.set_value("events", events)
 	save_manager.set_value("current_room", MetSys.get_current_room_name())

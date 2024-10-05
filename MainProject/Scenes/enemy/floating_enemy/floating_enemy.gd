@@ -57,7 +57,8 @@ func flip_horizontal() -> void:
 func set_damage(damage: float, dir: Vector2) -> void:
 	hp -= damage
 
-	if hp < 0:
+	if hp <= 0:
+		Game.get_singleton().kills += 1
 		var tween = get_tree().create_tween()
 		tween.set_parallel(true)
 		tween.tween_property(sprite, "modulate:v", 1, 0.25).from(15)

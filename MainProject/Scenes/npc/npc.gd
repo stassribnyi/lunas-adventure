@@ -8,6 +8,8 @@ extends Node2D
 @onready var interaction_area: InteractionArea = $InteractionArea
 @onready var sprite = $AnimatedSprite2D
 
+signal custom_event(event_name: String)
+
 func _ready() -> void:
 	interaction_area.interact = Callable(self, "_on_interact")
 	interaction_area.cancel_interaction = Callable(self, "_on_cancel_interaction")
@@ -36,6 +38,7 @@ func _on_interact():
 					"This portal intrigues me, but it seems to lead nowhere.",
 					"Have you pondered where this portal might lead, if anywhere at all?"
 				]
+		4: dialog_lines = get_queen_dialog(player)
 		_:
 			pass
 		
@@ -44,7 +47,13 @@ func _on_interact():
 	sprite.flip_h = true if interaction_area.get_overlapping_bodies()[0].global_position.x < global_position.x else false
 	await DialogManager.dialog_finished
 
-	upgrade_player_ability(player)
+	if type == 4 and has_player_collected_enough_leves():
+		if not has_player_killed():
+			custom_event.emit("good_ending")
+		else:
+			custom_event.emit("bad_ending")
+	else:
+		upgrade_player_ability(player)
 
 	if player.has_something:
 		player.heal(3)
@@ -106,6 +115,37 @@ func get_witch_3_dialog(player: MainCharacter) -> Array[String]:
 		["Your journey has begun. What lies ahead is uncertain, but the path you've chosen will shape your destiny."],
 		["Your journey has begun. What lies ahead is uncertain, but the path you've chosen will shape your destiny."])
 
+func get_queen_dialog(player: MainCharacter) -> Array[String]:
+	var negative_outcome: Array[String] = [
+		"You have come a long way, young one.",
+		"Your journey has not been in vain.",
+		"Your actions have tainted your soul.",
+		"You must return to the human world, you can't become one of us.",
+		"I've opened a portal for you. Delay no longer."
+	]
+	
+	var choose_outcome: Array[String] = [
+		"A traveler has arrived.",
+		"Your presence is both unexpected and welcome.",
+		"Your heart is pure, and your spirit is strong.",
+		"You may ascend to the realm of butterflies, or return to your mortal form.",
+		"I've opened portals for you. It's time to choose."
+	]
+	
+	var incomplete_outcome: Array[String] = [
+		"An unexpected visitor has graced us with their presence.",
+		"We welcome you, but...",
+		"Your journey is not yet complete.",
+		"Return to the forest and gather more leaves (at least {0}) before making your final choice.".format([7])
+	]
+	
+	if not has_player_collected_enough_leves():
+		return incomplete_outcome
+	
+	if has_player_killed():
+		return negative_outcome
+	
+	return choose_outcome
 
 func choose_dialog(player: MainCharacter,initial: Array[String], quest_finished: Array[String], repeat: Array[String]) -> Array[String]:
 	var has_already_acquired_ability = ability_upgrade_name in player.abilities
@@ -115,6 +155,13 @@ func choose_dialog(player: MainCharacter,initial: Array[String], quest_finished:
 		return repeat
 	
 	return initial
+
+func has_player_killed() -> bool:
+	print(Game.get_singleton().kills)
+	return Game.get_singleton().kills > 0
+
+func has_player_collected_enough_leves() -> bool:
+	return Game.get_singleton().collectibles >= 7
 
 func upgrade_player_ability(player: MainCharacter) -> void:
 	var has_already_acquired_ability = ability_upgrade_name in player.abilities
