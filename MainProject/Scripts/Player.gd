@@ -30,7 +30,6 @@ var event: bool
 
 var is_dying: bool = false
 var is_ready: bool = false
-var variant: int = 0
 
 var has_something: bool = true
 
@@ -154,16 +153,16 @@ func apply_knokback(direction: Vector2, strength: float):
 	tween.tween_property(player_sprite, "modulate", Color.WHITE, 0.1)
 
 func evolve(v: int) -> void:
-	var variant = 1
-	if variant < v and v < 4:
-		variant = v
+	var evolution_variant = 1
+	if evolution_variant < v and v < 4:
+		evolution_variant = v
 	elif v > 3:
-		variant = 3
+		evolution_variant = 3
 	else:
 		print("Evolve variant: ", v, ", doesn't exist")
 	
-	player_sprite.texture = ResourceLoader.load("res://MainProject/Sprites/luna/luna_{0}.png".format([variant]))
-	dash.texture = ResourceLoader.load("res://MainProject/Sprites/luna/luna_walk_{0}.png".format([variant]))
+	player_sprite.texture = ResourceLoader.load("res://MainProject/Sprites/luna/luna_{0}.png".format([evolution_variant]))
+	dash.texture = ResourceLoader.load("res://MainProject/Sprites/luna/luna_walk_{0}.png".format([evolution_variant]))
 
 func _on_sfx_play_jump() -> void:
 	sfx_component.play_jump()
