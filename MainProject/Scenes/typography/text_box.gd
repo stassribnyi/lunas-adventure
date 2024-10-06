@@ -1,7 +1,14 @@
 extends MarginContainer
 
-@onready var label: Label = $MarginContainer/Label
+@export_subgroup("Settings")
+@export var sfx_component: SFXComponent
+
+@onready var label: Label = $MarginContainer/VBoxContainer/Text
+@onready var next: Label = $MarginContainer/VBoxContainer/Next
 @onready var timer: Timer = $LaterDisplayTimer
+
+func _ready() -> void:
+	next.text = "Next [{0}]".format([get_action_name_key("interact")])
 
 const MAX_WIDTH = 256
 
@@ -31,14 +38,17 @@ func display_text(text_to_display: String) -> void:
 	global_position.y -= (size.y + 128) * scale.y
 
 	label.text = ""
+	next.hide()
 	_display_letter()
 
 func _display_letter() -> void:
 	label.text += text[letter_index]
-	
+	sfx_component.play_letter_write()
+
 	letter_index += 1
 	if letter_index >= text.length():
 		finished_displaying.emit()
+		next.show()
 		return
 
 	match text[letter_index]:
@@ -52,3 +62,12 @@ func _display_letter() -> void:
 
 func _on_later_display_timer_timeout() -> void:
 	_display_letter()
+
+# TODO: reuse
+func get_action_name_key(action_name: String) -> String:
+	var action_event = InputMap.action_get_events(action_name)[0]
+	
+	if action_event == null:
+		return "No key assigned for: {0}".format([action_name])
+	
+	return action_event.as_text().replace(" (Physical)", "")

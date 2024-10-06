@@ -53,7 +53,6 @@ _data = {
 size = Vector2(800, 266)
 
 [node name="IChooseViolence" type="Node2D"]
-script = ExtResource("1_fq3t8")
 
 [node name="RoomInstance" parent="." instance=ExtResource("1_sje5v")]
 
@@ -103,10 +102,12 @@ modulate = Color(0.351565, 0.026263, 0.105401, 1)
 position = Vector2(640, 385)
 target_map = "forest/act_1/path_of_pain.tscn"
 
-[node name="InteractionArea" parent="." instance=ExtResource("7_q7rk3")]
+[node name="Spirits" type="Node2D" parent="."]
 position = Vector2(432, 285)
-action_name = "hear what spirits says"
+script = ExtResource("1_fq3t8")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea"]
+[node name="InteractionArea" parent="Spirits" instance=ExtResource("7_q7rk3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Spirits/InteractionArea"]
 position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_fkq17")

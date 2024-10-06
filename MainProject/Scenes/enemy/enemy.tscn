@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dy6uoohaa7meg"]
+[gd_scene load_steps=15 format=3 uid="uid://dy6uoohaa7meg"]
 
 [ext_resource type="Script" path="res://MainProject/Scenes/enemy/enemy.gd" id="1_lcq5a"]
 [ext_resource type="Texture2D" uid="uid://wv1uedkpr7vt" path="res://MainProject/Sprites/brackeys_platformer_assets/sprites/slime_green.png" id="1_xtpw8"]
 [ext_resource type="PackedScene" uid="uid://dflx0jxu0xvfv" path="res://MainProject/Scenes/killzone/killzone.tscn" id="2_3eu80"]
 [ext_resource type="Texture2D" uid="uid://ku1ihmmdppxo" path="res://MainProject/Sprites/mushroom/angry_mushroom.png" id="4_jmc7x"]
+[ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="5_2phqa"]
+[ext_resource type="AudioStream" uid="uid://bp3ailmehbmnd" path="res://MainProject/Resources/sounds/hurt.wav" id="6_yqn7o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kptk2"]
 atlas = ExtResource("1_xtpw8")
@@ -84,5 +86,8 @@ shape = SubResource("RectangleShape2D_u7e6d")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(19, -16)
 target_position = Vector2(0, 33)
+
+[node name="SfxComponent" parent="." instance=ExtResource("5_2phqa")]
+sfx_hurt = ExtResource("6_yqn7o")
 
 [connection signal="body_entered" from="Killzone" to="Killzone" method="_on_body_entered"]

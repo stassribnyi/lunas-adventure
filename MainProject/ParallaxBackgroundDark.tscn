@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://cbdsu0tb64qvv"]
+
+[ext_resource type="Texture2D" uid="uid://1veqdb8v5oc5" path="res://MainProject/Sprites/parallax_demon_woods_pack/layers/parallax-demon-woods-bg.png" id="1_18ut8"]
+[ext_resource type="Texture2D" uid="uid://cx1lsqjoesdgk" path="res://MainProject/Sprites/parallax_demon_woods_pack/layers/parallax-demon-woods-far-trees.png" id="2_u3y3u"]
+[ext_resource type="Texture2D" uid="uid://caquyk7ax0cfy" path="res://MainProject/Sprites/parallax_demon_woods_pack/layers/parallax-demon-woods-mid-trees.png" id="3_gm8xw"]
+[ext_resource type="Texture2D" uid="uid://qyndq13bbpbe" path="res://MainProject/Sprites/parallax_demon_woods_pack/layers/parallax-demon-woods-close-trees.png" id="4_f82il"]
+
+[node name="ParallaxBackgroundDark" type="ParallaxBackground"]
+
+[node name="BackgroundLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(480, 0)
+
+[node name="Background" type="Sprite2D" parent="BackgroundLayer"]
+modulate = Color(0, 0.739946, 0.663702, 1)
+position = Vector2(420, 240)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("1_18ut8")
+
+[node name="FarTreesLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1036, 0)
+
+[node name="FarTrees" type="Sprite2D" parent="FarTreesLayer"]
+position = Vector2(518, 240)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("2_u3y3u")
+
+[node name="MidTreesLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.75, 0.75)
+motion_mirroring = Vector2(1036, 0)
+
+[node name="MidTrees" type="Sprite2D" parent="MidTreesLayer"]
+position = Vector2(518, 240)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("3_gm8xw")
+
+[node name="CloseTreesLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.9, 0.9)
+motion_mirroring = Vector2(1036, 0)
+
+[node name="CloseTrees" type="Sprite2D" parent="CloseTreesLayer"]
+position = Vector2(518, 238)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("4_f82il")

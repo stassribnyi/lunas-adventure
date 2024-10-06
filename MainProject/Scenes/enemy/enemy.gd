@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @export_subgroup("Nodes")
 @export var floor_raycast: RayCast2D
+@export var sfx_component: SFXComponent
 
 @export_subgroup("Settings")
 @export var gravity: float = 1000
@@ -32,6 +33,7 @@ func flip_horizontal() -> void:
 
 func set_damage(damage: float, direction: Vector2) -> void:
 	hp -= damage
+	sfx_component.play_hurt()
 
 	if hp <= 0:
 		Game.get_singleton().kills += 1

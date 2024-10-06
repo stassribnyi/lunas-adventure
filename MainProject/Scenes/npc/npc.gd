@@ -23,6 +23,7 @@ func _ready() -> void:
 
 func _on_interact():
 	var player = Game.get_singleton().player
+	player.event = true
 	var dialog_lines: Array[String] = ["Sorry, I can't help you a this moment..."]
 
 	match type:
@@ -46,6 +47,7 @@ func _on_interact():
 	DialogManager.start_dialog(global_position, dialog_lines)
 	sprite.flip_h = true if interaction_area.get_overlapping_bodies()[0].global_position.x < global_position.x else false
 	await DialogManager.dialog_finished
+	player.event = false
 
 	if type == 4 and has_player_collected_enough_leves():
 		if not has_player_killed():
@@ -59,6 +61,8 @@ func _on_interact():
 		player.heal(3)
 
 func get_witch_1_dialog(player: MainCharacter) -> Array[String]:
+	var dash_key = get_action_name_key("dash")
+	
 	return choose_dialog(
 		player, 
 		[
@@ -72,16 +76,18 @@ func get_witch_1_dialog(player: MainCharacter) -> Array[String]:
 			"You have found the Queen's treasure, a gift she bestowed upon me ages past. Now, it is yours to claim.",
 			"The blessing of the butterflies is yours.",
 			"With this power, you can dash with incredible speed and agility.",
-			"Use \"Shift\" to activate this ability.",
+			"Use \"{0}\" to activate this ability.".format([dash_key]),
 			"You can practice with nearby tree...",
 			"Remember, though, to wield this power with respect and always cherish the beauty of the butterflies.",
 		],
 		[
 			"You know, this tree only accepts bearers of the butterly magic?",
-			"Remember, you can activate dash ability by pressing \"Shift\"."
+			"Remember, you can activate dash ability by pressing \"{0}\".".format([dash_key])
 		])
 
 func get_witch_2_dialog(player: MainCharacter) -> Array[String]:
+	var jump_key = get_action_name_key("jump")
+	
 	return choose_dialog(
 		player, 
 		[
@@ -97,14 +103,20 @@ func get_witch_2_dialog(player: MainCharacter) -> Array[String]:
 			"You have found the Queen's treasure, a gift she bestowed upon me ages past. Now, it is yours to claim.",
 			"The blessing of the butterflies is yours.",
 			"With this power, you can dash with incredible speed and agility.",
-			"Press \"Space\" once more when jumping to activate this ability.",
+			"Press \"{0}\" once more when jumping to activate this ability.".format([jump_key]),
 			"Remember, though, to wield this power with respect and always cherish the beauty of the butterflies.",
 		],
 		[
-			"Remember, you can duble jump by pressing \"Space\" midair."
+			"Remember, you can duble jump by pressing \"{0}\" midair.".format([jump_key])
 		])
 
 func get_witch_3_dialog(player: MainCharacter) -> Array[String]:
+	var attack_key = get_action_name_key("attack")
+	var atack_hint: Array[String] = [
+		"Your journey has begun. What lies ahead is uncertain, but the path you've chosen will shape your destiny.",
+		"In moments of despair, let your mana be your guiding light. Press the \"{0}\" button to unleash its power.".format([attack_key])
+	]
+
 	return choose_dialog(
 		player, 
 		[
@@ -112,8 +124,8 @@ func get_witch_3_dialog(player: MainCharacter) -> Array[String]:
 			"My sisters have turned their backs on me.",
 			"If you choose to continue, you'll understand the darkness that awaits."
 		],
-		["Your journey has begun. What lies ahead is uncertain, but the path you've chosen will shape your destiny."],
-		["Your journey has begun. What lies ahead is uncertain, but the path you've chosen will shape your destiny."])
+		atack_hint,
+		atack_hint)
 
 func get_queen_dialog(player: MainCharacter) -> Array[String]:
 	var negative_outcome: Array[String] = [
@@ -146,6 +158,14 @@ func get_queen_dialog(player: MainCharacter) -> Array[String]:
 		return negative_outcome
 	
 	return choose_outcome
+
+func get_action_name_key(action_name: String) -> String:
+	var action_event = InputMap.action_get_events(action_name)[0]
+	
+	if action_event == null:
+		return "No key assigned for: {0}".format([action_name])
+	
+	return action_event.as_text().replace(" (Physical)", "")
 
 func choose_dialog(player: MainCharacter,initial: Array[String], quest_finished: Array[String], repeat: Array[String]) -> Array[String]:
 	var has_already_acquired_ability = ability_upgrade_name in player.abilities

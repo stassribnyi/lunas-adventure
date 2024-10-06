@@ -9,6 +9,8 @@ class_name SFXComponent
 @export var sfx_teleport: AudioStream
 @export var sfx_evolve: AudioStream
 @export var sfx_collectible: AudioStream
+@export var sfx_tap: AudioStream
+@export var sfx_magic_atack: AudioStream
 
 @export_subgroup("Nodes")
 @export var sfx_player: AudioStreamPlayer2D
@@ -33,6 +35,12 @@ func play_evolve() -> void:
 
 func play_collectible() -> void:
 	play(sfx_collectible)
+
+func play_letter_write() -> void:
+	play(sfx_tap)
+
+func play_magic_atack() -> void:
+	play(sfx_magic_atack)
 
 func play(sfx: AudioStream) -> void:
 	load_sfx(sfx)

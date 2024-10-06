@@ -76,6 +76,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func _shot() -> void:
+	sfx_component.play_magic_atack()
 	gun_component.shoot()
 	animation_component.is_shooting = false
 
