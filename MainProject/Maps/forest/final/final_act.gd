@@ -14,12 +14,18 @@ func _process(delta: float) -> void:
 func _on_queen_custom_event(event_name: String) -> void:
 	match event_name:
 		"good_ending":
-			$FullMetamorphosis.show()
-			$StayHuman.show()
-			$FullMetamorphosis/Portal.enabled = true
-			$StayHuman/Portal.enabled = true
+			$FullMetamorphosisLabel.show()
+			$FullMetamorphosisPortal.show()
+			$FullMetamorphosisPortal.enabled = true
+
+			$StayHumanLabel.show()
+			$StayHumanPortal.show()
+			$StayHumanPortal.enabled = true
 		"bad_ending":
-			$FullMetamorphosis.hide()
-			$StayHuman.show()
-			$FullMetamorphosis/Portal.enabled = false
-			$StayHuman/Portal.enabled = true
+			$FullMetamorphosisLabel.hide()
+			$FullMetamorphosisPortal.hide()
+			$FullMetamorphosisPortal.enabled = false	
+
+			$StayHumanLabel.show()
+			$StayHumanPortal.show()
+			$StayHumanPortal.enabled = true

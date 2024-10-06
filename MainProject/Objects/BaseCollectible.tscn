@@ -35,7 +35,7 @@ func float_down() -> void:
 
 func collect(body: Node2D) -> void:
 	# Check if player collided.
-	if not is_collected and not body.is_in_group(&\"player\"):
+	if is_collected or not body.is_in_group(&\"player\"):
 		return
 
 	var player: MainCharacter = body
