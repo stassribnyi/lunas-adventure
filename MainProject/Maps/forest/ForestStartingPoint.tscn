@@ -121,6 +121,23 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("11_va7sd")
 
+[node name="MapTutorial" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1292.0
+offset_top = 65.0
+offset_right = 1746.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_72u1t")
+text = "Press M to see the map"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="InteractionsTutorial" type="Label" parent="."]
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,6 +1,6 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://wondgm8kr03d"]
 
-[ext_resource type="Texture2D" uid="uid://u3h7efr7bfkv" path="res://addons/MetroidvaniaSystem/Themes/Exquisite/PlayerLocation.png" id="1_8k1h2"]
+[ext_resource type="Texture2D" uid="uid://dpl7jmwu3ygrn" path="res://addons/MetroidvaniaSystem/Themes/Exquisite/PlayerLocation-yellow-blue.png" id="1_72og8"]
 
 [sub_resource type="Animation" id="Animation_ff42g"]
 length = 0.001
@@ -41,13 +41,12 @@ _data = {
 
 [node name="PlayerLocation" type="Sprite2D"]
 texture_filter = 1
-texture = ExtResource("1_8k1h2")
+texture = ExtResource("1_72og8")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-autoplay = "Spin"
-playback_speed = 0.5
 libraries = {
 "": SubResource("AnimationLibrary_dyruj")
 }
+autoplay = "Spin"
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]

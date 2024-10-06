@@ -46,7 +46,7 @@ func load_audio_settings():
 		config.get_value("Audio", str(1)),
 		config.get_value("Audio", str(2))
 	]
-	print(audio_values)
+
 	for i in range(audio_values.size()):
 		AudioServer.set_bus_volume_db(i, linear_to_db(audio_values[i]))
 
