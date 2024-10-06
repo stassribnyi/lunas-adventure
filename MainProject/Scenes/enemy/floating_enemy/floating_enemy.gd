@@ -7,6 +7,7 @@ var start_position
 
 @export_subgroup("Nodes")
 @export var sprite: AnimatedSprite2D
+@export var sfx_component: SFXComponent
 
 @export_subgroup("Settings")
 @export var horizontal_motion: bool = true
@@ -56,6 +57,7 @@ func flip_horizontal() -> void:
 
 func set_damage(damage: float, dir: Vector2) -> void:
 	hp -= damage
+	sfx_component.play_hurt()
 
 	if hp <= 0:
 		Game.get_singleton().kills += 1

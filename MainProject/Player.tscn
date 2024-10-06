@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dp5cktlbc64rs" path="res://MainProject/Scenes/components/animation_component.tscn" id="9_4ldsl"]
 [ext_resource type="PackedScene" uid="uid://xc86al6q11fq" path="res://MainProject/Scenes/gun/gun.tscn" id="9_g3uks"]
 [ext_resource type="AudioStream" uid="uid://bu42h0nt04xn2" path="res://MainProject/Resources/sounds/bonus-143026.mp3" id="9_hmfxv"]
-[ext_resource type="AudioStream" uid="uid://dq8qcm21m4ybj" path="res://MainProject/Resources/sounds/magic_atack.wav" id="10_og50w"]
+[ext_resource type="AudioStream" uid="uid://bvj1qxh1sglar" path="res://MainProject/Resources/sounds/magic_attack.wav" id="10_srwde"]
 [ext_resource type="PackedScene" uid="uid://gcv8s6hekgpd" path="res://MainProject/Scenes/components/advanced_jump_component.tscn" id="10_vweaq"]
 
 [sub_resource type="Shader" id="Shader_qnn18"]
@@ -505,7 +505,7 @@ sfx_death = ExtResource("6_okvvc")
 sfx_teleport = ExtResource("7_bitxm")
 sfx_evolve = ExtResource("8_cag1q")
 sfx_collectible = ExtResource("9_hmfxv")
-sfx_magic_atack = ExtResource("10_og50w")
+sfx_magic_atack = ExtResource("10_srwde")
 
 [node name="DashParticles" type="GPUParticles2D" parent="."]
 material = SubResource("ShaderMaterial_qhmky")

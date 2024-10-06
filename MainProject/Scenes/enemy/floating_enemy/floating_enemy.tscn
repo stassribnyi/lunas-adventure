@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://clrso27kaqlnk"]
+[gd_scene load_steps=4 format=3 uid="uid://clrso27kaqlnk"]
 
 [ext_resource type="Script" path="res://MainProject/Scenes/enemy/floating_enemy/floating_enemy.gd" id="1_jmrsl"]
+[ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="2_wv3ci"]
+[ext_resource type="AudioStream" uid="uid://bp3ailmehbmnd" path="res://MainProject/Resources/sounds/hurt.wav" id="3_5crxv"]
 
-[node name="FloatingEnemy" type="CharacterBody2D" groups=["enemies"]]
+[node name="FloatingEnemy" type="CharacterBody2D" node_paths=PackedStringArray("sfx_component") groups=["enemies"]]
 script = ExtResource("1_jmrsl")
+sfx_component = NodePath("SfxComponent")
+hp = 80.0
+
+[node name="SfxComponent" parent="." instance=ExtResource("2_wv3ci")]
+sfx_hurt = ExtResource("3_5crxv")

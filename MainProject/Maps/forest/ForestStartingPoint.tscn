@@ -134,7 +134,7 @@ offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_72u1t")
-text = "Press M to see the map"
+text = "Press M to open the map"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -182,7 +182,7 @@ autowrap_mode = 2
 position = Vector2(1595, 182)
 
 [node name="Wasp_2" parent="." instance=ExtResource("12_q6565")]
-position = Vector2(1783, 281)
+position = Vector2(1783, 266)
 
 [node name="InventoryRing" parent="." node_paths=PackedStringArray("sprite") instance=ExtResource("15_63cu1")]
 position = Vector2(1675, 129)

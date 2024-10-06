@@ -81,7 +81,8 @@ func get_witch_1_dialog(player: MainCharacter) -> Array[String]:
 			"Remember, though, to wield this power with respect and always cherish the beauty of the butterflies.",
 		],
 		[
-			"You know, this tree only accepts bearers of the butterly magic?",
+			"You know, this tree only accepts bearers of the butterfly magic?",
+			"I bet you should be capable of moving through!",
 			"Remember, you can activate dash ability by pressing \"{0}\".".format([dash_key])
 		])
 
