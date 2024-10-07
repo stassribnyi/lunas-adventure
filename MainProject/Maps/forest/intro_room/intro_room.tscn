@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bfc773h2vqrav"]
+[gd_scene load_steps=20 format=4 uid="uid://bfc773h2vqrav"]
 
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_dx7k1"]
 [ext_resource type="PackedScene" uid="uid://b3pt520dfotjv" path="res://MainProject/ParallaxBackground.tscn" id="1_wg7kl"]
@@ -6,6 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="2_0krtf"]
 [ext_resource type="PackedScene" uid="uid://cwrf84g5mlucd" path="res://MainProject/Objects/Portal.tscn" id="3_1kowj"]
 [ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="6_e4waf"]
+[ext_resource type="Script" path="res://MainProject/Maps/forest/intro_room/label_tapping.gd" id="7_nq7vv"]
+[ext_resource type="Texture2D" uid="uid://dle2ctvr36qsx" path="res://MainProject/Sprites/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="7_tekfw"]
+[ext_resource type="Texture2D" uid="uid://dhjwi15r1a07x" path="res://MainProject/Sprites/backgrounds/background-final.png" id="8_g34v2"]
+[ext_resource type="Texture2D" uid="uid://1veqdb8v5oc5" path="res://MainProject/Sprites/parallax_demon_woods_pack/layers/parallax-demon-woods-bg.png" id="9_67pnu"]
+[ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="10_v3i3i"]
+[ext_resource type="AudioStream" uid="uid://k05binl743k3" path="res://MainProject/Resources/sounds/letter_tap.wav" id="11_b0a20"]
 
 [sub_resource type="Animation" id="Animation_p5hrf"]
 length = 0.001
@@ -33,10 +39,83 @@ tracks/1/keys = {
 "update": 1,
 "values": [-1]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Slide_1:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Slide_1:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Slide_2:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Slide_2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Slide_3:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Slide_3:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_8ry8c"]
 resource_name = "intro_start"
 length = 3.0
+capture_included = true
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -60,8 +139,8 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.43333, 3),
 "transitions": PackedFloat32Array(3.99999, 6.27667, 6.06286),
-"update": 0,
-"values": [0, 1, 100]
+"update": 2,
+"values": [0, 1, 23]
 }
 
 [sub_resource type="Animation" id="Animation_vs1hl"]
@@ -103,43 +182,133 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_5yffq"]
 resource_name = "move_to_the_slope"
 length = 6.0
-tracks/0/type = "method"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("I am Lost:visible_characters")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333),
+"times": PackedFloat32Array(0.966667, 3.2),
+"transitions": PackedFloat32Array(0.183011, 6.49802),
+"update": 0,
+"values": [23, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("What is that?:visible_characters")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.2, 4.63333),
+"transitions": PackedFloat32Array(1, 2, 6.06286),
+"update": 0,
+"values": [0, 1, 44]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [Vector2(588, 400)],
 "method": &"move_player_to"
 }]
 }
+
+[sub_resource type="Animation" id="Animation_jgt7n"]
+resource_name = "slideshow"
+length = 12.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Slide_1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 4.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("I am Lost:visible_characters")
+tracks/1/path = NodePath("Slide_1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.966667, 3.2),
-"transitions": PackedFloat32Array(0.183011, 6.49802),
+"times": PackedFloat32Array(0, 3.03333, 4.06667),
+"transitions": PackedFloat32Array(0.21, 1, 1),
 "update": 0,
-"values": [100, 0]
+"values": [Color(0.0674378, 0.0674378, 0.0674377, 1), Color(1, 1, 1, 1), Color(0.0674377, 0.0674377, 0.0674377, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("What is that?:visible_characters")
+tracks/2/path = NodePath("Slide_2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.2, 4.63333),
-"transitions": PackedFloat32Array(1, 2, 0.482968),
+"times": PackedFloat32Array(4.06667, 8.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Slide_2:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(4.06667, 7.16667, 8.1),
+"transitions": PackedFloat32Array(0.21, 1, 1),
 "update": 0,
-"values": [0, 1, 100]
+"values": [Color(0.0666667, 0.0666667, 0.0666667, 1), Color(1, 1, 1, 1), Color(0.0666667, 0.0666667, 0.0666667, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Slide_3:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8.1, 11.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Slide_3:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(8.1, 11.0667, 11.9),
+"transitions": PackedFloat32Array(0.21, 1, 1),
+"update": 0,
+"values": [Color(0.0666667, 0.0666667, 0.0666667, 1), Color(1, 1, 1, 1), Color(0.0666667, 0.0666667, 0.0666667, 1)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(11.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"on_slideshow_end"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_te8vq"]
@@ -148,7 +317,8 @@ _data = {
 "intro_start": SubResource("Animation_8ry8c"),
 "move_to_the_bridge": SubResource("Animation_vs1hl"),
 "move_to_the_portal": SubResource("Animation_dqho6"),
-"move_to_the_slope": SubResource("Animation_5yffq")
+"move_to_the_slope": SubResource("Animation_5yffq"),
+"slideshow": SubResource("Animation_jgt7n")
 }
 
 [node name="Map" type="Node2D" node_paths=PackedStringArray("animation_player")]
@@ -211,7 +381,7 @@ position = Vector2(588, 400)
 [node name="IntroStartPosition_4" type="Node2D" parent="."]
 position = Vector2(761, 313)
 
-[node name="I am Lost" type="Label" parent="."]
+[node name="I am Lost" type="Label" parent="." node_paths=PackedStringArray("sfx_component")]
 offset_left = 90.0
 offset_top = 239.0
 offset_right = 410.0
@@ -220,8 +390,10 @@ theme_override_fonts/font = ExtResource("6_e4waf")
 text = "Looks like I am lost..."
 visible_characters = 1
 visible_ratio = 0.0434783
+script = ExtResource("7_nq7vv")
+sfx_component = NodePath("../SfxComponent")
 
-[node name="What is that?" type="Label" parent="."]
+[node name="What is that?" type="Label" parent="." node_paths=PackedStringArray("sfx_component")]
 offset_left = 430.0
 offset_top = 121.0
 offset_right = 725.0
@@ -230,3 +402,25 @@ theme_override_fonts/font = ExtResource("6_e4waf")
 text = "What is that shiny thing up there?"
 autowrap_mode = 2
 visible_ratio = -0.0294118
+script = ExtResource("7_nq7vv")
+sfx_component = NodePath("../SfxComponent")
+
+[node name="Slide_1" type="Sprite2D" parent="."]
+position = Vector2(427, 242)
+scale = Vector2(1.82, 1.82)
+texture = ExtResource("7_tekfw")
+
+[node name="Slide_2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(437, 238)
+scale = Vector2(2, 2)
+texture = ExtResource("8_g34v2")
+
+[node name="Slide_3" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(441, 243)
+scale = Vector2(2, 2)
+texture = ExtResource("9_67pnu")
+
+[node name="SfxComponent" parent="." instance=ExtResource("10_v3i3i")]
+sfx_tap = ExtResource("11_b0a20")

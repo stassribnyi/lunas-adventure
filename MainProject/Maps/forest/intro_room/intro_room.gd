@@ -15,8 +15,9 @@ var track_duration: Array[float] = [2, 4, 1]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	player = Game.get_singleton().player
+	player.event = true
 	player.position = $PlayerSpawnPosition.position
-	animation_player.play(track[trackIndex])
+	animation_player.play("slideshow")
 
 func _process(delta: float) -> void:
 	if is_walking:
@@ -40,3 +41,6 @@ func on_stop_walking() -> void:
 	if trackIndex < track.size():
 		await get_tree().create_timer(track_delay[trackIndex]).timeout
 		animation_player.play(track[trackIndex])
+
+func on_slideshow_end() -> void:
+	animation_player.play(track[trackIndex])
