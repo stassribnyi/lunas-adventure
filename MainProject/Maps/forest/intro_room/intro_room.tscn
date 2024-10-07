@@ -414,8 +414,8 @@ texture = ExtResource("8_fuj7x")
 [node name="Slide_2" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 2
-position = Vector2(440, 120)
-scale = Vector2(0.5, 0.5)
+position = Vector2(432, 243)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("9_48e38")
 flip_h = true
 
