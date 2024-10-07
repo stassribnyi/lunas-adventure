@@ -3,7 +3,11 @@ extends Node2D
 @onready var player: Node2D = get_tree().get_first_node_in_group("player")
 @onready var label: Label = $Label
 
-const base_text = "[E] to "
+var base_text = "[E] to "
+
+func _ready() -> void:
+	var interact = InputMap.action_get_events("interact")[0].as_text()
+	base_text = "[{0}] to ".format([interact.replace(" (Physical)", "")])
 
 var active_areas = []
 var can_interact = true

@@ -73,5 +73,5 @@ func set_damage(damage: float, dir: Vector2) -> void:
 func apply_knokback(dir: Vector2, strength: float):
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(self, "position:x", position.x + strength * dir.x, 0.25).from(position.x).set_trans(Tween.TRANS_QUAD)
-	tween.tween_property($AnimatedSprite2D, "modulate:v", 1, 0.25).from(15)
+	tween.tween_property(self, "position:x", position.x + abs(strength) * dir.x, 0.25).from(position.x).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(sprite, "modulate:v", 1, 0.25).from(15)

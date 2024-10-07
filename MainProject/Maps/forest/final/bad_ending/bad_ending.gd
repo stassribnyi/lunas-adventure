@@ -64,6 +64,8 @@ var credits = [
 	]
 ]
 
+func _ready() -> void:
+	Game.get_singleton().is_cutscene_running = true
 
 func _process(delta):
 	var scroll_speed = base_speed * delta
@@ -101,6 +103,7 @@ func _process(delta):
 func finish():
 	if not finished:
 		finished = true
+		Game.get_singleton().is_cutscene_running = false
 		# This is called when the credits finish and returns to the main menu
 		get_tree().change_scene_to_packed(load_scene)
 

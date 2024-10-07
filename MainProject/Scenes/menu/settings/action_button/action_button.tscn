@@ -9,6 +9,5 @@ theme_override_colors/font_hover_color = Color(0.439216, 0.619608, 1, 1)
 theme_override_colors/font_pressed_color = Color(0.898039, 0.85098, 0.45098, 1)
 theme_override_fonts/font = ExtResource("1_kivh6")
 script = ExtResource("1_s8h1b")
-action = null
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

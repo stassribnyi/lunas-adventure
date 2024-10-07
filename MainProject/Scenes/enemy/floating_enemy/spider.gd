@@ -8,9 +8,6 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$FloatingEnemy.horizontal_motion = false
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
 	$FloatingEnemy.hp = hp
 	$FloatingEnemy.patrol_distance = patrol_distance
 	$FloatingEnemy.time_to_change = time_to_change

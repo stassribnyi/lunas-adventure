@@ -12,4 +12,4 @@ func _process(delta: float) -> void:
 func update_mappings() -> void:
 	interact = InputMap.action_get_events("interact")[0].as_text()
 	
-	text = "Use {0} to Talk and to see next sentence.".format([interact.replace(" (Physical)", "")])
+	text = "Use {0} to Talk and to see next sentence".format([interact.replace(" (Physical)", "")])

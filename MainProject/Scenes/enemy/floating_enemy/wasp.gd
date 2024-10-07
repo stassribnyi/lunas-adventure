@@ -10,7 +10,3 @@ func _ready() -> void:
 	$FloatingEnemy.horizontal_motion = horizontal_motion
 	$FloatingEnemy.hp = hp
 	$FloatingEnemy.patrol_distance = patrol_distance
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
