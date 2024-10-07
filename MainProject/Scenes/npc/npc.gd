@@ -62,6 +62,8 @@ func _on_interact():
 
 func get_witch_1_dialog(player: MainCharacter) -> Array[String]:
 	var dash_key = get_action_name_key("dash")
+	var move_left = get_action_name_key("move_left")
+	var move_right = get_action_name_key("move_right")
 	
 	return choose_dialog(
 		player, 
@@ -69,21 +71,21 @@ func get_witch_1_dialog(player: MainCharacter) -> Array[String]:
 			"Hello, young one.",
 			"Lost?... Well, perhaps this is fate.",
 			"A small, golden ring has been misplaced.",
-			"If you can find it, I'll reveal a secret that will aid you in your journey through this perilous place.",
+			"If you can find it, I'll share a part of my butterfly magic with you, to aid you on your journey through this perilous place.",
 			"Remember, dear one, that our magic can heal. Should you require our aid, seek us out, and we shall tend to your wounds."
 		],
 		[
-			"You have found the Queen's treasure, a gift she bestowed upon me ages past. Now, it is yours to claim.",
-			"The blessing of the butterflies is yours.",
-			"With this power, you can dash with incredible speed and agility.",
-			"Use \"{0}\" to activate this ability.".format([dash_key]),
+			"You have found the Queen's treasure, a gift she entrusted to me long ago.",
+			"I thank you for its return.",
+			"As a token of my gratitude, I share a fragment of the butterflies' essence with you.",
+			"With this power, you shall move with the swiftness and grace of a wind-borne leaf.",
+			"Use \"{0}\" + \"{1}\" or \"{2}\" to activate this ability.".format([dash_key, move_left, move_right]),
 			"You can practice with nearby tree...",
-			"Remember, though, to wield this power with respect and always cherish the beauty of the butterflies.",
 		],
 		[
 			"You know, this tree only accepts bearers of the butterfly magic?",
 			"I bet you should be capable of moving through!",
-			"Remember, you can activate dash ability by pressing \"{0}\".".format([dash_key])
+			"Try activating dash ability by pressing \"{0}\" + \"{1}\" or \"{2}\".".format([dash_key, move_left, move_right])
 		])
 
 func get_witch_2_dialog(player: MainCharacter) -> Array[String]:
@@ -92,20 +94,21 @@ func get_witch_2_dialog(player: MainCharacter) -> Array[String]:
 	return choose_dialog(
 		player, 
 		[
-			"Hello, young adventurer.",
-			"My sister told me about your help finding the missing ring",
-			"I could use your assistance once more.",
-			"I accidentally dropped my necklace into the lake.",
-			"I believe it might have washed downstream, somewhere deeper in the cave.",
-			"If you can retrieve it, I'll share a secret that will aid you on your journey.",
-			"Remember, our magic can heal. Seek us out if you need help."
+			"Greetings, young adventurer.",
+			"My sister spoke of your aid in finding the missing ring.",
+			"I could use your help once again.",
+			"I accidentally lost my necklace in the lake.",
+			"I believe it may have been carried downstream, deeper into the cave.",
+			"If you can recover it, I'll share a portion of the butterfly essence with you to aid your journey.",
+			"Remember, our magic can heal. Seek us out if you require assistance.",
 		],
 		[
-			"You have found the Queen's treasure, a gift she bestowed upon me ages past. Now, it is yours to claim.",
-			"The blessing of the butterflies is yours.",
-			"With this power, you can dash with incredible speed and agility.",
-			"Press \"{0}\" once more when jumping to activate this ability.".format([jump_key]),
-			"Remember, though, to wield this power with respect and always cherish the beauty of the butterflies.",
+			"The necklace, a token of lost times, returned.",
+			"A gift from my lost sister, a memory of joy.",
+			"But within its depths, a power sleeps, a blessing from the winged ones... I grant you part of this essence!",
+			"Soar higher, twice as high, with the butterflies' grace.",
+			"Press \"{0}\" again while jumping and let the magic rise.".format([jump_key]),
+			"Yet, remember, this power is a sacred trust. Use it wisely, honor the beauty of the winged ones.",
 		],
 		[
 			"Remember, you can duble jump by pressing \"{0}\" midair.".format([jump_key])
@@ -166,7 +169,7 @@ func get_action_name_key(action_name: String) -> String:
 	if action_event == null:
 		return "No key assigned for: {0}".format([action_name])
 	
-	return action_event.as_text().replace(" (Physical)", "")
+	return action_event.as_text().replace(" (Physical)", "").replace("Left", "<").replace("Right", ">")
 
 func choose_dialog(player: MainCharacter,initial: Array[String], quest_finished: Array[String], repeat: Array[String]) -> Array[String]:
 	var has_already_acquired_ability = ability_upgrade_name in player.abilities
