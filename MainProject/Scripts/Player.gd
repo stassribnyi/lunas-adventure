@@ -125,6 +125,7 @@ func _reset():
 	# Player dies, reset the position to the entrance.
 	change_hp(DEFAULT_LIVES_AMOUNT)
 	print("Player:_reset() -> actual reset position: {0}, current position: {1}".format([reset_position, position]))
+	velocity = Vector2.ZERO
 	position = reset_position
 	Game.get_singleton().load_room(MetSys.get_current_room_name())
 

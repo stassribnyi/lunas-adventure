@@ -27,6 +27,7 @@ var generated_rooms: Array[Vector3i]
 var events: Array[String]
 # For Custom Runner integration.
 var custom_run: bool
+var is_cutscene_running: bool
 
 func _ready() -> void:
 	# A trick for static object reference (before static vars were a thing).
@@ -84,6 +85,11 @@ func _process(delta: float) -> void:
 	var viewport = get_viewport()
 	var center := viewport.get_camera_2d().get_screen_center_position()
 	vignette_overlay.position = center
+	
+	if is_cutscene_running:
+		$UI.hide()
+	else:
+		$UI.show()
 
 # Returns this node from anywhere.
 static func get_singleton() -> Game:
