@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://cwrf84g5mlucd" path="res://MainProject/Objects/Portal.tscn" id="3_1kowj"]
 [ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="6_e4waf"]
 [ext_resource type="Script" path="res://MainProject/Maps/forest/intro_room/label_tapping.gd" id="7_nq7vv"]
-[ext_resource type="Texture2D" uid="uid://dle2ctvr36qsx" path="res://MainProject/Sprites/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="7_tekfw"]
-[ext_resource type="Texture2D" uid="uid://dhjwi15r1a07x" path="res://MainProject/Sprites/backgrounds/background-final.png" id="8_g34v2"]
-[ext_resource type="Texture2D" uid="uid://1veqdb8v5oc5" path="res://MainProject/Sprites/parallax_demon_woods_pack/layers/parallax-demon-woods-bg.png" id="9_67pnu"]
+[ext_resource type="Texture2D" uid="uid://cfw5pmx4p21y7" path="res://MainProject/Sprites/backgrounds/screens/slide_1.png" id="8_fuj7x"]
+[ext_resource type="Texture2D" uid="uid://d1rskqksogqxi" path="res://MainProject/Sprites/backgrounds/screens/slide_2.png" id="9_48e38"]
+[ext_resource type="Texture2D" uid="uid://lnuk5v1tbock" path="res://MainProject/Sprites/backgrounds/screens/slide_3.png" id="10_3opfd"]
 [ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="10_v3i3i"]
 [ext_resource type="AudioStream" uid="uid://k05binl743k3" path="res://MainProject/Resources/sounds/letter_tap.wav" id="11_b0a20"]
 
@@ -406,21 +406,25 @@ script = ExtResource("7_nq7vv")
 sfx_component = NodePath("../SfxComponent")
 
 [node name="Slide_1" type="Sprite2D" parent="."]
-position = Vector2(427, 242)
-scale = Vector2(1.82, 1.82)
-texture = ExtResource("7_tekfw")
+texture_filter = 2
+position = Vector2(432, 232)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_fuj7x")
 
 [node name="Slide_2" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(437, 238)
-scale = Vector2(2, 2)
-texture = ExtResource("8_g34v2")
+texture_filter = 2
+position = Vector2(440, 120)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("9_48e38")
+flip_h = true
 
 [node name="Slide_3" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(441, 243)
-scale = Vector2(2, 2)
-texture = ExtResource("9_67pnu")
+texture_filter = 2
+position = Vector2(436, 200)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_3opfd")
 
 [node name="SfxComponent" parent="." instance=ExtResource("10_v3i3i")]
 sfx_tap = ExtResource("11_b0a20")

@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://MainProject/Scenes/menu/menu.gd" id="1_og17y"]
 [ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="1_tp6iq"]
 [ext_resource type="PackedScene" uid="uid://c3xqaietfgs7l" path="res://MainProject/Game.tscn" id="2_2qwqh"]
-[ext_resource type="Texture2D" uid="uid://c172642neyln7" path="res://MainProject/Sprites/backgrounds/prototype-1.jpg" id="3_hfs3u"]
 [ext_resource type="VideoStream" path="res://MainProject/Resources/209775_small.ogv" id="3_ylyuh"]
+[ext_resource type="Texture2D" uid="uid://bc8aajbean33x" path="res://MainProject/Sprites/backgrounds/screens/menu.png" id="4_uqvc4"]
 [ext_resource type="Shader" path="res://MainProject/vignette.gdshader" id="5_d6jlp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_in4ny"]
@@ -53,7 +53,8 @@ offset_bottom = 404.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.947, 0.947)
-texture = ExtResource("3_hfs3u")
+texture = ExtResource("4_uqvc4")
+expand_mode = 3
 
 [node name="Vignette" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_in4ny")
@@ -117,10 +118,10 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -574.0
-offset_top = 68.0
-offset_right = -70.0
-offset_bottom = 108.0
+offset_left = -542.0
+offset_top = 60.0
+offset_right = -38.0
+offset_bottom = 100.0
 grow_horizontal = 0
 
 [node name="Label" type="Label" parent="Logo"]

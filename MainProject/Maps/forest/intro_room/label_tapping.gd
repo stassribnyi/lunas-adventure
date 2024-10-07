@@ -11,6 +11,5 @@ var previous_value: Variant
 func _set(property: StringName, value: Variant) -> bool:
 	if property == "visible_characters" and self[property] < value and previous_value != value:
 		previous_value = value
-		print(value)
 		sfx_component.play_letter_write()
 	return false
