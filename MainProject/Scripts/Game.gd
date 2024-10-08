@@ -10,6 +10,7 @@ const SAVE_PATH = "user://example_save_data.sav"
 
 @onready var pause_menu: Control = $UI/PauseMenu
 @onready var vignette_overlay: Sprite2D = $Vignette
+@onready var ambient_sound: AudioStreamPlayer2D = $Player/Ambient
 
 # Number of collected collectibles. Setting it also updates the counter.
 var collectibles: int:
@@ -118,3 +119,9 @@ func init_room():
 		player.on_enter(reset_position)
 	else:
 		player.on_enter()
+
+func toggle_ambient(enable = true) -> void:
+	if not ambient_sound.playing or enable:
+		ambient_sound.play()
+	else:
+		ambient_sound.stop()

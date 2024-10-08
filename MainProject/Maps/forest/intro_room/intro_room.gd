@@ -15,6 +15,7 @@ var track_duration: Array[float] = [2, 4, 1]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Game.get_singleton().is_cutscene_running = true
+	Game.get_singleton().toggle_ambient(false)
 	player = Game.get_singleton().player
 	player.event = true
 	player.position = $PlayerSpawnPosition.position
@@ -43,6 +44,7 @@ func on_stop_walking() -> void:
 		animation_player.play(track[trackIndex])
 
 func on_slideshow_end() -> void:
+	Game.get_singleton().toggle_ambient(true)
 	animation_player.play(track[trackIndex])
 
 func _notification(what):

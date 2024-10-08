@@ -1,44 +1,43 @@
-[gd_scene load_steps=5 format=3 uid="uid://qkqg8joap3lh"]
+[gd_scene load_steps=5 format=3 uid="uid://b838u5udltnyc"]
 
-[ext_resource type="Texture2D" uid="uid://c5vhk2ay0jf66" path="res://MainProject/Sprites/backgrounds/dark forest/DarkForest_Background.png" id="1_21idh"]
-[ext_resource type="Texture2D" uid="uid://byppl4ie74psc" path="res://MainProject/Sprites/backgrounds/dark forest/DarkForest_Middleground.png" id="2_hs2sd"]
-[ext_resource type="Texture2D" uid="uid://08a2y0mxe848" path="res://MainProject/Sprites/backgrounds/dark forest/DarkForest_Shadow.png" id="3_we778"]
-[ext_resource type="Texture2D" uid="uid://cswtyf1rnk1yb" path="res://MainProject/Sprites/backgrounds/dark forest/DarkForest_Foreground.png" id="4_mx4r1"]
+[ext_resource type="Texture2D" uid="uid://1veqdb8v5oc5" path="res://MainProject/Sprites/parallax_demon_woods_pack/layers/parallax-demon-woods-bg.png" id="1_hxsxk"]
+[ext_resource type="Texture2D" uid="uid://cnrjxwxhtus8m" path="res://MainProject/Sprites/parallax_demon_woods_pack/dark/far_trees.png" id="2_y2cof"]
+[ext_resource type="Texture2D" uid="uid://dwcks0xmulwpw" path="res://MainProject/Sprites/parallax_demon_woods_pack/dark/shadows.png" id="3_cs0vq"]
+[ext_resource type="Texture2D" uid="uid://b1po2ikvnxv6d" path="res://MainProject/Sprites/parallax_demon_woods_pack/dark/close_trees.png" id="4_qhpaf"]
 
 [node name="ParallaxBackgroundLight" type="ParallaxBackground"]
 
 [node name="BackgroundLayer" type="ParallaxLayer" parent="."]
-motion_mirroring = Vector2(880, 0)
+motion_mirroring = Vector2(480, 0)
 
 [node name="Background" type="Sprite2D" parent="BackgroundLayer"]
 position = Vector2(420, 240)
-scale = Vector2(2.75, 2.75)
-texture = ExtResource("1_21idh")
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("1_hxsxk")
 
 [node name="MidTreesLayer" type="ParallaxLayer" parent="."]
-visible = false
-motion_scale = Vector2(0.75, 0.75)
-motion_mirroring = Vector2(880, 0)
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1036, 0)
 
 [node name="MidTrees" type="Sprite2D" parent="MidTreesLayer"]
 position = Vector2(518, 240)
-scale = Vector2(2.75, 2.75)
-texture = ExtResource("2_hs2sd")
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("2_y2cof")
 
 [node name="FarTreesLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.5, 0.5)
-motion_mirroring = Vector2(880, 0)
+motion_mirroring = Vector2(1036, 0)
 
 [node name="FarTrees" type="Sprite2D" parent="FarTreesLayer"]
 position = Vector2(518, 240)
-scale = Vector2(2.75, 2.75)
-texture = ExtResource("3_we778")
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("3_cs0vq")
 
 [node name="CloseTreesLayer" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.9, 0.9)
-motion_mirroring = Vector2(880, 0)
+motion_mirroring = Vector2(1036, 0)
 
 [node name="CloseTrees" type="Sprite2D" parent="CloseTreesLayer"]
 position = Vector2(518, 238)
-scale = Vector2(2.75, 2.75)
-texture = ExtResource("4_mx4r1")
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("4_qhpaf")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://bfc773h2vqrav"]
+[gd_scene load_steps=21 format=4 uid="uid://bfc773h2vqrav"]
 
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="1_dx7k1"]
 [ext_resource type="PackedScene" uid="uid://b3pt520dfotjv" path="res://MainProject/ParallaxBackground.tscn" id="1_wg7kl"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://lnuk5v1tbock" path="res://MainProject/Sprites/backgrounds/screens/slide_3.png" id="10_3opfd"]
 [ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="10_v3i3i"]
 [ext_resource type="AudioStream" uid="uid://k05binl743k3" path="res://MainProject/Resources/sounds/letter_tap.wav" id="11_b0a20"]
+[ext_resource type="AudioStream" uid="uid://doh5tnov64h1g" path="res://MainProject/Resources/sounds/soundtracks/alice-in-dark-wonderland-123894.mp3" id="13_mnxx8"]
 
 [sub_resource type="Animation" id="Animation_p5hrf"]
 length = 0.001
@@ -111,6 +112,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_8ry8c"]
 resource_name = "intro_start"
@@ -192,7 +205,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.966667, 3.2),
 "transitions": PackedFloat32Array(0.183011, 6.49802),
 "update": 0,
-"values": [23, 0]
+"values": [22, 0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -223,7 +236,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_jgt7n"]
 resource_name = "slideshow"
-length = 18.0
+length = 23.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -309,6 +322,33 @@ tracks/6/keys = {
 "args": [],
 "method": &"on_slideshow_end"
 }]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AudioStreamPlayer2D")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 228.227,
+"start_offset": 0.9333,
+"stream": ExtResource("13_mnxx8")
+}],
+"times": PackedFloat32Array(0.0333333)
+}
+tracks/7/use_blend = true
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(16.7667, 18.9667),
+"transitions": PackedFloat32Array(2.46229, 1),
+"update": 0,
+"values": [0.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_te8vq"]
@@ -407,7 +447,7 @@ sfx_component = NodePath("../SfxComponent")
 
 [node name="Slide_1" type="Sprite2D" parent="."]
 texture_filter = 2
-position = Vector2(429, 240)
+position = Vector2(431, 242)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("8_fuj7x")
 
@@ -447,7 +487,7 @@ autowrap_mode = 2
 [node name="Slide_3" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 2
-position = Vector2(429, 240)
+position = Vector2(431, 242)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("10_3opfd")
 
@@ -468,3 +508,6 @@ autowrap_mode = 2
 
 [node name="SfxComponent" parent="." instance=ExtResource("10_v3i3i")]
 sfx_tap = ExtResource("11_b0a20")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"Music"

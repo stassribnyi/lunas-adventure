@@ -7,7 +7,7 @@ func _ready() -> void:
 		$Buttons/Exit.hide()
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and not Game.get_singleton().is_cutscene_running:
 		toggle_pause_menu()
 
 func _on_resume_button_pressed() -> void:
