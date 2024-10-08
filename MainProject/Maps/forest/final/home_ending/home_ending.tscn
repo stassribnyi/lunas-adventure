@@ -59,7 +59,7 @@ tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 6.17, 9.32),
+"times": PackedFloat32Array(0, 1, 6.96, 9.32),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.0666667, 0.0666667, 0.0666667, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.238744, 0.238744, 0.238744, 1)]
@@ -135,7 +135,7 @@ tracks/3/path = NodePath("EndingContainer/MarginContainer/Story:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1, 6.18, 9.35),
+"times": PackedFloat32Array(0, 1, 6.93, 9.35),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.0666667, 0.0666667, 0.0666667, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
