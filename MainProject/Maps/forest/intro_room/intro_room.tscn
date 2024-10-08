@@ -345,10 +345,10 @@ tracks/8/path = NodePath("AudioStreamPlayer2D:volume_db")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(16.7667, 18.9667),
-"transitions": PackedFloat32Array(2.46229, 1),
+"times": PackedFloat32Array(16.9, 18.9, 19.3667),
+"transitions": PackedFloat32Array(2.46229, 1, 1),
 "update": 0,
-"values": [0.0, -80.0]
+"values": [0.0, -30.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_te8vq"]

@@ -35,40 +35,49 @@ var credits = [
 		"Programming",
 		"Stas Sribnyi",
 	],[
+		"Level Design",
+		"Stas Sribnyi",
+		"Roman Serebrianskyi",
+	],[
 		"Art",
-		"Olga Serebryanska",
-		"Roman Serebryanskyi",
+		"Digital Illustration",
+		"Olga Serebrianska",
+		"",
+		"Characters",
+		"Roman Serebrianskyi",
 	],[
 		"Music",
-		"Roman Serebryanskyi",
+		"Roman Serebrianskyi",
 	],[
 		"Sound Effects",
-		"Pixabay",
 		"Stas Sribnyi",
 	],[
 		"Testers",
 		"Hlib Zinchenko",
-		"Closes friends"
+		"Glib “Migraine” Serebrianskyi",
+	],[
+		"Special thanks",
+		"Our friends",
+		"Kseniia Dudnyk",
+		"@benbishopnz for credit scene",
 	],[
 		"Tools used",
 		"Developed with Godot Engine",
 		"https://godotengine.org/license",
 		"",
-		"Art created with GIMP and Photoshop",
+		"Art created with GIMP and Procreate",
 		"https://www.gimp.org/",
-		"https://www.adobe.com/"
-	],[
-		"Special thanks",
-		"Kseniia Dudnyk",
-		"My friends",
-		"YouTube and various resources online",
-		"@benbishopnz for credit scene",
-		"ADHD"
+		"https://procreate.com/",
+		"",
+		"Audio Effects",
+		"Audacity",
+		"https://www.audacityteam.org/"
 	]
 ]
 
 func _ready() -> void:
 	Game.get_singleton().is_cutscene_running = true
+	Game.get_singleton().toggle_ambient(false)
 	animation_player.play("start_ending")
 
 func _process(delta):
@@ -111,6 +120,7 @@ func finish():
 	if not finished:
 		finished = true
 		Game.get_singleton().is_cutscene_running = false
+		Game.get_singleton().toggle_ambient(true)
 		# This is called when the credits finish and returns to the main menu
 		get_tree().change_scene_to_packed(load_scene)
 

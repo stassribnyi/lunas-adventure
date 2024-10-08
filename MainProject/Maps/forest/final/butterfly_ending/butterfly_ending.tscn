@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://bamjqtlauv3up"]
+[gd_scene load_steps=16 format=4 uid="uid://bamjqtlauv3up"]
 
 [ext_resource type="Script" path="res://MainProject/Maps/forest/final/home_ending/home_ending.gd" id="1_todrb"]
 [ext_resource type="PackedScene" uid="uid://bbpg1nmv3p2gw" path="res://MainProject/Scenes/menu/menu.tscn" id="2_wai2k"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="4_aunfn"]
 [ext_resource type="Texture2D" uid="uid://dllhygympt53v" path="res://MainProject/Sprites/backgrounds/screens/butterfly_ending.png" id="5_4gecl"]
 [ext_resource type="Shader" path="res://MainProject/blur.gdshader" id="6_4kf8j"]
+[ext_resource type="AudioStream" uid="uid://dvhc2n80nku54" path="res://MainProject/Resources/sounds/soundtracks/butterfly_ending[playful-holiday-166438].mp3" id="6_27osi"]
 [ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="7_22ppi"]
 [ext_resource type="Script" path="res://MainProject/Maps/forest/intro_room/label_tapping.gd" id="8_4yked"]
 [ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="9_kg35o"]
@@ -49,10 +50,22 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ncaxa"]
 resource_name = "start_ending"
-length = 20.0
+length = 45.0
 step = 0.01
 capture_included = true
 tracks/0/type = "value"
@@ -155,6 +168,33 @@ tracks/4/keys = {
 "method": &"start_credits"
 }]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 21.4726,
+"start_offset": 0.12,
+"stream": ExtResource("6_27osi")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(38.19, 43.11, 44.62),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -30.0, -80.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3ytj"]
 _data = {
@@ -166,7 +206,7 @@ _data = {
 shader = ExtResource("6_4kf8j")
 shader_parameter/amount = 0.0
 
-[node name="BadEnding" type="Node2D"]
+[node name="ButterflyEnding" type="Node2D"]
 script = ExtResource("1_todrb")
 load_scene = ExtResource("2_wai2k")
 
@@ -267,3 +307,6 @@ sfx_component = NodePath("SfxComponent")
 [node name="SfxComponent" parent="EndingContainer/MarginContainer/Story" instance=ExtResource("9_kg35o")]
 position = Vector2(-64, -170)
 sfx_tap = ExtResource("10_qy0g6")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"Music"

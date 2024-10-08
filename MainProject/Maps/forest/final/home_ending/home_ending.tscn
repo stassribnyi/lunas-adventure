@@ -50,7 +50,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_ncaxa"]
 resource_name = "start_ending"
-length = 32.0
+length = 40.0
 step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -148,7 +148,7 @@ tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "clips": [{
-"end_offset": 96.8189,
+"end_offset": 88.9063,
 "start_offset": 0.0,
 "stream": ExtResource("6_8dlcf")
 }],
@@ -162,7 +162,7 @@ tracks/5/path = NodePath("AudioStreamPlayer2D:volume_db")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(26.72, 31.25, 32),
+"times": PackedFloat32Array(26.72, 38.04, 39.87),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, -30.0, -80.0]
@@ -266,8 +266,9 @@ theme_override_colors/font_color = Color(0.12549, 0.286275, 0.533333, 1)
 theme_override_fonts/font = ExtResource("7_fivuj")
 theme_override_font_sizes/font_size = 18
 text = "Luna stepped through the portal.
-When her vision cleared, she found herself in her own bedroom, surrounded by her family.
-She was glad to be back home."
+When her vision cleared, she found herself at home, surrounded by her family.
+She was happy to be back."
 autowrap_mode = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+bus = &"Music"

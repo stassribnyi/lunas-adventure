@@ -69,6 +69,7 @@ var credits = [
 
 func _ready() -> void:
 	Game.get_singleton().is_cutscene_running = true
+	Game.get_singleton().toggle_ambient(false)
 	animation_player.play("start_ending")
 
 func _process(delta):
@@ -111,6 +112,7 @@ func finish():
 	if not finished:
 		finished = true
 		Game.get_singleton().is_cutscene_running = false
+		Game.get_singleton().toggle_ambient(true)
 		# This is called when the credits finish and returns to the main menu
 		get_tree().change_scene_to_packed(load_scene)
 
