@@ -15,6 +15,8 @@ var speed_up := false
 @onready var credits_container := $CreditsContainer
 @onready var line := $CreditsContainer/CreditsLine
 @onready var blur := $CreditsContainer/Blur
+@onready var animation_player := $AnimationPlayer
+
 var started := false
 var finished := false
 var is_credits_enabled := false
@@ -67,6 +69,7 @@ var credits = [
 
 func _ready() -> void:
 	Game.get_singleton().is_cutscene_running = true
+	animation_player.play("start_ending")
 
 func _process(delta):
 	if not is_credits_enabled:
@@ -81,9 +84,6 @@ func _process(delta):
 			
 			if credits.size() > 0:
 				started = true
-				var blur_amount = blur.material.get_shader_parameter("amount")
-				if blur_amount < 3:
-					blur.material.set_shader_parameter("amount", blur_amount + 1)
 				section = credits.pop_front()
 				curr_line = 0
 				add_line()
@@ -137,3 +137,9 @@ func _unhandled_input(event):
 		speed_up = true
 	if event.is_action_released("ui_down") and !event.is_echo():
 		speed_up = false
+
+func set_blur(amount: float) -> void:
+	blur.material.set_shader_parameter("amount", amount)
+
+func start_credits():
+	is_credits_enabled = true

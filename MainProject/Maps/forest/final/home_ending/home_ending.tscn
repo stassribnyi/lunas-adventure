@@ -1,0 +1,275 @@
+[gd_scene load_steps=15 format=4 uid="uid://dlcrt7hvyph4t"]
+
+[ext_resource type="Script" path="res://MainProject/Maps/forest/final/home_ending/home_ending.gd" id="1_83ige"]
+[ext_resource type="PackedScene" uid="uid://bbpg1nmv3p2gw" path="res://MainProject/Scenes/menu/menu.tscn" id="2_vu0gq"]
+[ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="3_wwito"]
+[ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="4_w86se"]
+[ext_resource type="Texture2D" uid="uid://je0eigsgwuhp" path="res://MainProject/Sprites/backgrounds/screens/home_ending.png" id="5_vkpnq"]
+[ext_resource type="Shader" path="res://MainProject/blur.gdshader" id="6_2qyjk"]
+[ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="7_fivuj"]
+[ext_resource type="Script" path="res://MainProject/Maps/forest/intro_room/label_tapping.gd" id="8_bd0pi"]
+[ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="9_edcto"]
+[ext_resource type="AudioStream" uid="uid://k05binl743k3" path="res://MainProject/Resources/sounds/letter_tap.wav" id="10_hqne5"]
+
+[sub_resource type="Animation" id="Animation_5emxx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("EndingContainer/MarginContainer/Story:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndingContainer/MarginContainer/Story:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ncaxa"]
+resource_name = "start_ending"
+length = 20.0
+step = 0.01
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 15.02, 18.17),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.0666667, 0.0666667, 0.0666667, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.238744, 0.238744, 0.238744, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [0.0],
+"method": &"set_blur"
+}, {
+"args": [0.25],
+"method": &"set_blur"
+}, {
+"args": [0.5],
+"method": &"set_blur"
+}, {
+"args": [0.75],
+"method": &"set_blur"
+}, {
+"args": [1.0],
+"method": &"set_blur"
+}, {
+"args": [1.25],
+"method": &"set_blur"
+}, {
+"args": [1.5],
+"method": &"set_blur"
+}, {
+"args": [1.75],
+"method": &"set_blur"
+}, {
+"args": [2.0],
+"method": &"set_blur"
+}, {
+"args": [2.25],
+"method": &"set_blur"
+}, {
+"args": [2.5],
+"method": &"set_blur"
+}, {
+"args": [2.75],
+"method": &"set_blur"
+}, {
+"args": [3.0],
+"method": &"set_blur"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("EndingContainer/MarginContainer/Story:visible_characters")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.01, 0.99, 4.04, 4.49, 7, 7.48, 9.02, 9.45, 10.99, 11.25, 13.13),
+"transitions": PackedFloat32Array(1, 1.27456, 1, 1, 1, 1, 1, 1, 1, 1, 14.42),
+"update": 2,
+"values": [0, 1, 32, 32, 66, 66, 92, 92, 123, 123, 165]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EndingContainer/MarginContainer/Story:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(15.02, 18.17),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(14.94),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_credits"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f3ytj"]
+_data = {
+"RESET": SubResource("Animation_5emxx"),
+"start_ending": SubResource("Animation_ncaxa")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v24ry"]
+shader = ExtResource("6_2qyjk")
+shader_parameter/amount = 0.0
+
+[node name="HomeEnding" type="Node2D"]
+script = ExtResource("1_83ige")
+load_scene = ExtResource("2_vu0gq")
+
+[node name="RoomInstance" parent="." instance=ExtResource("3_wwito")]
+
+[node name="TileMap" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAAAABQAKABAAAFAAAAEABQAKAA8AAAAAAAIABQAKABAAAAAAAAMABQAKAA4AAAAAAAQABQAKAA8AAAAAAAUABQAKABAAAAAAAAYABQAKAA4AAAAAAAcABQAKAA8AAAAAAAgABQAKABAAAAAAAAkABQAKAA4AAAAAAAoABQAKAA8AAAAAAAsABQAKABAAAAAAAAwABQAKAA4AAAAAAA0ABQAKAA8AAAAAAA4ABQAKABAAAAAAAA8ABQAKAA4AAAAAABAABQAKAA8AAAAAABEABQAKABAAAAAAABIABQAKAA4AAAAAABMABQAKAA8AAAAAABQABQAKABAAAAAAABUABQAKAA4AAAAAABYABQAKAA8AAAAAABcABQAKABAAAAAAABgABQAKAA4AAAAAABkABQAKAA8AAAAAABoABQAKABAAAAAAABsABQAKAA4AAAAAABwABQAKAA8AAAAAAB0ABQAKABAAAFAdAAAABQAKAA4AAFAcAAAABQAKAA8AAFAbAAAABQAKABAAAFAaAAAABQAKAA4AAFAZAAAABQAKAA8AAFAYAAAABQAKABAAAFAXAAAABQAKAA4AAFAWAAAABQAKAA8AAFAVAAAABQAKABAAAFAUAAAABQAKAA4AAFATAAAABQAKAA8AAFASAAAABQAKABAAAFARAAAABQAKAA4AAFAQAAAABQAKAA8AAFAPAAAABQAKABAAAFAOAAAABQAKAA4AAFANAAAABQAKAA8AAFAMAAAABQAKABAAAFALAAAABQAKAA4AAFAKAAAABQAKAA8AAFAJAAAABQAKABAAAFAIAAAABQAKAA4AAFAHAAAABQAKAA8AAFAGAAAABQAKABAAAFAFAAAABQAKAA4AAFAEAAAABQAKAA8AAFADAAAABQAKABAAAFACAAAABQAKAA4AAFABAAAABQAKAA8AAFAyAAAABQAKABAAAEAxAAAABQAKAA8AAEAwAAAABQAKAA4AAEAvAAAABQAKABAAAEAuAAAABQAKAA8AAEAtAAAABQAKAA4AAEAsAAAABQAKABAAAEArAAAABQAKAA8AAFAqAAAABQAKABAAAFApAAAABQAKAA4AAFAoAAAABQAKAA8AAFAnAAAABQAKABAAAFAmAAAABQAKAA4AAFAlAAAABQAKAA8AAFAkAAAABQAKABAAAFAjAAAABQAKAA4AAFAiAAAABQAKAA8AAFAhAAAABQAKABAAAFAgAAAABQAKAA4AAFAfAAAABQAKAA8AAFAeAAAABQAKABAAAFAdAB0ABQAKAA4AAFAcAB0ABQAKAA8AAFAbAB0ABQAKABAAAFAaAB0ABQAKAA4AAFAZAB0ABQAKAA8AAFAYAB0ABQAKABAAAFAXAB0ABQAKAA4AAFAWAB0ABQAKAA8AAFAVAB0ABQAKABAAAFAUAB0ABQAKAA4AAFATAB0ABQAKAA8AAFASAB0ABQAKABAAAFARAB0ABQAKAA4AAFAQAB0ABQAKAA8AAFAPAB0ABQAKABAAAFAOAB0ABQAKAA4AAFANAB0ABQAKAA8AAFAMAB0ABQAKABAAAFALAB0ABQAKAA4AAFAKAB0ABQAKAA8AAFAJAB0ABQAKABAAAFAIAB0ABQAKAA4AAFAHAB0ABQAKAA8AAFAGAB0ABQAKABAAAFAFAB0ABQAKAA4AAFAEAB0ABQAKAA8AAFADAB0ABQAKABAAAFACAB0ABQAKAA4AAFABAB0ABQAKAA8AAFAyAB0ABQAKABAAAEAxAB0ABQAKAA8AAEAwAB0ABQAKAA4AAEAvAB0ABQAKABAAAEAuAB0ABQAKAA8AAEAtAB0ABQAKAA4AAEAsAB0ABQAKABAAAEArAB0ABQAKAA8AAFAqAB0ABQAKABAAAFApAB0ABQAKAA4AAFAoAB0ABQAKAA8AAFAnAB0ABQAKABAAAFAmAB0ABQAKAA4AAFAlAB0ABQAKAA8AAFAkAB0ABQAKABAAAFAjAB0ABQAKAA4AAFAiAB0ABQAKAA8AAFAhAB0ABQAKABAAAFAgAB0ABQAKAA4AAFAfAB0ABQAKAA8AAFAeAB0ABQAKABAAAFA1AAAABQAKABAAAEA1AAEABQAKAA8AABA1AAIABQAKABAAABA1AAMABQAKAA4AABA1AAQABQAKAA8AABA1AAUABQAKABAAABA1AAYABQAKAA4AABA1AAcABQAKAA8AABA1AAgABQAKABAAABA1AAkABQAKAA4AABA1AAoABQAKAA8AABA1AAsABQAKABAAABA1AAwABQAKAA4AABA1AA0ABQAKAA8AABA1AA4ABQAKABAAABA1AA8ABQAKAA4AABA1ABAABQAKAA8AABA1ABEABQAKABAAABA1ABIABQAKAA4AABA1ABMABQAKAA8AABA1ABQABQAKABAAABA1ABUABQAKAA4AABA1ABYABQAKAA8AABA1ABcABQAKABAAABA1ABgABQAKAA4AABA1ABkABQAKAA8AABA1ABoABQAKABAAABA1ABsABQAKAA4AABA1ABwABQAKAA8AABA1AB0ABQAKABAAAEA0AAAABQAKAA8AAEAzAAAABQAKAA4AAEA0AB0ABQAKAA8AAEAzAB0ABQAKAA4AAEA=")
+tile_set = ExtResource("4_w86se")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(366.889, 242.5)
+scale = Vector2(0.450926, 0.450926)
+texture = ExtResource("5_vkpnq")
+offset = Vector2(153, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(365.889, 242.5)
+scale = Vector2(0.450926, 0.450926)
+texture = ExtResource("5_vkpnq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_f3ytj")
+}
+
+[node name="CreditsContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 863.0
+offset_bottom = 485.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Blur" type="ColorRect" parent="CreditsContainer"]
+material = SubResource("ShaderMaterial_v24ry")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CreditsContainer"]
+custom_minimum_size = Vector2(3, 3)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CreditsLine" type="Label" parent="CreditsContainer"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -713.0
+offset_top = 405.0
+offset_right = -73.0
+offset_bottom = 426.0
+grow_horizontal = 0
+theme_override_fonts/font = ExtResource("7_fivuj")
+max_lines_visible = 3
+
+[node name="EndingContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 854.0
+offset_bottom = 480.0
+
+[node name="MarginContainer" type="MarginContainer" parent="EndingContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 539
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 64
+
+[node name="Story" type="Label" parent="EndingContainer/MarginContainer" node_paths=PackedStringArray("sfx_component")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.12549, 0.286275, 0.533333, 1)
+theme_override_fonts/font = ExtResource("7_fivuj")
+theme_override_font_sizes/font_size = 18
+text = "Luna stepped through the portal.
+When her vision cleared, she found herself in her own bedroom, surrounded by her family.
+She was glad to be back home."
+vertical_alignment = 3
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0
+script = ExtResource("8_bd0pi")
+sfx_component = NodePath("SfxComponent")
+
+[node name="SfxComponent" parent="EndingContainer/MarginContainer/Story" instance=ExtResource("9_edcto")]
+position = Vector2(-64, -170)
+sfx_tap = ExtResource("10_hqne5")

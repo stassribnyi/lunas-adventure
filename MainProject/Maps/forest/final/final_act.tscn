@@ -62,7 +62,7 @@ type = 4
 visible = false
 modulate = Color(0.985937, 0.369326, 0.536594, 1)
 position = Vector2(230, 348)
-target_map = "forest/final/bad_ending/bad_ending.tscn"
+target_map = "forest/final/butterfly_ending/butterfly_ending.tscn"
 enabled = false
 
 [node name="FullMetamorphosisLabel" type="Label" parent="."]
@@ -89,7 +89,7 @@ metadata/_edit_use_anchors_ = true
 visible = false
 modulate = Color(0.521057, 0.558314, 0.98054, 1)
 position = Vector2(2361, 342)
-target_map = "forest/final/bad_ending/bad_ending.tscn"
+target_map = "forest/final/home_ending/home_ending.tscn"
 enabled = false
 
 [node name="StayHumanLabel" type="Label" parent="."]

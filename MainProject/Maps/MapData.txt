@@ -48,4 +48,6 @@ $ln;Defaltia;Shadia;Renegia;Forest;Intro;Ending
 [7,-1,3]
 0,0,0,1|,79e6ea,79e6ea,79e6ea,79e6ea||forest/act_1/undeground_lake.tscn
 [10,-9,5]
-0,0,0,0|||forest/final/bad_ending/bad_ending.tscn
+0,0,0,0|||forest/final/home_ending/home_ending.tscn
+[8,-9,5]
+0,0,0,0|||forest/final/butterfly_ending/butterfly_ending.tscn
