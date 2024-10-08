@@ -69,7 +69,7 @@ func get_witch_1_dialog(player: MainCharacter) -> Array[String]:
 		player, 
 		[
 			"Hello, young one.",
-			"Lost?... Well, perhaps this is fate.",
+			"Are you lost? Or perhaps this is a fate?",
 			"A small, golden ring has been misplaced.",
 			"If you can find it, I'll share a part of my butterfly magic with you, to aid you on your journey through this perilous place.",
 			"Remember, dear one, that our magic can heal. Should you require our aid, seek us out, and we shall tend to your wounds."
@@ -77,7 +77,7 @@ func get_witch_1_dialog(player: MainCharacter) -> Array[String]:
 		[
 			"You have found the Queen's treasure, a gift she entrusted to me long ago.",
 			"I thank you for its return.",
-			"As a token of my gratitude, I share a fragment of the butterflies' essence with you.",
+			"As a sign of my gratitude, I share a fragment of the butterflies' essence with you.",
 			"With this power, you shall move with the swiftness and grace of a wind-borne leaf.",
 			"Use \"{0}\" + \"{1}\" or \"{2}\" to activate this ability.".format([dash_key, move_left, move_right]),
 			"You can practice with nearby tree...",
@@ -95,8 +95,8 @@ func get_witch_2_dialog(player: MainCharacter) -> Array[String]:
 		player, 
 		[
 			"Greetings, young adventurer.",
-			"My sister spoke of your aid in finding the missing ring.",
-			"I could use your help once again.",
+			"My sister has spoken of your aid...",
+			"I could use your help too.",
 			"I accidentally lost my necklace in the lake.",
 			"I believe it may have been carried downstream, deeper into the cave.",
 			"If you can recover it, I'll share a portion of the butterfly essence with you to aid your journey.",

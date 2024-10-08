@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://dlcrt7hvyph4t"]
+[gd_scene load_steps=13 format=4 uid="uid://dlcrt7hvyph4t"]
 
 [ext_resource type="Script" path="res://MainProject/Maps/forest/final/home_ending/home_ending.gd" id="1_83ige"]
 [ext_resource type="PackedScene" uid="uid://bbpg1nmv3p2gw" path="res://MainProject/Scenes/menu/menu.tscn" id="2_vu0gq"]
@@ -6,29 +6,27 @@
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="4_w86se"]
 [ext_resource type="Texture2D" uid="uid://je0eigsgwuhp" path="res://MainProject/Sprites/backgrounds/screens/home_ending.png" id="5_vkpnq"]
 [ext_resource type="Shader" path="res://MainProject/blur.gdshader" id="6_2qyjk"]
+[ext_resource type="AudioStream" uid="uid://kmn77bas2s2i" path="res://MainProject/Resources/sounds/soundtracks/home_ending[first-steps-195883].mp3" id="6_8dlcf"]
 [ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="7_fivuj"]
-[ext_resource type="Script" path="res://MainProject/Maps/forest/intro_room/label_tapping.gd" id="8_bd0pi"]
-[ext_resource type="PackedScene" uid="uid://5n4bphxgal5p" path="res://MainProject/Scenes/components/sfx_component/sfx_component.tscn" id="9_edcto"]
-[ext_resource type="AudioStream" uid="uid://k05binl743k3" path="res://MainProject/Resources/sounds/letter_tap.wav" id="10_hqne5"]
 
 [sub_resource type="Animation" id="Animation_5emxx"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("EndingContainer/MarginContainer/Story:visible_characters")
+tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/path = NodePath("EndingContainer/MarginContainer/Story:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -40,21 +38,20 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EndingContainer/MarginContainer/Story:modulate")
+tracks/2/path = NodePath("AudioStreamPlayer2D:volume_db")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_ncaxa"]
 resource_name = "start_ending"
-length = 20.0
+length = 32.0
 step = 0.01
-capture_included = true
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -62,7 +59,7 @@ tracks/0/path = NodePath("Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 15.02, 18.17),
+"times": PackedFloat32Array(0, 1, 6.17, 9.32),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0.0666667, 0.0666667, 0.0666667, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0.238744, 0.238744, 0.238744, 1)]
@@ -74,7 +71,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3),
+"times": PackedFloat32Array(0.98, 1.23, 1.48, 1.73, 1.98, 2.23, 2.48, 2.73, 2.98, 3.23, 3.48, 3.73, 3.98),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [0.0],
@@ -117,17 +114,19 @@ tracks/1/keys = {
 "method": &"set_blur"
 }]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("EndingContainer/MarginContainer/Story:visible_characters")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.01, 0.99, 4.04, 4.49, 7, 7.48, 9.02, 9.45, 10.99, 11.25, 13.13),
-"transitions": PackedFloat32Array(1, 1.27456, 1, 1, 1, 1, 1, 1, 1, 1, 14.42),
-"update": 2,
-"values": [0, 1, 32, 32, 66, 66, 92, 92, 123, 123, 165]
+"times": PackedFloat32Array(6.09),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start_credits"
+}]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -136,24 +135,37 @@ tracks/3/path = NodePath("EndingContainer/MarginContainer/Story:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(15.02, 18.17),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 1, 6.18, 9.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 0)]
+"values": [Color(0.0666667, 0.0666667, 0.0666667, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/4/type = "method"
+tracks/4/type = "audio"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".")
+tracks/4/path = NodePath("AudioStreamPlayer2D")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(14.94),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"start_credits"
-}]
+"clips": [{
+"end_offset": 96.8189,
+"start_offset": 0.0,
+"stream": ExtResource("6_8dlcf")
+}],
+"times": PackedFloat32Array(0.00999999)
+}
+tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(26.72, 31.25, 32),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -30.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3ytj"]
@@ -243,27 +255,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 539
-theme_override_constants/margin_top = 96
+theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 64
 
-[node name="Story" type="Label" parent="EndingContainer/MarginContainer" node_paths=PackedStringArray("sfx_component")]
+[node name="Story" type="Label" parent="EndingContainer/MarginContainer"]
 custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
-size_flags_vertical = 0
 theme_override_colors/font_color = Color(0.12549, 0.286275, 0.533333, 1)
 theme_override_fonts/font = ExtResource("7_fivuj")
 theme_override_font_sizes/font_size = 18
 text = "Luna stepped through the portal.
 When her vision cleared, she found herself in her own bedroom, surrounded by her family.
 She was glad to be back home."
-vertical_alignment = 3
 autowrap_mode = 2
-visible_characters = 0
-visible_ratio = 0.0
-script = ExtResource("8_bd0pi")
-sfx_component = NodePath("SfxComponent")
 
-[node name="SfxComponent" parent="EndingContainer/MarginContainer/Story" instance=ExtResource("9_edcto")]
-position = Vector2(-64, -170)
-sfx_tap = ExtResource("10_hqne5")
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
