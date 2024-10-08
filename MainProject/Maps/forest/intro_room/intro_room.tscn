@@ -202,9 +202,9 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.2, 4.63333),
-"transitions": PackedFloat32Array(1, 2, 6.06286),
+"transitions": PackedFloat32Array(1, 2.82843, 0.435275),
 "update": 0,
-"values": [0, 1, 44]
+"values": [0, 1, 82]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -223,7 +223,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_jgt7n"]
 resource_name = "slideshow"
-length = 12.0
+length = 18.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -231,7 +231,7 @@ tracks/0/path = NodePath("Slide_1:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 4.06667),
+"times": PackedFloat32Array(0.0333333, 5.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -243,7 +243,7 @@ tracks/1/path = NodePath("Slide_1:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.03333, 4.06667),
+"times": PackedFloat32Array(0, 4.59999, 5.63333),
 "transitions": PackedFloat32Array(0.21, 1, 1),
 "update": 0,
 "values": [Color(0.0674378, 0.0674378, 0.0674377, 1), Color(1, 1, 1, 1), Color(0.0674377, 0.0674377, 0.0674377, 1)]
@@ -255,7 +255,7 @@ tracks/2/path = NodePath("Slide_2:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(4.06667, 8.1),
+"times": PackedFloat32Array(5.63333, 11.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -267,7 +267,7 @@ tracks/3/path = NodePath("Slide_2:modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(4.06667, 7.16667, 8.1),
+"times": PackedFloat32Array(5.63333, 10.6667, 11.6),
 "transitions": PackedFloat32Array(0.21, 1, 1),
 "update": 0,
 "values": [Color(0.0666667, 0.0666667, 0.0666667, 1), Color(1, 1, 1, 1), Color(0.0666667, 0.0666667, 0.0666667, 1)]
@@ -279,7 +279,7 @@ tracks/4/path = NodePath("Slide_3:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(8.1, 11.9),
+"times": PackedFloat32Array(11.6, 17.6667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -291,7 +291,7 @@ tracks/5/path = NodePath("Slide_3:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(8.1, 11.0667, 11.9),
+"times": PackedFloat32Array(11.6, 16.8334, 17.6667),
 "transitions": PackedFloat32Array(0.21, 1, 1),
 "update": 0,
 "values": [Color(0.0666667, 0.0666667, 0.0666667, 1), Color(1, 1, 1, 1), Color(0.0666667, 0.0666667, 0.0666667, 1)]
@@ -303,7 +303,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(11.9),
+"times": PackedFloat32Array(17.6667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -394,22 +394,35 @@ script = ExtResource("7_nq7vv")
 sfx_component = NodePath("../SfxComponent")
 
 [node name="What is that?" type="Label" parent="." node_paths=PackedStringArray("sfx_component")]
-offset_left = 430.0
-offset_top = 121.0
-offset_right = 725.0
-offset_bottom = 156.0
+offset_left = 410.0
+offset_top = 96.0
+offset_right = 783.0
+offset_bottom = 150.0
 theme_override_fonts/font = ExtResource("6_e4waf")
-text = "What is that shiny thing up there?"
+text = "Could this shiny thing be where the butterflies went?"
 autowrap_mode = 2
-visible_ratio = -0.0294118
+visible_ratio = -0.0188679
 script = ExtResource("7_nq7vv")
 sfx_component = NodePath("../SfxComponent")
 
 [node name="Slide_1" type="Sprite2D" parent="."]
 texture_filter = 2
-position = Vector2(432, 232)
-scale = Vector2(0.5, 0.5)
+position = Vector2(429, 240)
+scale = Vector2(0.45, 0.45)
 texture = ExtResource("8_fuj7x")
+
+[node name="Label" type="Label" parent="Slide_1"]
+offset_left = -953.0
+offset_top = 280.0
+offset_right = 944.0
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(0.12549, 0.286275, 0.533333, 1)
+theme_override_fonts/font = ExtResource("6_e4waf")
+theme_override_font_sizes/font_size = 40
+text = "Oh wow, look at all those beautiful butterflies!"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="Slide_2" type="Sprite2D" parent="."]
 visible = false
@@ -418,12 +431,40 @@ position = Vector2(431, 242)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("9_48e38")
 
+[node name="Label" type="Label" parent="Slide_2"]
+offset_left = -958.0
+offset_top = 278.0
+offset_right = 942.0
+offset_bottom = 531.0
+theme_override_colors/font_color = Color(1, 0.87451, 0.494118, 1)
+theme_override_fonts/font = ExtResource("6_e4waf")
+theme_override_font_sizes/font_size = 40
+text = "Could it be they’re flying to their secret kingdom?"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Slide_3" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 2
 position = Vector2(429, 240)
 scale = Vector2(0.45, 0.45)
 texture = ExtResource("10_3opfd")
+
+[node name="Label" type="Label" parent="Slide_3"]
+offset_left = -953.0
+offset_top = 300.0
+offset_right = 944.0
+offset_bottom = 533.0
+theme_override_colors/font_color = Color(1, 0.87451, 0.494118, 1)
+theme_override_fonts/font = ExtResource("6_e4waf")
+theme_override_font_sizes/font_size = 40
+text = "Where did they go? 
+They were  here just a second ago.
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [node name="SfxComponent" parent="." instance=ExtResource("10_v3i3i")]
 sfx_tap = ExtResource("11_b0a20")

@@ -5,12 +5,12 @@
 [ext_resource type="TileSet" uid="uid://bwpcg2opya34n" path="res://MainProject/Resources/Tileset.tres" id="3_jf4ff"]
 [ext_resource type="PackedScene" uid="uid://bsg0351mx3b4u" path="res://addons/MetroidvaniaSystem/Nodes/RoomInstance.tscn" id="3_sh3fl"]
 [ext_resource type="FontFile" uid="uid://b4u33kyj8kn1h" path="res://MainProject/Sprites/brackeys_platformer_assets/fonts/PixelOperator8-Bold.ttf" id="3_ulogy"]
+[ext_resource type="Texture2D" uid="uid://dllhygympt53v" path="res://MainProject/Sprites/backgrounds/screens/butterfly_ending.png" id="5_158uk"]
 [ext_resource type="Shader" path="res://MainProject/blur.gdshader" id="6_3ylkh"]
-[ext_resource type="Texture2D" uid="uid://d1rskqksogqxi" path="res://MainProject/Sprites/backgrounds/screens/slide_2.png" id="6_r85if"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_v24ry"]
 shader = ExtResource("6_3ylkh")
-shader_parameter/amount = 3.0
+shader_parameter/amount = 0.0
 
 [node name="BadEnding" type="Node2D"]
 script = ExtResource("1_0wdss")
@@ -25,17 +25,21 @@ tile_set = ExtResource("3_jf4ff")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(431, 242)
 scale = Vector2(0.45, 0.45)
-texture = ExtResource("6_r85if")
+texture = ExtResource("5_158uk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
 [node name="CreditsContainer" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 861.0
-offset_bottom = 480.0
+offset_left = -1.0
+offset_top = -1.0
+offset_right = 863.0
+offset_bottom = 485.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="ColorRect" type="ColorRect" parent="CreditsContainer"]
+[node name="Blur" type="ColorRect" parent="CreditsContainer"]
 material = SubResource("ShaderMaterial_v24ry")
 layout_mode = 1
 anchors_preset = 15
@@ -67,3 +71,36 @@ offset_bottom = 426.0
 grow_horizontal = 0
 theme_override_fonts/font = ExtResource("3_ulogy")
 max_lines_visible = 3
+
+[node name="EndingContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 854.0
+offset_bottom = 480.0
+
+[node name="MarginContainer" type="MarginContainer" parent="EndingContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 64
+
+[node name="Story" type="Label" parent="EndingContainer/MarginContainer"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.12549, 0.286275, 0.533333, 1)
+theme_override_fonts/font = ExtResource("3_ulogy")
+theme_override_font_sizes/font_size = 18
+text = "The girl stepped through the portal.
+The world around her transformed.
+When her vision cleared, she found herself a butterfly, dancing among a meadow of others like her."
+horizontal_alignment = 1
+vertical_alignment = 3
+autowrap_mode = 2
+visible_characters = 0
+visible_ratio = 0.0

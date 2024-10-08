@@ -14,8 +14,10 @@ var speed_up := false
 
 @onready var credits_container := $CreditsContainer
 @onready var line := $CreditsContainer/CreditsLine
+@onready var blur := $CreditsContainer/Blur
 var started := false
 var finished := false
+var is_credits_enabled := false
 
 var section
 var section_next := true
@@ -43,9 +45,8 @@ var credits = [
 		"Stas Sribnyi",
 	],[
 		"Testers",
-		"Name 1",
-		"Name 2",
-		"Name 3"
+		"Hlib Zinchenko",
+		"Closes friends"
 	],[
 		"Tools used",
 		"Developed with Godot Engine",
@@ -68,6 +69,9 @@ func _ready() -> void:
 	Game.get_singleton().is_cutscene_running = true
 
 func _process(delta):
+	if not is_credits_enabled:
+		return
+	
 	var scroll_speed = base_speed * delta
 	
 	if section_next:
@@ -77,6 +81,9 @@ func _process(delta):
 			
 			if credits.size() > 0:
 				started = true
+				var blur_amount = blur.material.get_shader_parameter("amount")
+				if blur_amount < 3:
+					blur.material.set_shader_parameter("amount", blur_amount + 1)
 				section = credits.pop_front()
 				curr_line = 0
 				add_line()
