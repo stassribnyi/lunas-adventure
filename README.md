@@ -37,6 +37,9 @@
 **Neckless**
 ![Neckless location](https://github.com/user-attachments/assets/808e45b6-47a7-4264-be54-db54485138e4)
 
+**World Map**
+![World Map](https://github.com/stassribnyi/lunas-adventure/blob/1.0.0/lunas-adventure-map.png)
+
 
 ### KNOWN ISSUES:
 - The initial use of the dash may cause a brief freeze. (Most likely due to lazy-loaded shaders)
